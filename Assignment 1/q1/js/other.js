@@ -25,8 +25,8 @@ function doStuff()
   for(ii = 0; ii < imgHeight; ii += 1)
   {
    var pp = (ii*imgWidth*4)+qq;
-   var hsin = Math.cos(jj*hcy/imgWidth*2*Math.PI);
-   var vsin = Math.cos(ii*vcy/imgHeight*2*Math.PI);
+   var xWeight = 1;
+   var yWeight = (axWeight/ + b)/(a + b)
    imgData.data[pp] = vco[0]*vsin + hco[0]*hsin;
    imgData.data[pp+1] = vco[1]*vsin + hco[1]*hsin;
    imgData.data[pp+2] = vco[2]*vsin + hco[2]*hsin;
