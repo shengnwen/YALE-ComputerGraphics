@@ -120,17 +120,41 @@ function drawLine() {
         var slope = (endY - startY) / (endX - startX);
         if (slope > 0 && slope <= 1) {
             // slope > 0
-            document.getElementById("info").textContent += " Slope > 0!";
+            document.getElementById("info").textContent += " 1 >= Slope > 0!";
             calF = calIndex;
-        } else if (slop < 0 && slope >= -1){
+        } else if (slope < 0 && slope >= -1){
             //slope < 0, need to switch coordinates (0, 0) - > (0, height - 1 - 0)
             // eg. height = 50, width = 50 => (0, 0) -> (0, 49)
-            document.getElementById("info").textContent += " Slope < 0, so switch coordinates!";
+            document.getElementById("info").textContent += " -1 <= Slope < 0, so switch coordinates!";
             calF = function(x, y) {
                 return (y * width + x) * 4;
             }
             startY = height - 1 - startY;
             endY = height - 1 - endY;
+        } else if (slope > 1) {
+            document.getElementById("info").textContent += " Slope > 1, so switch (x, y) to (y, x)!";
+            calF = function(y, x) {
+                //
+                return ((height - 1 - y) * width + x) * 4;
+            }
+            var tmp;
+            tmp = startX;
+            startX = startY;
+            startY = tmp;
+            tmp = endY;
+            endY = endX;
+            endX = tmp;
+        } else {
+            document.getElementById("info").textContent += " Slope < - 1, so switch from (x, y) to (-y, x)!";
+            calF = function(x, y) {
+                return calIndex(y, -x);
+            }
+            var tmp= startX;
+            startX = - startY;
+            startY = tmp;
+            tmp = endX;
+            endX = - endY;
+            endY = tmp;
         }
         if (startX > endX) {
             var tmp = endX;
@@ -141,7 +165,7 @@ function drawLine() {
             startY = tmp;
         }
         var dx = endX - startX;
-        var dy = endY - startY;
+        var dy = Math.abs(endY - startY);
         var d = 2 * dy - dx;
         var incrE = 2 * dy;
         var incrNE = 2 * (dy - dx);
