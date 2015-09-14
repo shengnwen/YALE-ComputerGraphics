@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3554243-e909-4ccf-b86b-57e049a91d73" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q4/hello_draw_ten_random.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/js/bresenham.js" afterPath="$PROJECT_DIR$/q3/js/bresenham.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/hello_draw_another.html" afterPath="$PROJECT_DIR$/q4/hello_draw_another.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/q3-triangle.html" afterPath="$PROJECT_DIR$/q3/q3-triangle.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/js/triangle.js" afterPath="$PROJECT_DIR$/q3/js/triangle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Assignment 1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,33 +27,52 @@
     <favorites_list name="Assignment 1" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.40371847">
+    <splitter split-orientation="vertical" split-proportion="0.44090307">
       <split-first>
         <leaf>
-          <file leaf-file-name="q3-line.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="triangle.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/q3/js/triangle.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="192" column="24" selection-start-line="192" selection-start-column="24" selection-end-line="192" selection-end-column="24" />
+                  <folding>
+                    <element signature="n#!!doc;n#check#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="q3-line.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/q3/q3-line.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.1386138">
-                  <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                <state vertical-scroll-proportion="12.791667">
+                  <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="q2-bilateral.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/q2/q2-bilateral.html">
+          <file leaf-file-name="bresenham.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/q3/js/bresenham.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="184" column="13" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
+                  <folding>
+                    <element signature="n#!!doc;n#check#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="littlecity.png" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/q2/littlecity.png">
-              <provider selected="true" editor-type-id="images">
-                <state />
+          <file leaf-file-name="hello_draw_ten_random.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/q4/hello_draw_ten_random.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.43636364">
+                  <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+                  <folding>
+                    <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
               </provider>
             </entry>
           </file>
@@ -56,14 +80,12 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="bresenham.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/q3/js/bresenham.js">
+          <file leaf-file-name="hello_draw_another.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/q4/hello_draw_another.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.0714285">
-                  <caret line="151" column="21" selection-start-line="151" selection-start-column="21" selection-end-line="151" selection-end-column="21" />
-                  <folding>
-                    <element signature="n#!!doc;n#check#0" expanded="false" />
-                  </folding>
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="87" selection-end-column="9" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -77,6 +99,7 @@
       <list>
         <option value="Html5" />
         <option value="JavaScript File" />
+        <option value="Html" />
       </list>
     </option>
   </component>
@@ -93,11 +116,13 @@
         <option value="$PROJECT_DIR$/q1/js/other.js" />
         <option value="$PROJECT_DIR$/q2/q2-bilateral.html" />
         <option value="$PROJECT_DIR$/q2/js/bilateral-old.js" />
-        <option value="$PROJECT_DIR$/q3/js/triangle.js" />
-        <option value="$PROJECT_DIR$/q3/q3-triangle.html" />
         <option value="$PROJECT_DIR$/q3/q3-line.html" />
         <option value="$PROJECT_DIR$/q2/js/bilateral.js" />
+        <option value="$PROJECT_DIR$/q3/q3-triangle.html" />
+        <option value="$PROJECT_DIR$/q3/js/triangle.js" />
         <option value="$PROJECT_DIR$/q3/js/bresenham.js" />
+        <option value="$PROJECT_DIR$/q4/hello_draw_another.html" />
+        <option value="$PROJECT_DIR$/q4/hello_draw_ten_random.html" />
       </list>
     </option>
   </component>
@@ -109,9 +134,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="709" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -166,57 +190,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="q3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignment 1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignment 1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="q3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignment 1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignment 1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="q2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignment 1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignment 1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="q2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="q4" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -229,9 +203,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="recentsLimit" value="5" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="JavaScriptLanguageLevel" value="JS_1_8_5" />
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -244,8 +218,11 @@
       <recent name="$PROJECT_DIR$/q1" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.q1-sinewave.html">
+  <component name="RunManager" selected="JavaScript Debug.q3-triangle.html">
     <configuration default="false" name="q1-sinewave.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Assignment 1/q1/q1-sinewave.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="q3-triangle.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Assignment 1/q3/q3-triangle.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -286,12 +263,14 @@
       <envs />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.q1-sinewave.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.q3-triangle.html" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.q1-sinewave.html" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.q3-triangle.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.q1-sinewave.html" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +288,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="709" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -581,24 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q3/js/triangle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35172415">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc;n#check#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/q3/q3-triangle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14978603">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q2/q2-example.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0">
@@ -623,11 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q2/littlecity.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q2/js/bilateral.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13081396">
@@ -644,20 +600,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/q2/littlecity.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/q3/q3-line.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1386138">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state vertical-scroll-proportion="12.791667">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q3/q3-triangle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q3/js/triangle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="192" column="24" selection-start-line="192" selection-start-column="24" selection-end-line="192" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc;n#check#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/q3/js/bresenham.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0714285">
-          <caret line="151" column="21" selection-start-line="151" selection-start-column="21" selection-end-line="151" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="13" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
           <folding>
             <element signature="n#!!doc;n#check#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q4/hello_draw_another.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="87" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q4/hello_draw_ten_random.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43636364">
+          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -47,6 +47,7 @@ function drawLine() {
     // step2: specific lines: same point || vertical ||  horizontal
     var imoutData = myCanvasContext.getImageData(0, 0, width, height);
     var index;
+    var pCount = 0;
     var calIndex = function(x, y) {
         return ((height - 1 - y) * width + x) * 4;
     }
@@ -74,7 +75,8 @@ function drawLine() {
         for (y = startY; y <= endY; y++) {
             var vIndex = calIndex(startX, y);
             // 2 pixels as one unit to change color, so that user can see the difference clearly
-            if (y % 4 == 0 || y % 4 == 1) {
+            pCount ++;
+            if (pCount % 4 == 0 || pCount % 4 == 1) {
                 imoutData.data[vIndex] = 255;
                 imoutData.data[vIndex + 2] = 0;
             } else {
@@ -89,7 +91,8 @@ function drawLine() {
         // 2 pixels as one unit to change color, so that user can see the difference clearly
         for (x = startX; x <= endX; x++) {
             var vIndex = calIndex(x, startY);
-            if (y % 4 == 0 || y % 4 == 1) {
+            pCount ++;
+            if (pCount % 4 == 0 || pCount % 4 == 1) {
                 imoutData.data[vIndex] = 255;
                 imoutData.data[vIndex + 2] = 0;
             } else {
@@ -181,7 +184,8 @@ function drawLine() {
                 y++;
             }
             x++;
-            writePixel(x, y, x % 4, calF);
+            pCount ++;
+            writePixel(x, y, pCount % 4, calF);
         }
     }
 
