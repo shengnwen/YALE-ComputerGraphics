@@ -117,11 +117,12 @@ function drawLine() {
             imoutData.data[index + 3] = 255;
         }
         var calF;
-        if ((endX - startX) * (endY - startY) > 0) {
+        var slope = (endY - startY) / (endX - startX);
+        if (slope > 0 && slope <= 1) {
             // slope > 0
             document.getElementById("info").textContent += " Slope > 0!";
             calF = calIndex;
-        } else {
+        } else if (slop < 0 && slope >= -1){
             //slope < 0, need to switch coordinates (0, 0) - > (0, height - 1 - 0)
             // eg. height = 50, width = 50 => (0, 0) -> (0, 49)
             document.getElementById("info").textContent += " Slope < 0, so switch coordinates!";

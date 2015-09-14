@@ -23,8 +23,8 @@ function createCanvas(image) {
     }
 
     // filter
-    var n = document.getElementById("filterSize").value;
-    var m = document.getElementById("filterIntensity").value;
+    var n = Number(document.getElementById("filterSize").value);
+    var m = Number(document.getElementById("filterIntensity").value);
 
     //scan surrounding pixels
     for (x = 0; x < imgHeight; x++) {
