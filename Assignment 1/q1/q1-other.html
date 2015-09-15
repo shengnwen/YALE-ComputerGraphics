@@ -1,17 +1,32 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-     <script src="js/other.js">
-	  </script>
-  </head> 
-  <body>
-    <canvas id="myCanvas" width="800" height="550"></canvas>
-	<p> Vertical cycles <input id="verticalcycles" type="number"> 
-	r  <input id="verticalr" type="number"> g  <input id="verticalg" type="number"> b <input id="verticalb" type="number">   </p>
-	<p> Horizontal cycles <input id="horizontalcycles" type="number">
-	r  <input id="horizontalr" type="number"> g  <input id="horizontalg" type="number"> b <input id="horizontalb" type="number">   </p>	</p>
-    <p> Make the image <input id="someInput" type="button" onClick="doStuff()"></p>
+<head>
+    <script src="js/other.js">
+    </script>
+</head>
+<body>
+<h1> <b>Q1</b> 578 Other, ID: ws362</h1>
+<p>Horizontal Color Weight <b>a1 * square(x/width)</b> %255, Vertical Color Weight = <b>a2 * square(x/height)</b>  %255</p>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+<p> Enter value a, b for calculation:</p>
+<p>
+    a1:<input id = "a1" value="1" step="1" onchange="checkArg(this)"/>
+    a2:<input id = "a2" value="1" step="1" onchange="checkArg(this)"/>
+</p>
+<p>
+    r <input id="verticalr" type="number" value="255" onchange="checkColor(this)">
+    g <input id="verticalg" type="number" value="30" onchange="checkColor(this)">
+    b <input id="verticalb" type="number" value="30" onchange="checkColor(this)">
+</p>
 
-	
-  </body>
-</html>   
+<p>
+    r <input id="horizontalr" type="number" value="100" onchange="checkColor(this)">
+    g <input id="horizontalg" type="number" value="150" onchange="checkColor(this)">
+    b <input id="horizontalb" type="number" value="200" onchange="checkColor(this)">
+</p>
+<p> Make the image <input id="someInput" type="button" onClick="doStuff()"></p>
+
+<p id="info" style="color: red;"></p>
+
+</body>
+</html>
