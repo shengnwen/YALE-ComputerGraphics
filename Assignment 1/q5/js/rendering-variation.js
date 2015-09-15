@@ -119,3 +119,5 @@ function renderTriangle(gl) {
 	// disable the current shading program
 	gl.useProgram(null);
 }
+
+

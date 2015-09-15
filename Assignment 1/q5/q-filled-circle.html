@@ -1,0 +1,37 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Q5 Rendering Filled Circle</title>
+    <script type="text/javascript" src="js/rendering-filled-circle.js"></script>
+</head>
+<h1> <b>Q5</b>  478/578 Filled Circle</h1>
+<p>
+    Triangle Number (n):<input id="triNum" type="number" step="1" value="10" />
+    <select id = "colorStyleSelect">
+        <option>
+            solid
+        </option>
+        <option>
+            smooth
+        </option>
+    </select>
+</p>
+<p> Choose your favourite colors: </p>
+<p>
+    <input type="checkbox" id = "cbRed" checked> Red
+    <input type="checkbox" id = "cbGreen" checked> Green
+    <input type="checkbox" id = "cbBlue" checked> Blue
+    <!--<input type="checkbox" id = "cbYellow"> Yellow-->
+    <!--<input type="checkbox" id = "cbPink"> Pink-->
+    <input type="checkbox" id = "cbGrey"> Grey
+    <!--<input type="checkbox" id = "cbPurple"> Purple-->
+</p>
+<p>Draw the filled circle: <input type="button" onclick="start()" value="do!"></p>
+<p id="info" style="color: red;"></p>
+<canvas id = "myCanvas"
+        width = "600px"
+        height = "600px"
+        style="border: 1px solid darkblue;">
+If you are seeing this message your web browser does not support the HTML5 &lt;canvas>&gt; element.
+</canvas>
+</body>
+</html>
