@@ -44,7 +44,20 @@ function drawLine() {
     myCanvasContext.fillRect(0,0,width,height);
 
 
+
+
     // step2: specific lines: same point || vertical ||  horizontal
+
+    //switch start and end point when startX > endX;
+    if (startX > endX) {
+        var swtmp = startX;
+        startX = endX;
+        endX = swtmp;
+        swtmp = startY;
+        startY = endY;
+        endY = swtmp;
+    }
+
     var imoutData = myCanvasContext.getImageData(0, 0, width, height);
     var index;
     var pCount = 0;

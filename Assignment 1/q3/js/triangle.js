@@ -55,6 +55,17 @@ function drawTriangle() {
         endX = (endX - 1 < 0) ? 0 : endX - 1;
         endY = (endY - 1 < 0) ? 0 : endY - 1;
 
+        //switch x, y;
+        if (startX > endX) {
+            var swtmp = startX;
+            startX = endX;
+            endX = swtmp;
+            swtmp = startY;
+            startY = endY;
+            endY = swtmp;
+        }
+
+
         var imoutData = myCanvasContext.getImageData(0, 0, width, height);
         var index;
         var calIndex = function(x, y) {
@@ -204,7 +215,7 @@ function drawTriangle() {
     //alert("start to draw!");
     drawLine(x1, y1, x2, y2);
     drawLine(x2, y2, x3, y3);
-    drawLine(x3, y3, x1, y1);
+    drawLine(x1, y1, x3, y3);
 
 
 }
