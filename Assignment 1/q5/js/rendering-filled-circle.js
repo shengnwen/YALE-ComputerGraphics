@@ -25,11 +25,11 @@ function initBuffers(gl, n) {
         vertexIndices.push(0.0);
         vertexIndices.push(0.0);
         vertexIndices.push(0.0);
-        vertexIndices.push(0.8 * Math.cos(theta * i));
-        vertexIndices.push(0.8 * Math.sin(theta * i));
+        vertexIndices.push(0.9 * Math.cos(theta * i));
+        vertexIndices.push(0.9 * Math.sin(theta * i));
         vertexIndices.push(0.0);
-        vertexIndices.push(0.8 * Math.cos(theta * (i + 1)));
-        vertexIndices.push(0.8 * Math.sin(theta * (i + 1)));
+        vertexIndices.push(0.9 * Math.cos(theta * (i + 1)));
+        vertexIndices.push(0.9 * Math.sin(theta * (i + 1)));
         vertexIndices.push(0.0);
     }
 
@@ -189,8 +189,8 @@ function start() {
         colors.push(0.0);
     }
     if(isBlue) {
-        colors.push(0.0);
-        colors.push(0.0);
+        colors.push(0.8);
+        colors.push(1.0);
         colors.push(1.0);
     }
     if (isGrey) {
