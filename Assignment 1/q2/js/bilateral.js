@@ -1,5 +1,39 @@
+function checkFilter(e) {
+    if (e.value == "") {
+        document.getElementById("info").innerHTML = "Filter size cannot be void!";
+        e.value = 1;
+        return;
+    }
+    var n = parseInt(e.value);
+    if (n < 0) {
+        document.getElementById("info").innerHTML = "Filter size should bigger than 0!";
+        e.value = 1;
+        return;
+    }
+    e.value = n;
+}
+
+function checkIntensity(e) {
+    if (e.value == "") {
+        document.getElementById("info").innerHTML = "Filter intensity cannot be void!";
+        e.value = 0;
+        return;
+    }
+    var n = parseInt(e.value);
+    if (n < 0) {
+        e.value = 0;
+        document.getElementById("info").innerHTML = "Filter size should in [0, 255]!";
+        return;
+    } else if (n > 255) {
+        document.getElementById("info").innerHTML = "Filter size should in [0, 255]!";
+        e.value = 255;
+        return;
+    }
+    e.value = n;
+}
+
 function createCanvas(image) {
-    var myCanvas = document.createElement("canvas");
+    var myCanvas = document.getElementById("canvas");
     var myCanvasContext = myCanvas.getContext("2d");
     var imgWidth = image.width;
     var imgHeight = image.height;
@@ -64,5 +98,5 @@ function loadImage() {
     img.onload = function() {
         createCanvas(img);
     }
-    img.src = document.getElementById("imagefilename").value;
+    img.src = "./" + document.getElementById("imagefilename").value.replace(/^.*(\\|\/|\:)/, '');
 }

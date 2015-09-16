@@ -5,9 +5,13 @@
   <script type="text/javascript" src="js/bilateral.js"></script>
   
   </head>
+  <h1>Q2 478/578 Filtering, ID: ws362</h1>
    <input id="imagefilename" type="file">
-  Choose Filter Size (n) <input id = "filterSize" type="number"/>Choose Filter Intesity(m) <input id = "filterIntensity" type="number"/>
+  Choose Filter Size (n) <input id = "filterSize" type="number" value="2" onchange="checkFilter(this)"/>Choose Filter Intesity(m)
+  <input id = "filterIntensity" type="number" value="20" onchange="checkIntensity(this)"/>
   <p> Make the image <input id="someInput" type="button" onClick="loadImage()"/></p>
+  <canvas id = "canvas">If you see this message, it means the browser don't support this canvas tag!</canvas>
+  <p id="info" style="color:red;"></p>
 
 
  

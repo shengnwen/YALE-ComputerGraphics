@@ -1,60 +1,111 @@
+function checkFilter(e) {
+    if (e.value == "") {
+        document.getElementById("info").innerHTML = "Filter size cannot be void!";
+        e.value = 1;
+        return;
+    }
+    var n = parseInt(e.value);
+    if (n < 0) {
+        document.getElementById("info").innerHTML = "Filter size should bigger than 0!";
+        e.value = 1;
+        return;
+    }
+    e.value = n;
+}
 
-  // adapted from http://stackoverflow.com/questions/3914203/javascript-filter-image-color
-  function createCanvas(image){
+function checkIntensity(e) {
+    if (e.value == "") {
+        document.getElementById("info").innerHTML = "Filter intensity cannot be void!";
+        e.value = 0;
+        return;
+    }
+    var n = parseInt(e.value);
+    if (n < 0) {
+        e.value = 0;
+        document.getElementById("info").innerHTML = "Filter size should in [0, 255]!";
+        return;
+    } else if (n > 255) {
+        document.getElementById("info").innerHTML = "Filter size should in [0, 255]!";
+        e.value = 255;
+        return;
+    }
+    e.value = n;
+}
 
-    // create a new canvas element
-    var myCanvas = document.createElement("canvas");
+function createCanvas(image) {
+    var myCanvas = document.getElementById("canvas");
     var myCanvasContext = myCanvas.getContext("2d");
+    var imgWidth = image.width;
+    var imgHeight = image.height;
 
-
-    var imgWidth=image.width;
-    var imgHeight=image.height;
-
-    // set the width and height to show two copies of the image
-    myCanvas.width= 2*imgWidth+ 10;
+    //myCanvas.width = 2 * imgWidth + 10;
+    myCanvas.width = 3 * imgWidth + 10 * 2;
     myCanvas.height = imgHeight;
 
-    // draw the image
-    myCanvasContext.drawImage(image,0,0);
+    myCanvasContext.drawImage(image, 0, 0);
+    var imageData = myCanvasContext.getImageData(0,0,imgWidth,imgHeight)
+    var imoutData = myCanvasContext.getImageData(0,0,imgWidth,imgHeight)
+    var diffData = myCanvasContext.getImageData(0,0,imgWidth,imgHeight)
+    var intensityMap = [];
+    var calIntensity = function(x,y) {
+        var index = x * imgWidth * 4 + (y * 4);
+        return imageData.data[index] * 0.3 + imageData.data[index + 1] * 0.5 + imageData.data[index + 2] * 0.2;
+    };
 
-    // get all the input and output image data into arrays 
-    var imageData = myCanvasContext.getImageData(0,0, imgWidth, imgHeight);
-	 var imoutData = myCanvasContext.getImageData(0,0, imgWidth, imgHeight);
-
-
-    // go through it all...
-    for (j=0; j<imageData.width; j++)
-    {
-      for (i=0; i<imageData.height; i++)
-      {
-         // index: red, green, blue, alpha, red, green, blue, alpha..etc.
-         var index=(i*4)*imageData.width+(j*4);
-         var red=imageData.data[index];
-		 var green=imageData.data[index+1];
-		 var blue=imageData.data[index+2];
-         var alpha=imageData.data[index+3];
-
-         // set the red to the same
-         imoutData.data[index]=red;
-
-         // set the rest to black
-         imoutData.data[index+1]=green*1.2;
-         imoutData.data[index+2]=blue*.8;
-         imoutData.data[index+3]=alpha;
-       }
-     }
-
-     // put the image data back into the canvas
-     myCanvasContext.putImageData(imoutData,imageData.width+10,0,0,0, imageData.width,   imageData.height);
-
-    // append it to the body
-  document.body.appendChild(myCanvas);
-  }
-  function loadImage(){
-    var img = new Image();
-    img.onload = function (){
-      createCanvas(img);
+    for (x = 0; x < imgHeight; x++) {
+        for (y = 0; y < imgWidth; y++) {
+            intensityMap.push(calIntensity(x, y));
+        }
     }
-    img.src = document.getElementById("imagefilename").value;
-  }
-  
+
+    // filter
+    var n = Number(document.getElementById("filterSize").value);
+    var m = Number(document.getElementById("filterIntensity").value);
+
+    //scan surrounding pixels
+    for (x = 0; x < imgHeight; x++) {
+        for (y = 0; y < imgWidth; y++) {
+            var index = x * imgWidth + y;
+            var xMin = Math.max(0, x - n);
+            var xMax = Math.min(imgHeight - 1, x + n);
+            var yMin = Math.max(0, y - n);
+            var yMax = Math.min(imgWidth - 1, y + n);
+            pxCount = 0;
+            sumR = 0, sumG = 0, sumB = 0;
+            for (ajX = xMin; ajX <= xMax; ajX ++) {
+                for (ajY = yMin; ajY <= yMax; ajY ++) {
+                    var ajIndex = ajX * imgWidth + ajY;
+                    if (Math.abs(intensityMap[index] - intensityMap[ajIndex]) <= m + 0.01) {
+                        sumR += imageData.data[4 * ajIndex];
+                        sumG += imageData.data[4 * ajIndex + 1];
+                        sumB += imageData.data[4 * ajIndex + 2];
+                        pxCount ++;
+                    }
+                }
+            }
+            imoutData.data[4 * index] = sumR / pxCount;
+            imoutData.data[4 * index + 1] = sumG / pxCount;
+            imoutData.data[4 * index + 2] = sumB / pxCount;
+            imoutData.data[4 * index + 3] = imageData.data[4 * index + 3];
+            diffData.data[4 * index] = Math.abs(imoutData.data[4 * index] - imageData.data[4 * index]) * 20 % 255;
+            diffData.data[4 * index + 1] = Math.abs(imoutData.data[4 * index + 1] - imageData.data[4 * index + 1]) * 20 % 255;
+            diffData.data[4 * index + 2] = Math.abs(imoutData.data[4 * index + 2] - imageData.data[4 * index + 2]) * 20 % 255;
+            diffData.data[4 * index + 3] = imageData.data[4 * index + 3];
+            //diffData.data[4 * index + 3] = 0;
+        }
+    }
+    //myCanvasContext.putImageData(imoutData, imgWidth + 10, 0, 0, 0, imgWidth, imgHeight);
+    myCanvasContext.putImageData(diffData, imgWidth + 10, 0, 0, 0, imgWidth, imgHeight);
+    //myCanvasContext.putImageData(diffData, 2 * imgWidth + 10 * 2, 0, 0, 0, imgWidth, imgHeight);
+
+    document.body.appendChild(myCanvas);
+}
+
+
+function loadImage() {
+    var img = new Image();
+    img.onload = function() {
+        createCanvas(img);
+    }
+    img.src = "./" + document.getElementById("imagefilename").value.replace(/^.*(\\|\/|\:)/, '');
+}
