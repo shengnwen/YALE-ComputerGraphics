@@ -108,7 +108,7 @@ function drawThePrimitive(gl, primitive) {
     gl.viewport(0, 0, width, height);
 
     // Clear the canvas
-    gl.clearColor(0.309, 0.505, 0.74, 1.0);
+    gl.clearColor(1.0, 1.0, 0.8, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     // Setup projection matrix
@@ -160,13 +160,13 @@ function drawThePrimitive(gl, primitive) {
 
     gl.polygonOffset(1.0, 1.0);
 
-    gl.uniform3f(uColorLocation, 0.82, 0.82, 0.82);
+    gl.uniform3f(uColorLocation, 0.8, 0.6, 1.0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBufferTriangles);
     gl.drawElements(gl.TRIANGLES, primitive.triangleIndices.length, gl.UNSIGNED_SHORT, 0);
 
     gl.disable(gl.POLYGON_OFFSET_FILL);
 
-    gl.uniform3f(uColorLocation, 0.0, 0.0, 0.0);
+    gl.uniform3f(uColorLocation, 1.0, 1.0, 1.0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBufferEdges);
     gl.drawElements(gl.LINES, primitive.numTriangles * 3 * 2, gl.UNSIGNED_SHORT, 0);
 
