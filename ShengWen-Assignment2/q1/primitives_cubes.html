@@ -1,31 +1,49 @@
 <html>
 <head>
-    <meta http-equiv="CONTENT-TYPE" content="text/html"; charset="utf-8" />
-    <title>Cube/Cone/Cylinder</title>
-    <script type="text/javascript" src="js/cube-cone-cylinder.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Primitives - Cube Example</title>
+
+    <script type="text/javascript" src="js/lib/spidergl.js"></script>
+    <script type="text/javascript" src="js/lib/spidergl-config.js"></script>
+    <script type="text/javascript" src="js/primitives.js"></script>
+    <script type="text/javascript" src="js/rendering_primitives.js"></script>
+
+    <script type="text/javascript">
+
+        // OpenGL rendering context
+        var gl = null;
+
+        // primitive to render
+        var primitive = new Cone(30);
+
+        function draw() {
+            drawThePrimitive(gl, primitive);
+        }
+
+        function start() {
+
+            var canvas = document.getElementById("my_canvas");
+
+            // Initialize the OpenGL rendering context
+            gl = canvas.getContext("experimental-webgl");
+
+            // Only continue if WebGL is available and working
+            if (gl)  {
+                initialize(gl, primitive);
+                setInterval(draw, 20);
+            }
+            else {
+                alert("WebGL initialization failed! Your browser does not support WebGL or it is not properly configured.");
+            }
+        }
+    </script>
+
 </head>
 <body onload="start()">
-    <canvas id="my_canvas" width = "600" height="600" style="border: blue solid 1px">
+<center>
+    <canvas id="my_canvas" width="600" height="400">
         If you are seeing this message your web browser does not support the HTML5 &lt;canvas>&gt; element.
     </canvas>
+</center>
 </body>
-<script type="text/javascript">
-    var gl = null;
-    var primitive = new Cube();
-
-    function draw() {
-        alert("start draw!")
-    }
-
-    function start() {
-        //alert("start primitives!")
-        var canvas = document.getElementById("my_canvas");
-        gl = canvas.getContext("experimental-webgl");
-        if (gl) {
-            draw();
-        } else {
-            alert("Don\'t support webgl!");
-        }
-    }
-</script>
 </html>
