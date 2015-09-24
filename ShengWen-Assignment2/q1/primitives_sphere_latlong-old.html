@@ -14,14 +14,13 @@
         var gl = null;
 
         // primitive to render
-        var primitive;
-
+        var primitive = null;
         function draw() {
             drawThePrimitive(gl, primitive);
         }
 
         function start() {
-            alert('start to draw!');
+//            alert('start to draw!');
             var canvas = document.getElementById("my_canvas");
 
             // Initialize the OpenGL rendering context
@@ -29,8 +28,12 @@
 
             // Only continue if WebGL is available and working
             if (gl)  {
-                var n = parseInt(document.getElementById("resolutionNum").value);
-                primitive = Sphere_Latlong(n);
+                var azi = parseInt(document.getElementById("aziNum").value);
+                var ele = parseInt(document.getElementById("eleNum").value);
+//                alert("azi:" + azi + ", ele:"+ ele);
+                this.primitive = new Sphere_Latlong(azi, ele);
+//                primitive = Cube(azi);
+//                var primitive = Cube(20);
                 initialize(gl, primitive);
                 setInterval(draw, 20);
             }
@@ -41,10 +44,16 @@
     </script>
 
 </head>
-<body>
-    <h1>Q1 478/578 <b>Tetrahedron</b>, ws362</h1>
-    <p>Number of Divisions: <input id="resolutionNum" type="number" value="20" onchange="checkNumber(this)"/>
-    <input type="button" value="draw!" onclick="start()" style="color: blue"/></p>
+<body >
+    <h1>Q1 478/578 <b>Sphere Latlong</b>, ws362</h1>
+    <p> Number of Divisions For Azimuth:
+        <input id="aziNum" type="number" value="20" onchange="checkNumber(this)"/>
+    </p>
+    <p>
+        Number of Divisions For Elevation:
+        <input id="eleNum" type="number" value="20" onchange="checkNumber(this)"/>
+        <input type="button" value="draw!" onclick="start()" style="color: blue"/>
+    </p>
     <p id="info" style="color:red"></p>
     <canvas id="my_canvas" width="600" height="600" style="border: black solid 1px">
         If you are seeing this message your web browser does not support the HTML5 &lt;canvas>&gt; element.
