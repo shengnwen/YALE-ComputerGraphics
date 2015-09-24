@@ -122,7 +122,7 @@ function drawThePrimitive(gl, primitive) {
         viewMat = SglMat4.lookAt([0, 2, 6], [0, 0, 0], [0, 1, 0]);
     }
     else if (primitive.name == "cone") {
-        viewMat = SglMat4.lookAt([0, -1, 4], [0, 1, 0], [0, 1, 1]);
+        viewMat = SglMat4.lookAt([0, -1, 4], [0, 1, 0], [0, 5, 5]);
     }
     else if (primitive.name == "cylinder") {
         viewMat = SglMat4.lookAt([0, -1, 4], [0, 1, 0], [0, 1, 1]);

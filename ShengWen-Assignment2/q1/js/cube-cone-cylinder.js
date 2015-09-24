@@ -1,5 +1,7 @@
 /**
  * Created by shengwen on 9/23/15.
+ *
+ *
  */
 function Cube() {
     this.name = "cube";
