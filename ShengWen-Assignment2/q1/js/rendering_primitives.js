@@ -133,7 +133,7 @@ function drawThePrimitive(gl, primitive) {
     } else if (primitive.name == 'tetrahedron') {
         viewMat = SglMat4.lookAt([5, 0.5, 3], [0, 0.5, 0], [0, 1, 0]);
     } else if (primitive.name == 'sphere_latlong') {
-        viewMat = SglMat4.lookAt([5, 0.5, 3], [0, 0.5, 0], [0, 1, 0]);
+        viewMat = SglMat4.lookAt([0, -1, 4], [0, 0, 0], [0, 1, 0]);
     } else if (primitive.name == 'sphere_subd') {
         viewMat = SglMat4.lookAt([5, 0.5, 3], [0, 0.5, 0], [0, 1, 0]);
     } else if (primitive.name == 'torus') {

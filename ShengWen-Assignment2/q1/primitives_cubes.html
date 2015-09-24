@@ -14,7 +14,7 @@
         var gl = null;
 
         // primitive to render
-        var primitive = new Cone(30);
+        var primitive = new Cylinder(30);
 
         function draw() {
             drawThePrimitive(gl, primitive);
@@ -30,7 +30,7 @@
             // Only continue if WebGL is available and working
             if (gl)  {
                 initialize(gl, primitive);
-                setInterval(draw, 20);
+                setInterval(draw, 10);
             }
             else {
                 alert("WebGL initialization failed! Your browser does not support WebGL or it is not properly configured.");
