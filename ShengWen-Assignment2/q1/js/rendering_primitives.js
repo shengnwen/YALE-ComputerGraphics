@@ -135,7 +135,7 @@ function drawThePrimitive(gl, primitive) {
     } else if (primitive.name == 'sphere_latlong') {
         viewMat = SglMat4.lookAt([0, -1, 4], [0, 0, 0], [0, 1, 0]);
     } else if (primitive.name == 'sphere_subd') {
-        viewMat = SglMat4.lookAt([5, 0.5, 3], [0, 0.5, 0], [0, 1, 0]);
+        viewMat = SglMat4.lookAt([0, -0.5, 4], [0, 0, 0], [0, 1, 0]);
     } else if (primitive.name == 'torus') {
     viewMat = SglMat4.lookAt([5, 0.5, 3], [0, 0.5, 0], [0, 1, 0]);
 }
@@ -161,6 +161,7 @@ function drawThePrimitive(gl, primitive) {
     gl.polygonOffset(1.0, 1.0);
 
     gl.uniform3f(uColorLocation, 0.8, 0.6, 1.0);
+    //gl.uniform3f(uColorLocation, 0.1, 0.1, 0.1);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBufferTriangles);
     gl.drawElements(gl.TRIANGLES, primitive.triangleIndices.length, gl.UNSIGNED_SHORT, 0);
 
