@@ -52,18 +52,6 @@ function Torus(aziNum, eleNum) {
             triangleOffset += 6;
         }
     }
-    //for (var lat = 0; lat <= eleNum; lat++) {
-    //    for (var lon = 0; lon <= aziNum; lon++) {
-    //        this.triangleIndices[triangleOffset] = this.calculateVerticeIndex(lat % eleNum, lon% aziNum);
-    //        this.triangleIndices[triangleOffset + 1] = this.calculateVerticeIndex((lat + 1)% eleNum, lon % aziNum);
-    //        this.triangleIndices[triangleOffset + 2] = this.calculateVerticeIndex(lat% eleNum, (lon + 1) % aziNum);
-    //        this.triangleIndices[triangleOffset + 3] = this.calculateVerticeIndex(lat% eleNum, (lon + 1) % aziNum);
-    //        this.triangleIndices[triangleOffset + 4] = this.calculateVerticeIndex((lat + 1)% eleNum, lon% aziNum);
-    //        this.triangleIndices[triangleOffset + 5] = this.calculateVerticeIndex((lat + 1)% eleNum, (lon + 1) % aziNum);
-    //        //}
-    //        triangleOffset += 6;
-    //    }
-    //}
     this.numVertices = this.vertices.length / 3;
     this.numTriangles = this.triangleIndices.length / 3;
 }
