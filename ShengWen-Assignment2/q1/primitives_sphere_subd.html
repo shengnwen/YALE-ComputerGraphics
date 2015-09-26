@@ -8,12 +8,11 @@
     <script type="text/javascript" src="js/primitives.js"></script>
     <script type="text/javascript" src="js/rendering_primitives.js"></script>
 
-
 </head>
 <body>
 <h1>Q1 478/578 <b>Sphere SUBD</b>, ws362</h1>
 <p> Number of Divisions:
-    <input id="divNum" type="number" value="0" onchange="checkNumber(this)"/>
+    <input id="divNum" type="number" value="0" onchange="checkDiv(this)"/>
     <input type="button" value="draw!" onclick="start()" style="color: blue"/>
 </p>
 
@@ -58,6 +57,28 @@
         else {
             alert("WebGL initialization failed! Your browser does not support WebGL or it is not properly configured.");
         }
+    }
+
+    function checkDiv(e) {
+        if (e.value == "") {
+            document.getElementById("info").innerHTML = "You must enter a valid integer!";
+            e.value = 0;
+            return;
+        }
+
+        var n = parseInt(e.value);
+        if (n < 0) {
+            document.getElementById("info").innerHTML = "You must enter a positive integer( > 1)!";
+            e.value = 1;
+            return;
+        }
+        //else if (n > 5) {
+        //    document.getElementById("info").innerHTML = "The work load may break down the browser, bettern under 5!";
+        //    e.value = 5;
+        //    return;
+        //}
+        e.value = n;
+        document.getElementById("info").innerHTML = "";
     }
 </script>
 </html>
