@@ -14,7 +14,7 @@ function Sphere_Helper(vertex, triangles) {
         for (var i = 0; i < 3; i++) {
             p.push((v1[i] + v2[i])/2);
         }
-        var r = Math.sqrt(Math.pow(p[0], 2) + Math.pow(p[1], 2) + Math.pow(p[2], 2));
+        var r = Math.sqrt(p[1] * p[1] + p[2] * p[2] + p[0]*p[0]);
         for (var i = 0; i < 3; i++) {
             p[i] /= r;
         }
@@ -32,11 +32,11 @@ function Sphere_Helper(vertex, triangles) {
         var newVerValue = [];
         var splitVerValues = [];
         var offset = 0;
+        var triOffset = 0;
         for (var triIndex = 0; triIndex < this.triangles.length / 3; triIndex++) {
-            var triPoints = this.triangles.slice(triIndex * 3, triIndex * 3 + 3);//[0, 1, 2]
-
+            var triPoints = this.triangles.slice(triOffset, triOffset + 3);//[0, 1, 2]
+            triOffset+= 3;
             for(var i = 0; i < 3; i++) {
-                // vertex index in this.verValue
                 var pIndex = triPoints[i];
                 var pValue = this.verValue.slice(pIndex * 3, pIndex * 3 + 3);
                 splitVerValues.push(pValue); //[[p0],[p1],[p2]]
@@ -44,16 +44,13 @@ function Sphere_Helper(vertex, triangles) {
             var mid1 = this.getMid(splitVerValues[offset + 0], splitVerValues[offset + 1]);
             var mid2 = this.getMid(splitVerValues[offset + 2], splitVerValues[offset + 1]);
             var mid3 = this.getMid(splitVerValues[offset + 0], splitVerValues[offset + 2]);
-            splitVerValues.push(mid1);
-            splitVerValues.push(mid2);
-            splitVerValues.push(mid3);
-            if (splitVerValues.length != 6 * (triIndex + 1)) {
-                alert("split vertex wrong here!");
-            }
+            splitVerValues.push(mid1, mid2, mid3);
             offset += 6;
         }
+
         for(var i = 0; i < splitVerValues.length; i++) {
-            newVerValue = newVerValue.concat(splitVerValues[i]);
+            //newVerValue = newVerValue.concat(splitVerValues[i]);
+            newVerValue.push.apply(newVerValue, splitVerValues[i]);
         }
         var oldTriNum = this.triangles.length / 3;
         offset = 0;
@@ -120,4 +117,3 @@ function Sphere_Subd(divNum) {
     this.numTriangles = this.triangleIndices.length / 3;
 
 }
-

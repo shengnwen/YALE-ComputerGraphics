@@ -16,14 +16,6 @@
     <input type="button" value="draw!" onclick="start()" style="color: blue"/>
 </p>
 
-<!--<p>-->
-    <!--Choose Normal/Crystal Effect:-->
-    <!--<select id="demoEffect">-->
-        <!--<option selected>Normal</option>-->
-        <!--<option>Crystal</option>-->
-    <!--</select>-->
-    <!--<input type="button" value="draw!" onclick="start()" style="color: blue"/>-->
-<!--</p>-->
 <p id="info" style="color:red"></p>
 <canvas id="my_canvas" width="600" height="600" style="border: black solid 1px">
     If you are seeing this message your web browser does not support the HTML5 &lt;canvas>&gt; element.
@@ -72,11 +64,11 @@
             e.value = 1;
             return;
         }
-        //else if (n > 5) {
-        //    document.getElementById("info").innerHTML = "The work load may break down the browser, bettern under 5!";
-        //    e.value = 5;
-        //    return;
-        //}
+        else if (n >= 7) {
+            document.getElementById("info").innerHTML = "The work load may break down the browser, bettern under 6!";
+            e.value = 6;
+            return;
+        }
         e.value = n;
         document.getElementById("info").innerHTML = "";
     }
