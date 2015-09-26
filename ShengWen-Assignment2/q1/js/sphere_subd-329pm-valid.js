@@ -30,52 +30,32 @@ function Sphere_Helper(vertex, triangles) {
         // find each triangle
         var newTriangles = [];
         var newVerValue = [];
-        var splitVerValues = [];
-        var offset = 0;
         for (var triIndex = 0; triIndex < this.triangles.length / 3; triIndex++) {
             var triPoints = this.triangles.slice(triIndex * 3, triIndex * 3 + 3);//[0, 1, 2]
-
+            var splitVerValues = [];
             for(var i = 0; i < 3; i++) {
                 // vertex index in this.verValue
                 var pIndex = triPoints[i];
                 var pValue = this.verValue.slice(pIndex * 3, pIndex * 3 + 3);
                 splitVerValues.push(pValue); //[[p0],[p1],[p2]]
             }
-            var mid1 = this.getMid(splitVerValues[offset + 0], splitVerValues[offset + 1]);
-            var mid2 = this.getMid(splitVerValues[offset + 2], splitVerValues[offset + 1]);
-            var mid3 = this.getMid(splitVerValues[offset + 0], splitVerValues[offset + 2]);
+            var mid1 = this.getMid(splitVerValues[0], splitVerValues[1]);
+            var mid2 = this.getMid(splitVerValues[2], splitVerValues[1]);
+            var mid3 = this.getMid(splitVerValues[0], splitVerValues[2]);
             splitVerValues.push(mid1);
             splitVerValues.push(mid2);
             splitVerValues.push(mid3);
-            if (splitVerValues.length != 6 * (triIndex + 1)) {
+            if (splitVerValues.length != 6) {
                 alert("split vertex wrong here!");
             }
-            offset += 6;
+            for(var i = 0; i < 6; i++) {
+                newVerValue = newVerValue.concat(splitVerValues[i]);
+            }
+            newTriangles = newTriangles.concat(this.calPoints(6 * triIndex,[0,3,5]));
+            newTriangles = newTriangles.concat(this.calPoints(6 * triIndex,[1,3,4]));
+            newTriangles = newTriangles.concat(this.calPoints(6 * triIndex,[2,4,5]));
+            newTriangles = newTriangles.concat(this.calPoints(6 * triIndex,[4,3,5]));
         }
-        for(var i = 0; i < splitVerValues.length; i++) {
-            newVerValue = newVerValue.concat(splitVerValues[i]);
-        }
-        var oldTriNum = this.triangles.length / 3;
-        offset = 0;
-        for (var i = 0; i < oldTriNum; i++) {
-            newTriangles.push(offset + 0);
-            newTriangles.push(offset + 3);
-            newTriangles.push(offset+ 5);
-
-            newTriangles.push(offset + 1);
-            newTriangles.push(offset + 3);
-            newTriangles.push(offset + 4);
-
-            newTriangles.push(offset + 2);
-            newTriangles.push(offset + 4);
-            newTriangles.push(offset + 5);
-
-            newTriangles.push(offset + 4);
-            newTriangles.push(offset + 3);
-            newTriangles.push(offset + 5);
-            offset += 6;
-        }
-
         this.verValue = newVerValue;
         this.triangles = newTriangles;
     }
