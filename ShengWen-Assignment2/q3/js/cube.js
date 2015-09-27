@@ -22,7 +22,7 @@ function Cube () {
 
 	// triangles definition
 	////////////////////////////////////////////////////////////
-	
+
 	this.triangleIndices = new Uint16Array([
 		0, 1, 2,  2, 1, 3,  // front
 		5, 4, 7,  7, 4, 6,  // back

@@ -238,29 +238,30 @@ NVMCClient.drawScene = function (gl) {
 	stack.loadIdentity(); //line 238}
 	// create the inverse of V //line 239, Listing 4.2{
 	var invV = SglMat4.lookAt([0, 20, 0], [0, 0, 0], [1, 0, 0]);
+	//var invV = SglMat4.lookAt([0, 1, 0], [0, 0, 0], [1, 0, 0]);
 	stack.multiply(invV);
-	stack.push();//line 242
-	var M_9 = this.myFrame();
-	stack.multiply(M_9);
-	this.drawCar(gl);
-	stack.pop();
+	//stack.push();//line 242
+	//var M_9 = this.myFrame();
+	//stack.multiply(M_9);
+	//this.drawCar(gl);
+	//stack.pop();
 
-	var trees = this.game.race.trees;
-	for (var t in trees) {
-		stack.push();
-		var M_8 = SglMat4.translation(trees[t].position);
-		stack.multiply(M_8);
-		this.drawTree(gl);
-		stack.pop();
-	}
+	//var trees = this.game.race.trees;
+	//for (var t in trees) {
+	//	stack.push();
+	//	var M_8 = SglMat4.translation(trees[t].position);
+	//	stack.multiply(M_8);
+	//	this.drawTree(gl);
+	//	stack.pop();
+	//}
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
-	this.drawObject(gl, this.track, [0.9, 0.8, 0.7, 1.0], [0, 0, 0, 1.0]);
-	this.drawObject(gl, this.ground, [0.3, 0.7, 0.2, 1.0], [0, 0, 0, 1.0]);
+	this.drawObject(gl, this.cone, [0.9, 0.8, 0.7, 1.0], [0, 0, 0, 1.0]);
+	//this.drawObject(gl, this.ground, [0.3, 0.7, 0.2, 1.0], [0, 0, 0, 1.0]);
 
-	for (var i in this.buildings) {
-		this.drawObject(gl, this.buildings[i], [0.8, 0.8, 0.8, 1.0], [0.2, 0.2, 0.2, 1.0]);
-	}
+	//for (var i in this.buildings) {
+	//	this.drawObject(gl, this.buildings[i], [0.8, 0.8, 0.8, 1.0], [0.2, 0.2, 0.2, 1.0]);
+	//}
 	gl.useProgram(null);
 	gl.disable(gl.DEPTH_TEST);
 };
