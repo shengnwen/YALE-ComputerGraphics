@@ -96,6 +96,13 @@ function initialize(gl, primitive) {
     initShaders(gl);
 }
 
+function initializeAll(gl, primitives) {
+    for (var i = 0; i < primitives.length; i++) {
+        createObjectBuffers(gl, primitives[i]);
+    }
+    initShaders(gl);
+}
+
 ///// Draw the given primitives with solid wireframe
 /////
 function drawThePrimitive(gl, primitive) {

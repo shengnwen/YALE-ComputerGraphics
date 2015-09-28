@@ -59,9 +59,33 @@ function Character() {
         stack.multiply(M_1_sca);
 
         gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
-        this.drawObject(gl, this.cylinder, [0.70, 0.56, 0.35, 1.0], [0, 0, 0, 1.0]);
+        this.drawObject(gl, this.cylinder, [0.70, 0.56, 0.35, 1.0], [1, 1, 1, 1.0]);
         stack.pop();
     };
+
+    this.draw2Cube = function (gl) {
+        var stack = this.stack;
+
+        stack.push();
+        var M_0_tra1 = SglMat4.translation([0, -0.8, 0]);
+        stack.multiply(M_0_tra1);
+
+        var M_0_sca = SglMat4.scaling([0.2, 1.65, 0.6]);
+        stack.multiply(M_0_sca);
+
+        gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+        this.drawObject(gl, this.cone, [0.13, 0.62, 0.39, 1.0], [0, 0, 0, 0.0]);
+        stack.pop();
+
+        stack.push();
+        var M_1_sca = SglMat4.scaling([0.25, 0.4, 0.25]);
+        stack.multiply(M_1_sca);
+
+        gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+        this.drawObject(gl, this.cone, [0.70, 0.56, 0.35, 1.0], [0, 0, 0, 1.0]);
+        stack.pop();
+    }
+
     this.drawObject = function (gl, obj, fillColor, lineColor) {
         gl.bindBuffer(gl.ARRAY_BUFFER, obj.vertexBuffer);
         gl.enableVertexAttribArray(this.uniformShader.aPositionIndex);
@@ -137,23 +161,10 @@ function Character() {
         // create the inverse of V //line 239, Listing 4.2{
         //var invV = SglMat4.lookAt([0, 20, 0], [0, 0, 0], [1, 0, 0]);
         var invV = SglMat4.lookAt([0, 12, 0], [12, 0, 0], [1, 0, 0]);
-        //stack.multiply(invV);
-        //stack.push();//line 242
-        //var M_9 = this.myFrame();
-        //stack.multiply(M_9);
-        //this.drawCar(gl);
-        //stack.pop();
-
-        //var trees = this.game.race.trees;
-        //for (var t in trees) {
-        //    stack.push();
-        //    var M_8 = SglMat4.translation(trees[t].position);
-        //    stack.multiply(M_8);
-        //    this.drawTree(gl);
-        //    stack.pop();
-        //}
 
         this.drawTree(gl);
+
+        this.draw2Cube(gl);
 
 
         gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
