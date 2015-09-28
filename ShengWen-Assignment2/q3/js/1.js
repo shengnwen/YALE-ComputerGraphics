@@ -116,7 +116,14 @@ NVMCClient.drawLda = function(gl) {
 	stack.pop();
 
 	// 16 + 13.6 + 4
+	// draw head(head(outer face and eye) + mouth)
+	stack.push();
+	stack.multiply(SglMat4.translation([2, 42, 0]));
 	this.drawLdaHead(gl);
+	stack.pop();
+
+	// draw legs
+	
 
 }
 
@@ -154,19 +161,44 @@ NVMCClient.drawLdaBody = function(gl) {
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.LdaNeck, [0.0, 0.0, 0.0, 1.0], [0, 0, 0, 1.0]);
 	stack.pop();
+
+
+
 };
+
+
 
 NVMCClient.drawLdaHead = function(gl) {
 	var stack = this.stack;
 
 	// outer head
 	stack.push();
-	var M_0_sca = SglMat4.scaling([4, 4, 4]);
+	var M_0_sca = SglMat4.scaling([1.5, 1.5, 4]);
 	stack.multiply(M_0_sca);
+	var M_0_rot = SglMat4.rotationAngleAxis(sglDegToRad(-90), [1, 0, 0]);
+	stack.multiply(M_0_rot);
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
-	this.drawObject(gl, this.LdaNeck, [1.0, 1.0, 1.0, 1.0], [0, 0, 0, 1.0]);
+	this.drawObject(gl, this.LdaHead, [1.0, 1.0, 1.0, 0.1], [0, 0, 0, 0.05]);
 	stack.pop();
 
+	stack.push();
+	var M_1_sca = SglMat4.scaling([5.5, 6, 4]);
+	stack.multiply(M_1_sca);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaEye, [0.0, 0.0, 0.0, 1.0], [0, 0,0.0 , 1.0]);
+	stack.pop();
+
+	// draw mouth
+	stack.push();
+	var M_2_tra = SglMat4.translation([5.2, 0.2, 0]);
+	stack.multiply(M_2_tra);
+	var M_2_sca = SglMat4.scaling([7, 4, 4]);
+	stack.multiply(M_2_sca);
+	var M_2_rot = SglMat4.rotationAngleAxis(sglDegToRad(-92), [0, 0, 1]);
+	stack.multiply(M_2_rot);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaMouth, [0.0, 0.0, 0.0, 1.0], [0, 0, 0, 1.0]);
+	stack.pop();
 }
 
 NVMCClient.drawLdaLeg = function(gl) {
@@ -226,7 +258,7 @@ NVMCClient.drawScene = function (gl) {
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.track, [0.9, 0.8, 0.7, 1.0], [0, 0, 0, 1.0]);
-	this.drawObject(gl, this.ground, [0.3, 0.7, 0.2, 1.0], [0, 0, 0, 1.0]);
+	//this.drawObject(gl, this.ground, [0.3, 0.7, 0.2, 1.0], [0, 0, 0, 1.0]);
 
 
 	for (var i in this.buildings) {

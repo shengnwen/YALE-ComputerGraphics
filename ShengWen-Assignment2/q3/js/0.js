@@ -98,8 +98,9 @@ NVMCClient.createObjects = function () {
 	this.LdaSeat = new Cube();
 	this.LdaStomache = new Cone(40);
 	this.LdaNeck = new Cylinder(10);
+	this.LdaHead = new Torus(40, 40);//(20, 20, false);
 	this.LdaEye = new Sphere_Latlong(20, 20, false);
-	this.LdaHead = new Sphere_Latlong(20, 20, true);
+	this.LdaMouth = new Cone(40);
 };
 
 NVMCClient.createBuffers = function (gl) {
@@ -119,6 +120,7 @@ NVMCClient.createBuffers = function (gl) {
 	this.createObjectBuffers(gl, this.LdaNeck);
 	this.createObjectBuffers(gl, this.LdaEye);
 	this.createObjectBuffers(gl, this.LdaHead);
+	this.createObjectBuffers(gl, this.LdaMouth);
 };
 
 NVMCClient.initializeObjects = function (gl) {

@@ -2,27 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b128110-4c08-43c5-920a-6f169eff9631" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/building.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/lda.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q1/primitives_test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/q3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/q3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/4primitives/quadrilateral.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/race.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/track.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/q3/js/rendering_primitives.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/q3/js/cone.js" afterPath="$PROJECT_DIR$/q3/js/4primitives/cone.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/q3/js/cube.js" afterPath="$PROJECT_DIR$/q3/js/4primitives/cube.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/q3/js/cylinder.js" afterPath="$PROJECT_DIR$/q3/js/4primitives/cylinder.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/q3/js/sphere_latlong.js" afterPath="$PROJECT_DIR$/q3/js/4primitives/sphere_latlong.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/0/0.html" afterPath="$PROJECT_DIR$/q3/0/0.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/character.html" afterPath="$PROJECT_DIR$/q3/character.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/js/character.js" afterPath="$PROJECT_DIR$/q3/js/character.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/js/rendering_primitives.js" afterPath="$PROJECT_DIR$/q1/js/rendering_primitives.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q3/js/4primitives/torus.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/js/0.js" afterPath="$PROJECT_DIR$/q3/js/0.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/js/1.js" afterPath="$PROJECT_DIR$/q3/js/1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/q3.html" afterPath="$PROJECT_DIR$/q3/q3.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShengWen-Assignment2.iws" />
@@ -43,14 +26,14 @@
     <favorites_list name="ShengWen-Assignment2" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.72644377">
+    <splitter split-orientation="horizontal" split-proportion="0.65349543">
       <split-first>
         <leaf>
           <file leaf-file-name="1.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/q3/js/1.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.9378882">
-                  <caret line="166" column="50" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
+                <state vertical-scroll-proportion="0.4099379">
+                  <caret line="125" column="4" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                     <element signature="n#!!block;n#PhotographerCamera#0" expanded="false" />
@@ -63,8 +46,8 @@
           <file leaf-file-name="q3.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/q3/q3.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="16.75">
-                  <caret line="11" column="74" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
+                <state vertical-scroll-proportion="-12.5">
+                  <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
                   <folding />
                 </state>
               </provider>
@@ -77,8 +60,18 @@
           <file leaf-file-name="0.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/q3/js/0.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.4513458">
-                  <caret line="135" column="70" selection-start-line="135" selection-start-column="44" selection-end-line="135" selection-end-column="70" />
+                <state vertical-scroll-proportion="0.73706007">
+                  <caret line="122" column="46" selection-start-line="122" selection-start-column="46" selection-end-line="122" selection-end-column="46" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="torus.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/q3/js/4primitives/torus.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -356,8 +349,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/q3/js" />
       <recent name="$PROJECT_DIR$/q3/js/4primitives" />
+      <recent name="$PROJECT_DIR$/q3/js" />
       <recent name="$PROJECT_DIR$/q1/js/lib" />
       <recent name="$PROJECT_DIR$/q1" />
       <recent name="$PROJECT_DIR$/q1/js" />
@@ -499,16 +492,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/q1/js/tetrahedron.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Tetrahedron#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q1/js/sphere_subd.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -899,6 +882,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/q3/q3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5">
+          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q3/js/4primitives/torus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/q3/js/4primitives/cylinder.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -907,26 +906,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q3/q3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="16.75">
-          <caret line="11" column="74" selection-start-line="11" selection-start-column="74" selection-end-line="11" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q3/js/0.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4513458">
-          <caret line="135" column="70" selection-start-line="135" selection-start-column="44" selection-end-line="135" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.73706007">
+          <caret line="122" column="46" selection-start-line="122" selection-start-column="46" selection-end-line="122" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/q3/js/1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9378882">
-          <caret line="166" column="50" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.4099379">
+          <caret line="125" column="4" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#!!block;n#PhotographerCamera#0" expanded="false" />
