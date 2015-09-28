@@ -15,6 +15,7 @@ NVMCClient.myFrame = function () {
 	return this.game.state.players.me.dynamicState.frame;
 }
 
+
 // NVMC Client Internals
 /***********************************************************************/
 NVMCClient.createObjectBuffers = function (gl, obj) {
@@ -125,7 +126,10 @@ NVMCClient.drawWheel = function (gl) {
 	this.drawObject(gl, this.cylinder, [0.8, 0.2, 0.2, 1.0], [0, 0, 0, 1.0]);
 	stack.pop();
 };
-
+var steerAngle = 0;
+var steerTarget = 0;
+var steerLeft = false;
+var steerRight = false;
 NVMCClient.drawCar = function (gl) {
 	var stack = this.stack;
 
@@ -149,16 +153,24 @@ NVMCClient.drawCar = function (gl) {
 	stack.pop(); // CurrM = P*invV*M_9;  stack =  {   P*invV} 
 
 	stack.push(); // CurrM = P*invV*M_9;  stack =  { P*invV*M_9,P*invV} 
-	// M_5 translate the wheel to ita place on the car 
+	// M_5 translate the wheel to ita place on the car
+
+
 	var M_5 = SglMat4.translation([-1, 0.3, 1.4]);
 	stack.multiply(M_5);
 	this.drawWheel(gl);
 	stack.pop(); // matrix stack =  {   P*invV} 
 
 	stack.push(); // matrix stack =  { P*invV*M_9,P*invV} 
-	// M_4 translate the wheel to ita place on the car 
+	// M_4 translate the wheel to ita place on the car
+	//
+	//draw back wheel steer where
+
+
 	var M_4 = SglMat4.translation([-1, 0.3, -1.6]);
 	stack.multiply(M_4);
+	var M_Steer = SglMat4.rotationAngleAxis(sglDegToRad(steerAngle),[0, 1, 0]);
+	stack.multiply(M_Steer);
 	this.drawWheel(gl);
 	stack.pop(); // matrix stack =  {   P*invV} 
 
@@ -166,6 +178,7 @@ NVMCClient.drawCar = function (gl) {
 	// M_6 translate the wheel to ita place on the car 
 	var M_6 = SglMat4.translation([1, 0.3, -1.6]);
 	stack.multiply(M_6);
+	stack.multiply(M_Steer);
 	this.drawWheel(gl);
 	stack.pop(); // matrix stack =  {   P*invV} 
 
@@ -183,7 +196,30 @@ NVMCClient.drawCar = function (gl) {
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.cube, [0.8, 0.2, 0.2, 1.0], [0, 0, 0, 1.0]);
-	stack.pop(); // matrix stack =  {   P*invV} 
+	stack.pop(); // matrix stack =  {   P*invV}
+
+	//if (steerLeft == true) {
+	//	if (steerAngle <= 30) {
+	//		steerAngle += 5;
+	//	} else {
+	//		steerAngle -= 5;
+	//	}
+	//	if (steerAngle == 0) {
+	//		steerLeft = false;
+	//	}
+	//}
+
+	if (steerAngle != steerTarget) {
+		if (steerAngle < steerTarget) {
+			steerAngle += 3;
+		} else if (steerAngle > steerTarget){
+			steerAngle -= 3;
+		}
+		if (steerAngle == steerTarget) {
+			steerTarget = 0;
+		}
+	}
+
 };
 
 NVMCClient.drawTree = function (gl) {
@@ -271,16 +307,24 @@ NVMCClient.initMotionKeyHandlers = function () {
 
 	var carMotionKey = {};
 	carMotionKey["W"] = function (on) {
+		steerAngle = 0;
+		steerTarget = 0
 		game.playerAccelerate = on;
 	};
 	carMotionKey["S"] = function (on) {
+		steerAngle = 0;
+		steerTarget = 0
 		game.playerBrake = on;
 	};
 	carMotionKey["A"] = function (on) {
 		game.playerSteerLeft = on;
+		steerAngle = 0;
+		steerTarget = 30;
 	};
 	carMotionKey["D"] = function (on) {
 		game.playerSteerRight = on;
+		steerAngle = 0;
+		steerTarget = -30;
 	};
 	this.carMotionKey = carMotionKey;
 };

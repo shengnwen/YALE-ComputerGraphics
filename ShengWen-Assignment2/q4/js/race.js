@@ -1,6 +1,6 @@
 NVMC.DefaultRace = {
-    startPosition : [ 3.71,0,61.19 ],
-
+    //startPosition : [ 3.71,0,61.19 ],
+    startPosition:  [ -50,0,-76.19 ],
     photoPosition : [ -55, 0, -80 ],
 
     observerPosition : [ -9, 20, -79 ],
