@@ -81,6 +81,7 @@ function Sphere_Helper(vertex, triangles) {
 
 function Sphere_Subd(divNum) {
     this.name = "sphere_subd";
+    divNum --;
 
     var radius = 1.0;
     this.divNum = divNum;

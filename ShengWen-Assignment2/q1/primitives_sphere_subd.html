@@ -12,12 +12,12 @@
 <body>
 <h1>Q1 478/578 <b>Sphere SUBD</b>, ws362</h1>
 <p> Number of Divisions:
-    <input id="divNum" type="number" value="0" onchange="checkDiv(this)"/>
+    <input id="divNum" type="number" value="1" onchange="checkDiv(this)"/>
     <input type="button" value="draw!" onclick="start()" style="color: blue"/>
 </p>
 
 <p id="info" style="color:red"></p>
-<canvas id="my_canvas" width="600" height="600" style="border: black solid 1px">
+<canvas id="my_canvas" width="800" height="800" style="border: black solid 1px">
     If you are seeing this message your web browser does not support the HTML5 &lt;canvas>&gt; element.
 </canvas>
 </body>
@@ -54,7 +54,7 @@
     function checkDiv(e) {
         if (e.value == "") {
             document.getElementById("info").innerHTML = "You must enter a valid integer!";
-            e.value = 0;
+            e.value = 1;
             return;
         }
 
@@ -64,11 +64,11 @@
             e.value = 1;
             return;
         }
-        else if (n >= 7) {
-            document.getElementById("info").innerHTML = "The work load may break down the browser, bettern under 6!";
-            e.value = 6;
-            return;
-        }
+//        else if (n >= 8) {
+//            document.getElementById("info").innerHTML = "The work load may break down the browser, bettern under 7!";
+//            e.value = 7;
+//            return;
+//        }
         e.value = n;
         document.getElementById("info").innerHTML = "";
     }

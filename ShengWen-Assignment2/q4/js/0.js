@@ -165,7 +165,7 @@ NVMCClient.drawCar = function (gl) {
 	//draw back wheel steer where
 
 
-	var M_4 = SglMat4.translation([-1, 0.3, -1.6]);
+	var M_4 = SglMat4.translation([-0.6, 0.3, -1.6]);
 	stack.multiply(M_4);
 	var M_Steer = SglMat4.rotationAngleAxis(sglDegToRad(steerAngle),[0, 1, 0]);
 	stack.multiply(M_Steer);
@@ -174,7 +174,7 @@ NVMCClient.drawCar = function (gl) {
 
 	stack.push(); // matrix stack =  { P*invV*M_9,P*invV} 
 	// M_6 translate the wheel to ita place on the car 
-	var M_6 = SglMat4.translation([1, 0.3, -1.6]);
+	var M_6 = SglMat4.translation([0.6, 0.3, -1.6]);
 	stack.multiply(M_6);
 	stack.multiply(M_Steer);
 	this.drawWheel(gl);
@@ -184,15 +184,27 @@ NVMCClient.drawCar = function (gl) {
 
 	// transform car box projection here!!!!!!!!!!
 	// Compute and apply M_2
-	var M_2_tra_0 = SglMat4.translation([0, 0.3, 0]);
+
+	var M_2_tra_0 = SglMat4.translation([0, 0.3, 0.7]);
 	stack.multiply(M_2_tra_0);
 
 	var M_2_sca = SglMat4.scaling([1, 0.5, 2]);
 	stack.multiply(M_2_sca);
 
+	var M_per_rot = SglMat4.rotationAngleAxis(sglDegToRad(180),[0, 1, 0]);
+	stack.multiply(M_per_rot);
+
+	var M_per = [
+		2, 0, 0, 0,
+		0, 2, 0, 0,
+		0, 0, 3, 1,
+		0, 0, 2, 3];
+	stack.multiply(M_per);
+
 	var M_2_tra_1 = SglMat4.translation([0, 1, 0]);
 	stack.multiply(M_2_tra_1);
 	// CurrM = CurrM*M_2_tra_0*M_2_sca*M_2_tra_1
+
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.cube, [0.8, 0.2, 0.2, 1.0], [0, 0, 0, 1.0]);
