@@ -123,7 +123,24 @@ NVMCClient.drawLda = function(gl) {
 	stack.pop();
 
 	// draw legs
-	
+
+	// draw legs
+	stack.push();
+	var M_2_sca = SglMat4.scaling([0.8,1,1]);
+	stack.multiply(M_2_sca);
+	var M_2_tra = SglMat4.translation([7, 18.5, 9]);
+	stack.multiply(M_2_tra);
+	var M_2_rot = SglMat4.rotationAngleAxis(sglDegToRad(-90), [0, 1, 0]);
+	stack.multiply(M_2_rot);
+	this.drawLdaLeg(gl);
+	stack.pop();
+
+	stack.push();
+	var M_3_tra = SglMat4.translation([8, 18.5, -3]);
+	stack.multiply(M_3_tra);
+	this.drawLdaLeg(gl);
+	stack.pop();
+
 
 }
 
@@ -137,8 +154,10 @@ NVMCClient.drawLdaSeat = function(gl) {
 	stack.multiply(M_0_tra1);
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
-	this.drawObject(gl, this.LdaSeat, [0.4, 0.5, 0.5, 0.6],[0.4, 0.5, 0.5, 0.8] );
+	this.drawObject(gl, this.LdaSeat, [0.4, 0.5, 0.5, 0.6],[0.4, 0.5, 0.5, 0.0] );
 	stack.pop();
+
+
 };
 
 NVMCClient.drawLdaBody = function(gl) {
@@ -149,7 +168,7 @@ NVMCClient.drawLdaBody = function(gl) {
 	stack.multiply(M_0_sca);
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
-	this.drawObject(gl, this.LdaStomache, [0.0, 0.0, 0.0, 1.0], [0, 0, 0, 1.0]);
+	this.drawObject(gl, this.LdaStomache, [0.1, 0.1, 0.1, 1.0], [0.1, 0.1, 0.1, 1.0]);
 	stack.pop();
 
 	// draw neck
@@ -190,11 +209,11 @@ NVMCClient.drawLdaHead = function(gl) {
 
 	// draw mouth
 	stack.push();
-	var M_2_tra = SglMat4.translation([5.2, 0.2, 0]);
+	var M_2_tra = SglMat4.translation([4.78, 0.2, 0]);
 	stack.multiply(M_2_tra);
 	var M_2_sca = SglMat4.scaling([7, 4, 4]);
 	stack.multiply(M_2_sca);
-	var M_2_rot = SglMat4.rotationAngleAxis(sglDegToRad(-92), [0, 0, 1]);
+	var M_2_rot = SglMat4.rotationAngleAxis(sglDegToRad(-90), [0, 0, 1]);
 	stack.multiply(M_2_rot);
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.LdaMouth, [0.0, 0.0, 0.0, 1.0], [0, 0, 0, 1.0]);
@@ -202,6 +221,40 @@ NVMCClient.drawLdaHead = function(gl) {
 }
 
 NVMCClient.drawLdaLeg = function(gl) {
+	// draw knee
+	var stack = this.stack;
+
+	stack.push();
+	var M_0_sca = SglMat4.scaling([2.5, 3, 2.5]);
+	stack.multiply(M_0_sca);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaKnee, [0.0, 0.0, 0.0, 1.0], [0.0, 0.0, 0.0, 1.0]);
+	stack.pop();
+
+	//draw leg
+	stack.push();
+	var M_1_tra = SglMat4.translation([0, -9,0])
+	stack.multiply(M_1_tra);
+	var M_1_sca = SglMat4.scaling([2, 4, 2]);
+	stack.multiply(M_1_sca);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaLeg, [0.0, 0.0, 0.0, 1.0], [0.0, 0.0, 0.0, 1.0]);
+	stack.pop();
+
+	//draw foot 1
+
+	stack.push();
+	var M_2_tra = SglMat4.translation([-6, -9,0])
+	stack.multiply(M_2_tra);
+	var M_2_sca = SglMat4.scaling([12, 2, 2.5]);
+	stack.multiply(M_2_sca);
+	var M_2_rot = SglMat4.rotationAngleAxis(sglDegToRad(-100), [0, 0, 1]);
+	stack.multiply(M_2_rot);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaFoot, [0.0, 0.0, 0.0, 1.0], [0.0, 0.0, 0.0, 1.0]);
+	stack.pop();
+
+
 
 }
 
@@ -213,7 +266,7 @@ NVMCClient.drawScene = function (gl) {
 	gl.viewport(0, 0, width, height);
 
 	// Clear the framebuffer
-	gl.clearColor(0.4, 0.6, 0.8, 1.0);
+	gl.clearColor(0.8, 0.6, 0.8, 1.0);
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
 	gl.enable(gl.DEPTH_TEST);
@@ -234,11 +287,11 @@ NVMCClient.drawScene = function (gl) {
 	tra = SglMat4.translation([-20, 0, 0]);
 	stack.multiply(tra);
 
-	stack.push();
-	var M_9 = this.myFrame();
-	stack.multiply(M_9);
-	this.drawCar(gl);
-	stack.pop();
+	//stack.push();
+	//var M_9 = this.myFrame();
+	//stack.multiply(M_9);
+	//this.drawCar(gl);
+	//stack.pop();
 
 	//var trees = this.game.race.trees;
 	//for (var t in trees) {
@@ -250,20 +303,20 @@ NVMCClient.drawScene = function (gl) {
 	//}
 
 	stack.push();
-	var M_Ida_rot = SglMat4.rotationAngleAxis(sglDegToRad(-30), [0, 1, 0])
+	var M_Ida_rot = SglMat4.rotationAngleAxis(sglDegToRad(-30), [-0.0, 1, 0])
 	stack.multiply(M_Ida_rot);
 	this.drawLda(gl);
 	stack.pop();
 
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
-	this.drawObject(gl, this.track, [0.9, 0.8, 0.7, 1.0], [0, 0, 0, 1.0]);
-	//this.drawObject(gl, this.ground, [0.3, 0.7, 0.2, 1.0], [0, 0, 0, 1.0]);
+	this.drawObject(gl, this.track, [0.9, 0.8, 0.7, 1.0], [0.9, 0.8, 0.7, 1.0]);
+	this.drawObject(gl, this.ground, [0.9, 0.9, 0.9, 1.0], [0.9, 0.9, 0.9, 1.0]);
 
 
-	for (var i in this.buildings) {
-		this.drawObject(gl, this.buildings[i], [0.8, 0.8, 0.8, 1.0], [0, 0, 0, 1.0]);
-	}
+	//for (var i in this.buildings) {
+	//	this.drawObject(gl, this.buildings[i], [0.8, 0.8, 0.8, 1.0], [0, 0, 0, 1.0]);
+	//}
 
 	gl.useProgram(null);
 	gl.disable(gl.DEPTH_TEST);
