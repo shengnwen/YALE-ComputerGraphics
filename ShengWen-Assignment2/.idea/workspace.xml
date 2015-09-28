@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b128110-4c08-43c5-920a-6f169eff9631" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/q4/building.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/q4/track.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/q4/style.css" afterPath="$PROJECT_DIR$/q4/lib/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/js/0.js" afterPath="$PROJECT_DIR$/q4/js/0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/2.html" afterPath="$PROJECT_DIR$/q4/2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/js/race.js" afterPath="$PROJECT_DIR$/q4/js/race.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShengWen-Assignment2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,14 +23,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="1.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/q4/js/1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.66480446">
+            <state vertical-scroll-proportion="0.0">
               <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="133" selection-end-column="24" />
               <folding>
                 <element signature="n#!!block;n#PhotographerCamera#0" expanded="false" />
                 <element signature="n#!!block;n#ChaseCamera#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/q4/js/0.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.51960784">
+              <caret line="184" column="50" selection-start-line="184" selection-start-column="50" selection-end-line="184" selection-end-column="50" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#651#1745#0" expanded="false" />
+                <element signature="e#3817#4287#0" expanded="false" />
+                <element signature="e#6909#7558#0" expanded="false" />
+                <element signature="e#9958#10306#0" expanded="false" />
+                <element signature="e#10393#10428#0" expanded="false" />
+                <element signature="e#10475#10512#0" expanded="false" />
+                <element signature="e#10565#10614#0" expanded="false" />
+                <element signature="e#10650#10679#0" expanded="false" />
+                <element signature="e#10716#10746#0" expanded="false" />
+                <element signature="e#10788#10816#0" expanded="false" />
+                <element signature="e#10865#10971#0" expanded="false" />
+                <element signature="e#11021#11067#0" expanded="false" />
+                <element signature="e#11119#11187#0" expanded="false" />
+                <element signature="e#11237#11306#0" expanded="false" />
+                <element signature="e#11981#12010#0" expanded="false" />
+                <element signature="e#12045#12091#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -384,7 +406,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -756,38 +778,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q4/js/0.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.204969">
-          <caret line="325" column="23" selection-start-line="325" selection-start-column="23" selection-end-line="325" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#651#1745#0" expanded="false" />
-            <element signature="e#7089#7738#0" expanded="false" />
-            <element signature="e#10138#10486#0" expanded="false" />
-            <element signature="e#10573#10608#0" expanded="false" />
-            <element signature="e#10655#10692#0" expanded="false" />
-            <element signature="e#10745#10794#0" expanded="false" />
-            <element signature="e#10830#10859#0" expanded="false" />
-            <element signature="e#10896#10926#0" expanded="false" />
-            <element signature="e#10968#10996#0" expanded="false" />
-            <element signature="e#11045#11151#0" expanded="false" />
-            <element signature="e#11201#11247#0" expanded="false" />
-            <element signature="e#11299#11367#0" expanded="false" />
-            <element signature="e#11417#11486#0" expanded="false" />
-            <element signature="e#12161#12190#0" expanded="false" />
-            <element signature="e#12225#12271#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q4/js/1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66480446">
+        <state vertical-scroll-proportion="0.0">
           <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="133" selection-end-column="24" />
           <folding>
             <element signature="n#!!block;n#PhotographerCamera#0" expanded="false" />
             <element signature="n#!!block;n#ChaseCamera#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q4/js/0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51960784">
+          <caret line="184" column="50" selection-start-line="184" selection-start-column="50" selection-end-line="184" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#651#1745#0" expanded="false" />
+            <element signature="e#3817#4287#0" expanded="false" />
+            <element signature="e#6909#7558#0" expanded="false" />
+            <element signature="e#9958#10306#0" expanded="false" />
+            <element signature="e#10393#10428#0" expanded="false" />
+            <element signature="e#10475#10512#0" expanded="false" />
+            <element signature="e#10565#10614#0" expanded="false" />
+            <element signature="e#10650#10679#0" expanded="false" />
+            <element signature="e#10716#10746#0" expanded="false" />
+            <element signature="e#10788#10816#0" expanded="false" />
+            <element signature="e#10865#10971#0" expanded="false" />
+            <element signature="e#11021#11067#0" expanded="false" />
+            <element signature="e#11119#11187#0" expanded="false" />
+            <element signature="e#11237#11306#0" expanded="false" />
+            <element signature="e#11981#12010#0" expanded="false" />
+            <element signature="e#12045#12091#0" expanded="false" />
           </folding>
         </state>
       </provider>

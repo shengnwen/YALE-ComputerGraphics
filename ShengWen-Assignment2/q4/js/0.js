@@ -128,8 +128,6 @@ NVMCClient.drawWheel = function (gl) {
 };
 var steerAngle = 0;
 var steerTarget = 0;
-var steerLeft = false;
-var steerRight = false;
 NVMCClient.drawCar = function (gl) {
 	var stack = this.stack;
 
@@ -183,6 +181,8 @@ NVMCClient.drawCar = function (gl) {
 	stack.pop(); // matrix stack =  {   P*invV} 
 
 	stack.push(); // matrix stack =   { P*invV*M_9,P*invV}
+
+	// transform car box projection here!!!!!!!!!!
 	// Compute and apply M_2
 	var M_2_tra_0 = SglMat4.translation([0, 0.3, 0]);
 	stack.multiply(M_2_tra_0);
@@ -197,17 +197,6 @@ NVMCClient.drawCar = function (gl) {
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.cube, [0.8, 0.2, 0.2, 1.0], [0, 0, 0, 1.0]);
 	stack.pop(); // matrix stack =  {   P*invV}
-
-	//if (steerLeft == true) {
-	//	if (steerAngle <= 30) {
-	//		steerAngle += 5;
-	//	} else {
-	//		steerAngle -= 5;
-	//	}
-	//	if (steerAngle == 0) {
-	//		steerLeft = false;
-	//	}
-	//}
 
 	if (steerAngle != steerTarget) {
 		if (steerAngle < steerTarget) {
