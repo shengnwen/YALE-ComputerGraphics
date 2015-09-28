@@ -154,7 +154,7 @@ NVMCClient.drawLdaSeat = function(gl) {
 	stack.multiply(M_0_tra1);
 
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
-	this.drawObject(gl, this.LdaSeat, [0.4, 0.5, 0.5, 0.6],[0.4, 0.5, 0.5, 0.0] );
+	this.drawObject(gl, this.LdaSeat, [0.4, 0.5, 0.5, 0.6],[0.4, 0.5, 0.5, 0.6] );
 	stack.pop();
 
 
@@ -213,7 +213,7 @@ NVMCClient.drawLdaHead = function(gl) {
 	stack.multiply(M_2_tra);
 	var M_2_sca = SglMat4.scaling([7, 4, 4]);
 	stack.multiply(M_2_sca);
-	var M_2_rot = SglMat4.rotationAngleAxis(sglDegToRad(-90), [0, 0, 1]);
+	var M_2_rot = SglMat4.rotationAngleAxis(sglDegToRad(-80), [0, 0, 1]);
 	stack.multiply(M_2_rot);
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.LdaMouth, [0.0, 0.0, 0.0, 1.0], [0, 0, 0, 1.0]);
@@ -233,9 +233,9 @@ NVMCClient.drawLdaLeg = function(gl) {
 
 	//draw leg
 	stack.push();
-	var M_1_tra = SglMat4.translation([0, -9,0])
+	var M_1_tra = SglMat4.translation([0, -8,0])
 	stack.multiply(M_1_tra);
-	var M_1_sca = SglMat4.scaling([2, 4, 2]);
+	var M_1_sca = SglMat4.scaling([2, 3, 2]);
 	stack.multiply(M_1_sca);
 	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
 	this.drawObject(gl, this.LdaLeg, [0.0, 0.0, 0.0, 1.0], [0.0, 0.0, 0.0, 1.0]);
@@ -244,7 +244,7 @@ NVMCClient.drawLdaLeg = function(gl) {
 	//draw foot 1
 
 	stack.push();
-	var M_2_tra = SglMat4.translation([-6, -9,0])
+	var M_2_tra = SglMat4.translation([-6, -8,0])
 	stack.multiply(M_2_tra);
 	var M_2_sca = SglMat4.scaling([12, 2, 2.5]);
 	stack.multiply(M_2_sca);
@@ -303,9 +303,42 @@ NVMCClient.drawScene = function (gl) {
 	//}
 
 	stack.push();
+	var M_Ida_tra = SglMat4.translation([4, 8 * 4, 0]);
+	stack.multiply(M_Ida_tra);
 	var M_Ida_rot = SglMat4.rotationAngleAxis(sglDegToRad(-30), [-0.0, 1, 0])
 	stack.multiply(M_Ida_rot);
 	this.drawLda(gl);
+	stack.pop();
+
+	stack.push();
+	M_Ida_tra = SglMat4.translation([0, 8 * 2, 0]);
+	stack.multiply(M_Ida_tra);
+	stack.multiply(M_Ida_rot);
+	var M_3_sca = SglMat4.scaling([8, 8, 8]);
+	stack.multiply(M_3_sca);
+	var M_3_tra1 = SglMat4.translation([0, 1.0, 0]);
+	stack.multiply(M_3_tra1);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaSeat, [1.0, 1.0, 0.6, 0.6],[1.0, 1.0, 0.6, 0.6] );
+	stack.pop();
+
+	stack.push();
+	M_Ida_tra = SglMat4.translation([-4, 0, 0]);
+	stack.multiply(M_Ida_tra);
+	stack.multiply(M_Ida_rot);
+	var M_3_sca = SglMat4.scaling([8, 8, 8]);
+	stack.multiply(M_3_sca);
+	var M_3_tra1 = SglMat4.translation([0, 1.0, 0]);
+	stack.multiply(M_3_tra1);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaSeat, [1.0, 1.0, 0.0, 0.9],[1.0, 1.0, 0.0, 0.9] );
+	stack.pop();
+
+	stack.push();
+	M_Ida_tra = SglMat4.translation([40, 80, 18]);
+	stack.multiply(M_Ida_tra);
+	gl.uniformMatrix4fv(this.uniformShader.uModelViewMatrixLocation, false, stack.matrix);
+	this.drawObject(gl, this.LdaEye, [1, 1, 0, 1.0], [1, 0.3, 0.3, 0.0]);
 	stack.pop();
 
 
