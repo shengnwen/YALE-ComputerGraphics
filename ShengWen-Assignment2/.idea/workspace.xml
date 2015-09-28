@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b128110-4c08-43c5-920a-6f169eff9631" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/readme.doc" afterPath="$PROJECT_DIR$/q2/readme.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/js/0.js" afterPath="$PROJECT_DIR$/q4/js/0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/primitives_sphere_subd.html" afterPath="$PROJECT_DIR$/q1/primitives_sphere_subd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/q3.html" afterPath="$PROJECT_DIR$/q3/q3.html" />
     </list>
     <ignored path="ShengWen-Assignment2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +35,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="primitives_torus.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="primitives_torus.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/q1/primitives_torus.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0699002">
+            <state vertical-scroll-proportion="-31.25">
               <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="q3.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/q3/q3.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.72182596">
+              <caret line="43" column="66" selection-start-line="34" selection-start-column="12" selection-end-line="43" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -114,7 +120,6 @@
         <option value="$PROJECT_DIR$/q3/js/race.js" />
         <option value="$PROJECT_DIR$/q3/js/q3.js" />
         <option value="$PROJECT_DIR$/q3/js/0.js" />
-        <option value="$PROJECT_DIR$/q3/q3.html" />
         <option value="$PROJECT_DIR$/q3/js/1.js" />
         <option value="$PROJECT_DIR$/q4/2.html" />
         <option value="$PROJECT_DIR$/q4/js/race.js" />
@@ -122,6 +127,7 @@
         <option value="$PROJECT_DIR$/q1/js/sphere_subd.js" />
         <option value="$PROJECT_DIR$/q4/js/0.js" />
         <option value="$PROJECT_DIR$/q1/primitives_sphere_subd.html" />
+        <option value="$PROJECT_DIR$/q3/q3.html" />
       </list>
     </option>
   </component>
@@ -187,7 +193,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="q1" />
+              <option name="myItemId" value="q3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="q2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -639,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q3/q3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.25">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q4/js/cube.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -709,8 +722,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/q1/primitives_torus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0699002">
+        <state vertical-scroll-proportion="-31.25">
           <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q3/q3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72182596">
+          <caret line="43" column="66" selection-start-line="34" selection-start-column="12" selection-end-line="43" selection-end-column="66" />
           <folding />
         </state>
       </provider>
