@@ -133,7 +133,7 @@ NVMCClient.drawCar = function (gl) {
 
 	stack.push(); // matrix stack =  { P*invV*M_9,P*invV} 
 	// M_7 translate the wheel to ita place on the car 
-	var M_7 = SglMat4.translation([1, 0.3, 1.4]);
+	var M_7 = SglMat4.translation([1, 0.3, 1.6]);
 	stack.multiply(M_7);
 
 	// M_3 transform a cylinder in a wheel
@@ -154,7 +154,7 @@ NVMCClient.drawCar = function (gl) {
 	// M_5 translate the wheel to ita place on the car
 
 
-	var M_5 = SglMat4.translation([-1, 0.3, 1.4]);
+	var M_5 = SglMat4.translation([-1, 0.3, 1.6]);
 	stack.multiply(M_5);
 	this.drawWheel(gl);
 	stack.pop(); // matrix stack =  {   P*invV} 
@@ -193,7 +193,6 @@ NVMCClient.drawCar = function (gl) {
 
 	var M_per_rot = SglMat4.rotationAngleAxis(sglDegToRad(180),[0, 1, 0]);
 	stack.multiply(M_per_rot);
-
 	var M_per = [
 		2, 0, 0, 0,
 		0, 2, 0, 0,

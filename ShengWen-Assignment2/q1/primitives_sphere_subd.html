@@ -59,16 +59,16 @@
         }
 
         var n = parseInt(e.value);
-        if (n < 0) {
-            document.getElementById("info").innerHTML = "You must enter a positive integer( > 1)!";
+        if (n <= 0) {
+            document.getElementById("info").innerHTML = "You must enter a positive integer( >= 1)!";
             e.value = 1;
             return;
         }
-//        else if (n >= 8) {
-//            document.getElementById("info").innerHTML = "The work load may break down the browser, bettern under 7!";
-//            e.value = 7;
-//            return;
-//        }
+        else if (n >= 8) {
+            document.getElementById("info").innerHTML = "The work load may break down the browser, bettern under 7!";
+            e.value = 7;
+            return;
+        }
         e.value = n;
         document.getElementById("info").innerHTML = "";
     }
