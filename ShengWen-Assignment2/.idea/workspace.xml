@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b128110-4c08-43c5-920a-6f169eff9631" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/js/1.js" afterPath="$PROJECT_DIR$/q3/js/1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/js/1.js" afterPath="$PROJECT_DIR$/q4/js/1.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/js/2.js" afterPath="$PROJECT_DIR$/q4/js/2.js" />
     </list>
     <ignored path="ShengWen-Assignment2.iws" />
@@ -28,8 +26,8 @@
       <file leaf-file-name="2.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/q4/js/2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4512894">
-              <caret line="216" column="38" selection-start-line="215" selection-start-column="44" selection-end-line="216" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.66618913">
+              <caret line="207" column="16" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
               <folding>
                 <element signature="e#4331#4511#0" expanded="false" />
                 <element signature="e#4552#4841#0" expanded="false" />
@@ -805,8 +803,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/q4/js/2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4512894">
-          <caret line="216" column="38" selection-start-line="215" selection-start-column="44" selection-end-line="216" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.66618913">
+          <caret line="207" column="16" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
           <folding>
             <element signature="e#4331#4511#0" expanded="false" />
             <element signature="e#4552#4841#0" expanded="false" />

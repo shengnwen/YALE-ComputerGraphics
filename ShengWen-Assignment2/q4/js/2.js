@@ -204,7 +204,7 @@ function ObserverCamera() {
 
 
 function FrontView() {//line 74, Listnig 4.5{
-	alert("Changed to Front View!");
+	//alert("Changed to Front View!");
 	this.position 				= [0.0,0.0,0.0];
 	this.keyDown 					= function (keyCode) {}
 	this.keyUp						= function (keyCode) {}
