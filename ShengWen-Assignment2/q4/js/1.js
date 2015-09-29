@@ -71,6 +71,8 @@ function PhotographerCamera() {//line 7, Listing 4.6
 	};
 };//line 42}
 
+
+
 function ChaseCamera() {//line 74, Listnig 4.5{
 	this.position 				= [0.0,0.0,0.0];
 	this.keyDown 					= function (keyCode) {}
@@ -92,7 +94,9 @@ function ChaseCamera() {//line 74, Listnig 4.5{
 NVMCClient.cameras = [];
 NVMCClient.cameras[0] = new ChaseCamera();
 NVMCClient.cameras[1] = new PhotographerCamera();
-NVMCClient.n_cameras = 2;
+//NVMCClient.cameras[2] = new FrontView();
+NVMCClient.n_cameras = 3;
+//NVMCClient.n_cameras = 2;
 NVMCClient.currentCamera = 0;
 
 NVMCClient.nextCamera = function () {
