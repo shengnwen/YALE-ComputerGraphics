@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2b128110-4c08-43c5-920a-6f169eff9631" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/readme.doc" afterPath="$PROJECT_DIR$/q3/readme.doc" />
-    </list>
+    <list default="true" id="2b128110-4c08-43c5-920a-6f169eff9631" name="Default" comment="" />
     <ignored path="ShengWen-Assignment2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
