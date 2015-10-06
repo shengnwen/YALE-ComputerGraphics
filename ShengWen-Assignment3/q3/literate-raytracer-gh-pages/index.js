@@ -454,3 +454,4 @@ render(scene);
 // Then let the user control a cute playing animation!
 document.getElementById('play').onclick = play;
 document.getElementById('stop').onclick = stop;
+
