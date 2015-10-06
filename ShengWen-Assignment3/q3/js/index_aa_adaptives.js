@@ -184,7 +184,7 @@ function render(scene) {
     // vector to turn the camera up.
         vpRight = Vector.unitVector(Vector.crossProduct(eyeVector, Vector.UP)),
         vpUp = Vector.unitVector(Vector.crossProduct(vpRight, eyeVector)),
-
+        maxDepth = 2,
     // The actual ending pixel dimensions of the image aren't important here -
     // note that `width` and `height` are in pixels, but the numbers we compute
     // here are just based on the ratio between them, `height/width`, and the
@@ -208,7 +208,7 @@ function render(scene) {
         }
         return false;
     }
-    var maxDepth = parseInt(document.getElementById("depth").value);
+
     var calColor = function (depth, centerX, centerY, delta) {
         color = [];
         var xcomp = Vector.scale(vpRight, ((centerX + delta) * pixelWidth) - halfWidth),
