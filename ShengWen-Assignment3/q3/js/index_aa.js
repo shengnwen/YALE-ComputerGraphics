@@ -99,7 +99,7 @@ scene.objects = [
         specular: 0.2,
         lambert: 0.7,
         ambient: 0.1,
-        radius: 1
+        radius: 2
     }
 ];
 
@@ -200,29 +200,41 @@ function render(scene) {
         pixelWidth = camerawidth / (width - 1),
         pixelHeight = cameraheight / (height - 1);
 
-    var index, color;
+    var index, color = [];
     var ray = {
         point: camera.point
     };
     for (var x = 0; x < width; x++) {
         for (var y = 0; y < height; y++) {
-
+            color = [];
             // turn the raw pixel `x` and `y` values into values from -1 to 1
             // and use these values to scale the facing-right and facing-up
             // vectors so that we generate versions of the `eyeVector` that are
             // skewed in each necessary direction.
-            var xcomp = Vector.scale(vpRight, (x * pixelWidth) - halfWidth),
-                ycomp = Vector.scale(vpUp, ((height- y) * pixelHeight) - halfHeight);
-
+            var xcomp = Vector.scale(vpRight, ((x + 0.5) * pixelWidth) - halfWidth),
+                ycomp = Vector.scale(vpUp, ((height- (y + 0.5)) * pixelHeight) - halfHeight);
             ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+            color.push(trace(ray, scene, 0));
 
-            // use the vector generated to raytrace the scene, returning a color
-            // as a `{x, y, z}` vector of RGB values
-            color = trace(ray, scene, 0);
+            xcomp = Vector.scale(vpRight, ((x + 0.5) * pixelWidth) - halfWidth)
+            ycomp = Vector.scale(vpUp, ((height- (y - 0.5)) * pixelHeight) - halfHeight);
+            ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+            color.push(trace(ray, scene, 0));
+
+            xcomp = Vector.scale(vpRight, ((x - 0.5) * pixelWidth) - halfWidth)
+            ycomp = Vector.scale(vpUp, ((height- (y - 0.5)) * pixelHeight) - halfHeight);
+            ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+            color.push(trace(ray, scene, 0));
+
+            xcomp = Vector.scale(vpRight, ((x - 0.5) * pixelWidth) - halfWidth)
+            ycomp = Vector.scale(vpUp, ((height- (y + 0.5)) * pixelHeight) - halfHeight);
+            ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+            color.push(trace(ray, scene, 0));
+
             index = (x * 4) + (y * width * 4),
-                data.data[index + 0] = color.x;
-            data.data[index + 1] = color.y;
-            data.data[index + 2] = color.z;
+                data.data[index + 0] = (color[0].x + color[1].x + color[2].x + color[3].x)/4;
+            data.data[index + 1] = (color[0].y + color[1].y + color[2].y + color[3].y)/4;
+            data.data[index + 2] = (color[0].z + color[1].z + color[2].z + color[3].z)/4;
             data.data[index + 3] = 255;
         }
     }

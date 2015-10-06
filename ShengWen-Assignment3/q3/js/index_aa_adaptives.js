@@ -32,17 +32,17 @@ function checkNumber(e, start, end) {
             "should be between " +
             start + " and " +
             end;
-        e.value = end;
+        e.value = parseInt((start + end) / 2);
         return;
 
     } else {
         var n = parseFloat(e.value);
         if (n < start || n > end) {
-            document.getElementById('info').innerHTML = "This input diameter" +
+            document.getElementById('info').innerHTML = "This input " +
                 "should be between " +
                 start + " and " +
                 end;
-            e.value = end;
+            e.value = parseInt((start + end) / 2);
             return;
         } else {
             e.value = n;
@@ -99,7 +99,7 @@ scene.objects = [
         specular: 0.2,
         lambert: 0.7,
         ambient: 0.1,
-        radius: 1
+        radius: 2
     }
 ];
 
@@ -115,7 +115,7 @@ function modifyScene() {
 
     // change x,y,z vector;
 
-    radius = parseFloat(document.getElementById("diameter").value)/2;
+    radius = parseFloat(document.getElementById("diameter").value) / 2;
     scene.objects[0].radius = radius;
     scene.objects[0].color.x = r;
     scene.objects[0].color.y = g;
@@ -143,8 +143,6 @@ var c = document.getElementById('my_canvas');
 var width = parseInt(c.width), height = parseInt(c.height);
 var ctx = c.getContext('2d'),
     data = ctx.getImageData(0, 0, width, height);
-
-
 
 
 // # Throwing Rays
@@ -204,21 +202,81 @@ function render(scene) {
     var ray = {
         point: camera.point
     };
+    var checkColor = function (p1, p2) {
+        if (p1.x == p2.x && p1.y == p2.y && p1.z == p2.z) {
+            return true;
+        }
+        return false;
+    }
+    var maxDepth = parseInt(document.getElementById("depth").value);
+    var calColor = function (depth, centerX, centerY, delta) {
+        color = [];
+        var xcomp = Vector.scale(vpRight, ((centerX + delta) * pixelWidth) - halfWidth),
+            ycomp = Vector.scale(vpUp, ((height - (centerY + delta)) * pixelHeight) - halfHeight);
+        ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+        color.push(trace(ray, scene, 0));
+
+        xcomp = Vector.scale(vpRight, ((centerX + delta) * pixelWidth) - halfWidth);
+        ycomp = Vector.scale(vpUp, ((height - (centerY - delta)) * pixelHeight) - halfHeight);
+        ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+        color.push(trace(ray, scene, 0));
+
+        xcomp = Vector.scale(vpRight, ((centerX - delta) * pixelWidth) - halfWidth);
+        ycomp = Vector.scale(vpUp, ((height - (centerY + delta)) * pixelHeight) - halfHeight);
+        ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+        color.push(trace(ray, scene, 0));
+
+        xcomp = Vector.scale(vpRight, ((centerX - delta) * pixelWidth) - halfWidth);
+        ycomp = Vector.scale(vpUp, ((height - (centerY - delta)) * pixelHeight) - halfHeight);
+        ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+        color.push(trace(ray, scene, 0));
+
+        if (checkColor(color[0], color[1]) && checkColor(color[2], color[1])
+            && checkColor(color[2], color[3])) {
+            //if (color[0] == color[1] && color[1] == color[2] && color[2] == color[3]) {
+            return color[0];
+        } else if (depth == maxDepth) {
+            var avg = {
+                x: (color[0].x + color[1].x + color[2].x + color[3].x) / 4,
+                y: (color[0].y + color[1].y + color[2].y + color[3].y) / 4,
+                z: (color[0].z + color[1].z + color[2].z + color[3].z) / 4,
+            }
+            return avg;
+        } else {
+
+            delta *= 0.5;
+            color = [];
+            color.push(calColor(depth + 1,
+                centerX + delta,
+                centerY + delta, delta));
+
+            color.push(calColor(depth + 1,
+                centerX + delta,
+                centerY - delta), delta);
+
+            color.push(calColor(depth + 1,
+                centerX - delta,
+                centerY + delta, delta));
+            color.push(calColor(depth + 1,
+                centerX - delta,
+                centerY - delta, delta));
+
+            var avg = {
+                x: (color[0].x + color[1].x + color[2].x + color[3].x) / 4,
+                y: (color[0].y + color[1].y + color[2].y + color[3].y) / 4,
+                z: (color[0].z + color[1].z + color[2].z + color[3].z) / 4,
+            }
+            return avg;
+        }
+    }
     for (var x = 0; x < width; x++) {
         for (var y = 0; y < height; y++) {
-
-            // turn the raw pixel `x` and `y` values into values from -1 to 1
-            // and use these values to scale the facing-right and facing-up
-            // vectors so that we generate versions of the `eyeVector` that are
-            // skewed in each necessary direction.
-            var xcomp = Vector.scale(vpRight, (x * pixelWidth) - halfWidth),
-                ycomp = Vector.scale(vpUp, ((height- y) * pixelHeight) - halfHeight);
-
-            ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
-
-            // use the vector generated to raytrace the scene, returning a color
-            // as a `{x, y, z}` vector of RGB values
-            color = trace(ray, scene, 0);
+            //var xcomp = Vector.scale(vpRight, (x * pixelWidth) - halfWidth),
+            //    ycomp = Vector.scale(vpUp, ((height- y) * pixelHeight) - halfHeight);
+            //
+            //ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+            //color = trace(ray, scene, 0);
+            color = calColor(1, x, y, 0.5);
             index = (x * 4) + (y * width * 4),
                 data.data[index + 0] = color.x;
             data.data[index + 1] = color.y;
@@ -231,6 +289,7 @@ function render(scene) {
     // correctly lit colors, fill the canvas with the generated data.
     ctx.putImageData(data, 0, 0);
 }
+
 
 // # Trace
 //
@@ -378,7 +437,7 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
 }
 
 function isLightVisible(pt, scene, light) {
-    var distObject =  intersectScene({
+    var distObject = intersectScene({
         point: pt,
         vector: Vector.unitVector(Vector.subtract(pt, light))
     }, scene);
