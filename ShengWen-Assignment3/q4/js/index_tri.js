@@ -57,15 +57,15 @@ var c, ctx;
 var scene = {};
 scene.camera = {
     point: {
-        x: 0,
-        y: 0,
-        z: 2.6
+        x: 4,
+        y: 4,
+        z: 1
     },
     fieldOfView: 45,
     vector: {
         x: 0,
         y: 0,
-        z: 1
+        z: -1
     }
 };
 
@@ -74,9 +74,9 @@ scene.camera = {
 // Lights are defined only as points in space - surfaces that have lambert
 // shading will be affected by any visible lights.
 scene.lights = [{
-    x: -30,
-    y: -10,
-    z: 20
+    x: 6,
+    y: 6,
+    z: 3
 }];
 
 // ## Objects
@@ -89,15 +89,69 @@ scene.objects = [
         point: {
             x: 0,
             y: 0,
-            z: 0
+            z: -2
         },
         color: {
-            x: 0,
-            y: 0,
-            z: 0
+            x: 133,
+            y: 233,
+            z: 255
         },
         specular: 0.2,
         lambert: 0.7,
+        ambient: 0.1,
+        radius: 1
+    },
+    {
+        type:'triangle',
+        point1:{
+            x:0,
+            y:0,
+            z:1
+        },
+        point2:{
+            x:0,
+            y:1,
+            z:0
+        },
+        point3:{
+            x:0,
+            y:0,
+            z:0
+        },
+        color:{
+            x:155,
+            y:155,
+            z:155
+        },
+        specular: 0.1,
+        lambert: 0.9,
+        ambient: 0.1,
+        radius: 1
+    },
+    {
+        type:'triangle',
+        point1:{
+            x:0,
+            y:0,
+            z:0
+        },
+        point2:{
+            x:1,
+            y:0,
+            z:0
+        },
+        point3:{
+            x:0,
+            y:0,
+            z:1
+        },
+        color:{
+            x:153,
+            y:102,
+            z:255
+        },
+        specular: 0.1,
+        lambert: 0.9,
         ambient: 0.1,
         radius: 1
     }
@@ -134,7 +188,7 @@ function modifyScene() {
 
 
 function draw() {
-    modifyScene();
+    //modifyScene();
     render(scene);
 }
 
@@ -263,7 +317,8 @@ function trace(ray, scene, depth) {
     // returned by the intersection check.
     var pointAtTime = Vector.add(ray.point, Vector.scale(ray.vector, dist));
 
-    return surface(ray, scene, object, pointAtTime, sphereNormal(object, pointAtTime), depth);
+    //return surface(ray, scene, object, pointAtTime, sphereNormal(object, pointAtTime), depth);
+    return surface(ray, scene, object, pointAtTime, objectNormal(object, pointAtTime), depth);
 }
 
 // # Detecting collisions against all objects
@@ -277,8 +332,12 @@ function intersectScene(ray, scene) {
     // and compare that intersection - is it closer than `Infinity` at first,
     // and then is it closer than other objects that have been hit?
     for (var i = 0; i < scene.objects.length; i++) {
-        var object = scene.objects[i],
-            dist = sphereIntersection(object, ray);
+        var object = scene.objects[i], dist;
+        if (object.type == 'sphere') {
+            dist= sphereIntersection(object, ray);
+        } else if (object.type == 'triangle') {
+            dist = triangleIntersection(object, ray);
+        }
         if (dist !== undefined && dist < closest[0]) {
             closest = [dist, object];
         }
@@ -286,36 +345,44 @@ function intersectScene(ray, scene) {
     return closest;
 }
 
-// ## Detecting collisions against a sphere
-//
-// ![](graphics/sphereintersection.png)
-//
-// Spheres are one of the simplest objects for rays to interact with, since
-// the geometrical math for finding intersections and reflections with them
-// is pretty straightforward.
+function triangleIntersection(triangle, ray) {
+    var B_A = Vector.subtract(triangle.point2, triangle.point1);
+    var C_A = Vector.subtract(triangle.point3, triangle.point1);
+    var A_C = Vector.subtract(triangle.point1, triangle.point3);
+    var n = Vector.crossProduct(B_A, C_A);
+    var perAB = Vector.crossProduct(n, B_A);
+    perAB = Vector.scale(perAB, 1/ Vector.dotProduct(C_A, perAB));
+    var perAC = Vector.crossProduct(n, A_C);
+    perAC = Vector.scale(perAC, 1/Vector.dotProduct(B_A, perAC));
+
+    var u = Vector.dotProduct(n, ray.vector);
+    var t = Vector.dotProduct(Vector.subtract(triangle.point1, ray.point), n) / u;
+    if (t < 0) {
+        return;
+    }
+    var Q = Vector.add(ray.point, Vector.scale(ray.vector, t));
+    var Q_C = Vector.subtract(Q, triangle.point3);
+    var gamma = Vector.dotProduct(Q_C, perAC);
+    var Q_B = Vector.subtract(Q, triangle.point2);
+    var beta = Vector.dotProduct(Q_B, perAB);
+    var alpha = 1 - gamma - beta;
+    if (gamma < 0 || beta < 0 | alpha < 0) {
+        return;
+    } else {
+        return t;
+    }
+}
+
+
+
 function sphereIntersection(sphere, ray) {
     var eye_to_center = Vector.subtract(sphere.point, ray.point),
-    // picture a triangle with one side going straight from the camera point
-    // to the center of the sphere, another side being the vector.
-    // the final side is a right angle.
-    //
-    // This equation first figures out the length of the vector side
         v = Vector.dotProduct(eye_to_center, ray.vector),
-    // then the length of the straight from the camera to the center
-    // of the sphere
         eoDot = Vector.dotProduct(eye_to_center, eye_to_center),
-    // and compute a segment from the right angle of the triangle to a point
-    // on the `v` line that also intersects the circle
         discriminant = (sphere.radius * sphere.radius) - eoDot + (v * v);
-    // If the discriminant is negative, that means that the sphere hasn't
-    // been hit by the ray
     if (discriminant < 0) {
         return;
     } else {
-        // otherwise, we return the distance from the camera point to the sphere
-        // `Math.sqrt(dotProduct(a, a))` is the length of a vector, so
-        // `v - Math.sqrt(discriminant)` means the length of the the vector
-        // just from the camera to the intersection point.
         return v - Math.sqrt(discriminant);
     }
 }
@@ -329,20 +396,24 @@ function sphereNormal(sphere, pos) {
         Vector.subtract(pos, sphere.point));
 }
 
-// # Surface
-//
-// ![](http://farm3.staticflickr.com/2851/10524788334_f2e3903b36_b.jpg)
-//
-// If `trace()` determines that a ray intersected with an object, `surface`
-// decides what color it acquires from the interaction.
+function objectNormal(object, pos) {
+    if (object.type == 'sphere') {
+        return Vector.unitVector(
+            Vector.subtract(pos, object.point));
+    } else if (object.type == 'triangle') {
+        var B_A = Vector.subtract(object.point2, object.point1);
+        var C_A = Vector.subtract(object.point3, object.point1);
+        var n = Vector.crossProduct(B_A, C_A);
+        return Vector.scale(Vector.unitVector(n), -1);
+    }
+}
+
+
 function surface(ray, scene, object, pointAtTime, normal, depth) {
     var b = object.color,
         c = Vector.ZERO,
         lambertAmount = 0;
 
-    // **[Lambert shading](http://en.wikipedia.org/wiki/Lambertian_reflectance)**
-    // is our pretty shading, which shows gradations from the most lit point on
-    // the object to the least.
     if (object.lambert) {
         for (var i = 0; i < scene.lights.length; i++) {
             var lightPoint = scene.lights[0];
