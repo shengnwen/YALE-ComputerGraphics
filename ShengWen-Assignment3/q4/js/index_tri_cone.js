@@ -58,7 +58,7 @@ var scene = {};
 scene.camera = {
     point: {
         x: 0,
-        y: 1,
+        y: 15,
         z: 20
     },
     fieldOfView: 45,
@@ -68,7 +68,7 @@ scene.camera = {
         //z: 4
 
         x: 0,
-        y: 1,
+        y: 2,
         z: 0
     }
 };
@@ -79,8 +79,8 @@ scene.camera = {
 // shading will be affected by any visible lights.
 scene.lights = [{
     x: 0,
-    y: 3,
-    z: 8
+    y: 10,
+    z: 12
 }];
 
 // ## Objects
@@ -88,51 +88,51 @@ scene.lights = [{
 // This raytracer handles sphere objects, with any color, position, radius,
 // and surface properties.
 scene.objects = [
-    //{
-    //    type: 'sphere',
-    //    point: {
-    //        x: 0,
-    //        y: 6,
-    //        z: 2
-    //    },
-    //    color: {
-    //        x: 133,
-    //        y: 233,
-    //        z: 255
-    //    },
-    //    specular: 0.2,
-    //    lambert: 0.7,
-    //    ambient: 0.1,
-    //    radius: 1.5
-    //},
     {
-        type:'triangle',
-        point1:{
-            x:0,
-            y:0,
-            z:-5
+        type: 'sphere',
+        point: {
+            x: 0,
+            y: 8,
+            z: -2
         },
-        point2:{
-            x:1,
-            y:0,
-            z:5
-        },
-        point3:{
-            x:0,
-            y:0,
-            z:10
-        },
-        color:{
-            x:153,
-            y:102,
-            z:255
+        color: {
+            x: 133,
+            y: 233,
+            z: 255
         },
         specular: 0.2,
         lambert: 0.7,
         ambient: 0.1,
-        radius: 1
-    }
-    ,
+        radius: 2
+    },
+    //{
+    //    type:'triangle',
+    //    point1:{
+    //        x:0,
+    //        y:0,
+    //        z:-5
+    //    },
+    //    point2:{
+    //        x:1,
+    //        y:0,
+    //        z:5
+    //    },
+    //    point3:{
+    //        x:0,
+    //        y:0,
+    //        z:10
+    //    },
+    //    color:{
+    //        x:153,
+    //        y:102,
+    //        z:255
+    //    },
+    //    specular: 0.2,
+    //    lambert: 0.7,
+    //    ambient: 0.1,
+    //    radius: 1
+    //}
+    //,
     {
         type:'cone',
         center: {
@@ -149,7 +149,7 @@ scene.objects = [
         radius: 1,
         specular: 0.2,
         lambert: 0.7,
-        ambient: 0.3
+        ambient: 0.5
     }
 ];
 
@@ -325,7 +325,7 @@ function trace(ray, scene, depth) {
 function intersectScene(ray, scene) {
     // The base case is that it hits nothing, and travels for `Infinity`
     var closest = [Infinity, null];
-    // But for each object, we check whether it has any intersection,
+    // But for each object, we check whether it has an intersection,
     // and compare that intersection - is it closer than `Infinity` at first,
     // and then is it closer than other objects that have been hit?
     for (var i = 0; i < scene.objects.length; i++) {
