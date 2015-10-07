@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b86a935-36a2-4093-8353-87f77d2ca6cd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/js/index_tri_cone.js" afterPath="$PROJECT_DIR$/q4/js/index_tri_cone.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assignment3-2015..pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/literate-raytracer-gh-pages.zip" afterPath="" />
     </list>
     <ignored path="ShengWen-Assignment3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,9 +29,10 @@
           <file leaf-file-name="index_tri_cone.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/q4/js/index_tri_cone.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.48364887">
-                  <caret line="94" column="16" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+                <state vertical-scroll-proportion="-1.2908778">
+                  <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
                   <folding>
+                    <element signature="n#!!block;n#triangleIntersection#0" expanded="false" />
                     <element signature="n#!!block;n#sphereIntersection#0" expanded="false" />
                     <element signature="n#!!block;n#sphereNormal#0" expanded="false" />
                   </folding>
@@ -167,6 +169,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="q2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -242,9 +258,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="48" y="23" width="1232" height="709" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24107143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18100649" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -400,6 +416,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#triangleIntersection#0" expanded="false" />
             <element signature="n#!!block;n#sphereIntersection#0" expanded="false" />
             <element signature="n#!!block;n#sphereNormal#0" expanded="false" />
           </folding>
@@ -687,9 +704,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/q4/js/index_tri_cone.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48364887">
-          <caret line="94" column="16" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+        <state vertical-scroll-proportion="-1.2908778">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
           <folding>
+            <element signature="n#!!block;n#triangleIntersection#0" expanded="false" />
             <element signature="n#!!block;n#sphereIntersection#0" expanded="false" />
             <element signature="n#!!block;n#sphereNormal#0" expanded="false" />
           </folding>
