@@ -6,10 +6,10 @@
 
 <p>Please input coordinates between 1 and 400 for four points, the origin is the upper left corner:</p>
 
-x0 <input id="x0" type="number"> y0 <input id="y0" type="number"> 
-x1 <input id="x1" type="number"> y1 <input id="y1" type="number"> <br>
-x2 <input id="x2" type="number"> y2 <input id="y2" type="number"> 
-x3 <input id="x3" type="number"> y3 <input id="y3" type="number"> <br>
+x0 <input id="x0" type="number" value="50"> y0 <input id="y0" type="number" value="10">
+x1 <input id="x1" type="number" value="100"> y1 <input id="y1" type="number" value="175"> <br>
+x2 <input id="x2" type="number" value="175"> y2 <input id="y2" type="number" value="200">
+x3 <input id="x3" type="number" value="300"> y3 <input id="y3" type="number" value="50"> <br>
 Hermite Left, Bezier Right
 <button type="button" onclick="Interp()">Submit</button> <br> 
 <br>
@@ -88,7 +88,14 @@ var context2 = canvas2.getContext('2d');
 	}
         context.strokeStyle = "green";
 	context.stroke();
-       
+
+	// draw bezier curve
+	context2.beginPath();
+	context2.moveTo(x[0], y[0]);
+	context2.bezierCurveTo(x[1], y[1], x[2], y[2], x[3], y[3]);
+	//context2.lineWidth = 5;
+	context2.strokeStyle = 'black';
+	context2.stroke();
 }
 
  
