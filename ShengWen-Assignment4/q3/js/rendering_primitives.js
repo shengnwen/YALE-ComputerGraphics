@@ -6,7 +6,7 @@ var vertexBuffer = null;
 var indexBufferTriangles = null;
 var indexBufferEdges = null;
 var currentAngle = 0;
-var incAngle = 0.3;
+var incAngle = 1;
 
 //// Initialize the buffers
 ////
@@ -148,7 +148,7 @@ function drawThePrimitive(gl, primitive) {
     } else if (primitive.name == 'b-spline') {
         viewMat = SglMat4.lookAt([6, 3, 5], [0, 0, 0], [0, 1, 0]);
     } else if (primitive.name == 'nurb') {
-        viewMat = SglMat4.lookAt([6, 3, 5], [0, 0, 0], [0, 1, 0]);
+        viewMat = SglMat4.lookAt([6, 6, 5], [0, -1, 0], [0, 1, 0]);
     }
 
     var modelMat = SglMat4.rotationAngleAxis(sglDegToRad(-currentAngle), [0, 1, 0]);

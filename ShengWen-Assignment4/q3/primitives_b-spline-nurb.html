@@ -11,10 +11,22 @@
 
 </head>
 <body>
-    p0:(0, 0,<input id="z0" type="text" value="0" size="1" maxlength="1">) p1:(1, 0,<input id="z1" type="text" value="0" size="1" maxlength="1">) p2:(2, 0,<input id="z2" type="text" value="0" size="1" maxlength="1">) p3:(3, 0,<input id="z3" type="text" value="0" size="1" maxlength="1">)<br>
-    p4:(0, 1,<input id="z4" type="text" value="0" size="1" maxlength="1">) p5:(1, 1,<input id="z5" type="text" value="2" size="1" maxlength="1">) p6:(2, 1,<input id="z6" type="text" value="2" size="1" maxlength="1">) p7:(3, 1,<input id="z7" type="text" value="0" size="1" maxlength="1">)<br>
-    p8:(0, 2,<input id="z8" type="text" value="0" size="1" maxlength="1">) p9:(1, 2,<input id="z9" type="text" value="2" size="1" maxlength="1">) p10:(2, 2,<input id="z10" type="text" value="2" size="1" maxlength="1">) p11:(3, 2,<input id="z11" type="text" value="0" size="1" maxlength="1">)<br>
-    p12:(0,3,<input id="z12" type="text" value="0" size="1" maxlength="1">) p13:(1, 3,<input id="z13" type="text" value="0" size="1" maxlength="1">) p14:(2, 3,<input id="z14" type="text" value="0" size="1" maxlength="1">) p15:(3, 3,<input id="z15" type="text" value="0" size="1" maxlength="1">)<br>
+    p0:(0, 0,<input id="z0" type="text" value="0" size="1" maxlength="1">,<input id="w0" type="text" value="0.3" size="3" maxlength="3"> )
+    p1:(1, 0,<input id="z1" type="text" value="0" size="1" maxlength="1">,<input id="w1" type="text" value="0.3" size="3" maxlength="3"> )
+    p2:(2, 0,<input id="z2" type="text" value="0" size="1" maxlength="1">,<input id="w2" type="text" value="0.2" size="3" maxlength="3"> )
+    p3:(3, 0,<input id="z3" type="text" value="0" size="1" maxlength="1">,<input id="w3" type="text" value="0.2" size="3" maxlength="3"> )<br>
+    p4:(0, 1,<input id="z4" type="text" value="0" size="1" maxlength="1">,<input id="w4" type="text" value="0.3" size="3" maxlength="3">)
+    p5:(1, 1,<input id="z5" type="text" value="2" size="1" maxlength="1">,<input id="w5" type="text" value="0.3" size="3" maxlength="3"> )
+    p6:(2, 1,<input id="z6" type="text" value="2" size="1" maxlength="1">,<input id="w6" type="text" value="0.2" size="3" maxlength="3"> )
+    p7:(3, 1,<input id="z7" type="text" value="0" size="1" maxlength="1">,<input id="w7" type="text" value="0.2" size="3" maxlength="3"> )<br>
+    p8:(0, 2,<input id="z8" type="text" value="0" size="1" maxlength="1">,<input id="w8" type="text" value="0.2" size="3" maxlength="3"> )
+    p9:(1, 2,<input id="z9" type="text" value="2" size="1" maxlength="1">,<input id="w9" type="text" value="0.2" size="3" maxlength="3"> )
+    p10:(2, 2,<input id="z10" type="text" value="2" size="1" maxlength="1">,<input id="w10" type="text" value="0.3" size="3" maxlength="3"> )
+    p11:(3, 2,<input id="z11" type="text" value="0" size="1" maxlength="1">,<input id="w11" type="text" value="0.3" size="3" maxlength="3"> )<br>
+    p12:(0,3,<input id="z12" type="text" value="0" size="1" maxlength="1">,<input id="w12" type="text" value="0.1" size="3" maxlength="3"> )
+    p13:(1, 3,<input id="z13" type="text" value="0" size="1" maxlength="1">,<input id="w13" type="text" value="0.2" size="3" maxlength="3"> )
+    p14:(2, 3,<input id="z14" type="text" value="0" size="1" maxlength="1">,<input id="w14" type="text" value="0.5" size="3" maxlength="3"> )
+    p15:(3, 3,<input id="z15" type="text" value="0" size="1" maxlength="1">,<input id="w15" type="text" value="0.2" size="3" maxlength="3"> )<br>
     <button type='button' onclick="start()"> draw</button><br>
     <canvas id="my_canvas" width="500" height="500"></canvas>
 </body>
@@ -40,7 +52,7 @@
         if (gl)  {
             primitive = new B_Spline_NURB(4, 4, false);
             initialize(gl, primitive);
-            setInterval(draw, 20);
+            setInterval(draw, 50);
         }
         else {
             alert("WebGL initialization failed! Your browser does not support WebGL or it is not properly configured.");

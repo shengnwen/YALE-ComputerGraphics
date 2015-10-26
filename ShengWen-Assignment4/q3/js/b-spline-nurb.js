@@ -17,9 +17,13 @@ function B_Spline_NURB(aziNum, eleNum, crystal) {
     var points = [];
     for(var row = 0; row < 4; row++) {
         for (var col = 0; col < 4; col++) {
-            points.push([col, row, Number(document.getElementById('z' + (row * 4 + col).toString()).value)]);
+            points.push([col, row, Number(document.getElementById('z' + (row * 4 + col).toString()).value), Number(document.getElementById('w' + (row * 4 + col).toString()).value)]);
         }
     }
+    //var sigWeight = 0;
+    //for(var i = 0; i < 16; i++) {
+    //    sigWeight += points[i][3];
+    //}
     var bspline_matrix = [[0, 0, 0, 1/6],
                         [1/6, 1/2, 1/2, -1/2],
                         [2/3, 0, -1, 1/2],
@@ -42,12 +46,18 @@ function B_Spline_NURB(aziNum, eleNum, crystal) {
             this.vertices[vertexOffset] = 0;
             this.vertices[vertexOffset + 1] = 0;
             this.vertices[vertexOffset + 2] = 0;
+            var sigWeight = 0;
             for (var i = 0; i < 4; i++) {
                 for (var j = 0; j < 4; j++) {
-                    var weight = this.getBU(i,u) * this.getBU(j, v);
-                    this.vertices[vertexOffset] += weight * points[i * 4 + j][0];
-                    this.vertices[vertexOffset + 1] += weight * points[i * 4 + j][1];
-                    this.vertices[vertexOffset + 2] += weight * points[i * 4 + j][2];
+                    sigWeight += this.getBU(i,u) * this.getBU(j, v) * points[i*4 + j][3];
+                }
+            }
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    var weight = this.getBU(i,u) * this.getBU(j, v) * points[i*4 + j][3];
+                    this.vertices[vertexOffset] += weight/sigWeight * points[i * 4 + j][0];
+                    this.vertices[vertexOffset + 1] += weight/sigWeight * points[i * 4 + j][1];
+                    this.vertices[vertexOffset + 2] += weight/sigWeight * points[i * 4 + j][2];
                 }
             }
             vertexOffset += 3;
