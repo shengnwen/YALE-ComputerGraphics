@@ -38,7 +38,7 @@
 
         // Only continue if WebGL is available and working
         if (gl)  {
-            primitive = new B_Spline(4, 4, false);
+            primitive = new B_Spline_NURB(4, 4, false);
             initialize(gl, primitive);
             setInterval(draw, 20);
         }

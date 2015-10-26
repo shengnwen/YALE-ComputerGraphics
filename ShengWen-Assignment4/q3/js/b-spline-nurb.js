@@ -3,11 +3,11 @@
  */
 
 
-function B_Spline(aziNum, eleNum, crystal) {
+function B_Spline_NURB(aziNum, eleNum, crystal) {
 
 
 
-    this.name = "b-spline";
+    this.name = "nurb";
 
     var radius = 1.0;
     this.aziNum = aziNum;

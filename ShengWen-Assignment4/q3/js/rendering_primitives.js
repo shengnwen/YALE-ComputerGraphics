@@ -146,7 +146,9 @@ function drawThePrimitive(gl, primitive) {
     } else if (primitive.name == 'torus') {
         viewMat = SglMat4.lookAt([6, 4, 8], [0, 0.5, 0], [0, 1, 0]);
     } else if (primitive.name == 'b-spline') {
-        viewMat = SglMat4.lookAt([0, -1, 4], [0, 0, 0], [0, 1, 0]);
+        viewMat = SglMat4.lookAt([6, 3, 5], [0, 0, 0], [0, 1, 0]);
+    } else if (primitive.name == 'nurb') {
+        viewMat = SglMat4.lookAt([6, 3, 5], [0, 0, 0], [0, 1, 0]);
     }
 
     var modelMat = SglMat4.rotationAngleAxis(sglDegToRad(-currentAngle), [0, 1, 0]);
