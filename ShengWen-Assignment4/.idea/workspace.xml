@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f42ebf1a-a23a-47ae-a3dd-e3dbd8fd1b20" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q4/js/loop_tetrahedron.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assign4/assign4.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assign4/spline-interp.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Assign4/tridiag.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/q1.doc" afterPath="$PROJECT_DIR$/q1/q1.doc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/readme.doc" afterPath="$PROJECT_DIR$/q2/readme.doc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/readme.doc" afterPath="$PROJECT_DIR$/q4/readme.doc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/primitives_b-spline-nurb.html" afterPath="$PROJECT_DIR$/q3/primitives_b-spline-nurb.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/primitives_b-spline.html" afterPath="$PROJECT_DIR$/q3/primitives_b-spline.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html" afterPath="$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/spline-interp-adaptive.html" afterPath="$PROJECT_DIR$/q2/spline-interp-adaptive.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/js/tetrahedron_loop.js" afterPath="$PROJECT_DIR$/q4/js/tetrahedron_loop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShengWen-Assignment4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,21 +30,51 @@
     <splitter split-orientation="horizontal" split-proportion="0.8025922">
       <split-first>
         <leaf>
-          <file leaf-file-name="tetrahedron_loop.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="tetrahedron_loop.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/q4/js/tetrahedron_loop.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.44558522">
+                <state vertical-scroll-proportion="-7.4814816">
                   <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="primitives_tetrahedron_loop.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="primitives_tetrahedron_loop.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-21.25">
-                  <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+                <state vertical-scroll-proportion="0.5714286">
+                  <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="spline-interp-adaptive.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/q2/spline-interp-adaptive.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-89.541664">
+                  <caret line="149" column="25" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="primitives_b-spline.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/q3/primitives_b-spline.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-1.25">
+                  <caret line="2" column="71" selection-start-line="2" selection-start-column="71" selection-end-line="2" selection-end-column="71" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="primitives_b-spline-nurb.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/q3/primitives_b-spline-nurb.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-2.5">
+                  <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
                   <folding />
                 </state>
               </provider>
@@ -76,12 +104,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/q3/primitives_b-spline.html" />
         <option value="$PROJECT_DIR$/q3/js/b-spline.js" />
         <option value="$PROJECT_DIR$/q3/js/lib/b-spline-nurb.js" />
         <option value="$PROJECT_DIR$/q3/js/primitives.js" />
         <option value="$PROJECT_DIR$/q3/js/b-spline-nurb.js" />
-        <option value="$PROJECT_DIR$/q3/primitives_b-spline-nurb.html" />
         <option value="$PROJECT_DIR$/q3/js/rendering_primitives.js" />
         <option value="$PROJECT_DIR$/q2/spline-interp.html" />
         <option value="$PROJECT_DIR$/q4/primitives_tetrahedron.html" />
@@ -89,8 +115,10 @@
         <option value="$PROJECT_DIR$/q4/js/primitives.js" />
         <option value="$PROJECT_DIR$/q2/spline-interp-adaptive.html" />
         <option value="$PROJECT_DIR$/q4/js/loop_tetrahedron.js" />
-        <option value="$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html" />
         <option value="$PROJECT_DIR$/q4/js/tetrahedron_loop.js" />
+        <option value="$PROJECT_DIR$/q3/primitives_b-spline-nurb.html" />
+        <option value="$PROJECT_DIR$/q3/primitives_b-spline.html" />
+        <option value="$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html" />
       </list>
     </option>
   </component>
@@ -171,11 +199,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="q4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="q1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -250,9 +274,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21640626" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21640626" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -369,30 +393,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q2/spline-interp-adaptive.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32360741">
-          <caret line="149" column="25" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/q3/primitives_b-spline.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="16" column="101" selection-start-line="16" selection-start-column="101" selection-end-line="16" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/q3/primitives_b-spline-nurb.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.5">
-          <caret line="54" column="31" selection-start-line="54" selection-start-column="31" selection-end-line="54" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q4/js/primitives.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -417,18 +417,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html">
+    <entry file="file://$PROJECT_DIR$/q4/js/tetrahedron_loop.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.25">
-          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+        <state vertical-scroll-proportion="-7.4814816">
+          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q4/js/tetrahedron_loop.js">
+    <entry file="file://$PROJECT_DIR$/q2/spline-interp-adaptive.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44558522">
-          <caret line="37" column="20" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+        <state vertical-scroll-proportion="-89.541664">
+          <caret line="149" column="25" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q3/primitives_b-spline.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="2" column="71" selection-start-line="2" selection-start-column="71" selection-end-line="2" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q3/primitives_b-spline-nurb.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5">
+          <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5714286">
+          <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
           <folding />
         </state>
       </provider>
