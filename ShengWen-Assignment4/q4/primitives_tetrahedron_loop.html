@@ -5,7 +5,7 @@
 
     <script type="text/javascript" src="js/lib/spidergl.js"></script>
     <script type="text/javascript" src="js/lib/spidergl-config.js"></script>
-    <script type="text/javascript" src="js/primitives.js"></script>
+    <script type="text/javascript" src="js/tetrahedron_loop.js"></script>
     <script type="text/javascript" src="js/rendering_primitives.js"></script>
 
     <script type="text/javascript">
@@ -44,10 +44,10 @@
 <body >
 <center>
     <h1>Q1 478/578 <b>Tetrahedron</b>, ws362</h1>
-    x0 <input id="x0" type="number" value="0"> y0 <input id="y0" type="number" value="1.5"> z0 <input id="z0" type="number" value="0"><br>
-    x1 <input id="x1" type="number" value="-1.5"> y1 <input id="y1" type="number" value="0"> z1 <input id="z1" type="number" value="1"><br>
-    x2 <input id="x2" type="number" value="-1.5"> y2 <input id="y2" type="number" value="0"> z2 <input id="z2" type="number" value="-1"><br>
-    x3 <input id="x3" type="number" value="2"> y3 <input id="y3" type="number" value="0"> z3 <input id="z3" type="number" value="0"><br>
+    x0 <input id="x0" type="number" value="0"> y0 <input id="y0" type="number" value="0"> z0 <input id="z0" type="number" value="0"><br>
+    x1 <input id="x1" type="number" value="1"> y1 <input id="y1" type="number" value="0"> z1 <input id="z1" type="number" value="0"><br>
+    x2 <input id="x2" type="number" value="0"> y2 <input id="y2" type="number" value="0"> z2 <input id="z2" type="number" value="1"><br>
+    x3 <input id="x3" type="number" value="0"> y3 <input id="y3" type="number" value="1"> z3 <input id="z3" type="number" value="0"><br>
     Loop Iteration Number:<input id = "loopN" value="2"/>
     <button onclick="start()">draw</button><br>
     <canvas id="my_canvas" width="600" height="600" style="border: black solid 1px">
