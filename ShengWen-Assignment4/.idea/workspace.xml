@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f42ebf1a-a23a-47ae-a3dd-e3dbd8fd1b20" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/q1.doc" afterPath="$PROJECT_DIR$/q1/q1.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/readme.doc" afterPath="$PROJECT_DIR$/q2/readme.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/readme.doc" afterPath="$PROJECT_DIR$/q4/readme.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/primitives_b-spline-nurb.html" afterPath="$PROJECT_DIR$/q3/primitives_b-spline-nurb.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/primitives_b-spline.html" afterPath="$PROJECT_DIR$/q3/primitives_b-spline.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html" afterPath="$PROJECT_DIR$/q4/primitives_tetrahedron_loop.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ShengWen-Assignment4.zip" afterPath="$PROJECT_DIR$/../submit/ShengWen-Assignment4.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShengWen-Assignment4.iws" />
     <ignored path=".idea/workspace.xml" />
