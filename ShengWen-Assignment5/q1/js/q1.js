@@ -59,7 +59,7 @@ scene.camera = {
     point: {
         x: 0,
         y: 0,
-        z: 2.6
+        z: 5
     },
     fieldOfView: 45,
     vector: {
@@ -84,12 +84,28 @@ scene.lights = [{
 // This raytracer handles sphere objects, with any color, position, radius,
 // and surface properties.
 scene.objects = [
+    //{
+    //    type: 'sphere',
+    //    point: {
+    //        x: 0,
+    //        y: 0,
+    //        z: 0
+    //    },
+    //    color: {
+    //        x: 0,
+    //        y: 0,
+    //        z: 0
+    //    },
+    //    specular: 0.2,
+    //    lambert: 0.7,
+    //    ambient: 0.1,
+    //    radius: 1
+    //},
     {
-        type: 'sphere',
-        point: {
-            x: 0,
-            y: 0,
-            z: 0
+        type: 'superellipsoid',
+        param: {
+            t:2,
+            q:2
         },
         color: {
             x: 0,
@@ -113,6 +129,9 @@ function modifyScene() {
     ly = parseFloat(document.getElementById('lYVal').value);
     lz = parseFloat(document.getElementById('lZVal').value);
 
+    q_value = parseFloat(document.getElementById('q_value').value);
+    t_value = parseFloat(document.getElementById('t_value').value);
+
     // change x,y,z vector;
 
     radius = 1;
@@ -120,16 +139,19 @@ function modifyScene() {
     scene.objects[0].color.x = r;
     scene.objects[0].color.y = g;
     scene.objects[0].color.z = b;
+    scene.objects[0].param.q = q_value;
+    scene.objects[0].param.t = t_value;
+    //t,q
 
     var lr = Math.sqrt(lx * lx + ly * ly + lz * lz);
     if (lr < radius) {
-        document.getElementById('info').innerHTML = "The light is inside the sphere!!!";
+        document.getElementById('info').innerHTML = "The light is inside!!";
     } else {
         document.getElementById('info').innerHTML = "";
     }
-    scene.lights[0].x = lx;
-    scene.lights[0].y = ly;
-    scene.lights[0].z = lz;
+    //scene.lights[0].x = lx;
+    //scene.lights[0].y = ly;
+    //scene.lights[0].z = lz;
 }
 
 
@@ -263,7 +285,7 @@ function trace(ray, scene, depth) {
     // returned by the intersection check.
     var pointAtTime = Vector.add(ray.point, Vector.scale(ray.vector, dist));
 
-    return surface(ray, scene, object, pointAtTime, sphereNormal(object, pointAtTime), depth);
+    return surface(ray, scene, object, pointAtTime, surfaceNormal(object, pointAtTime), depth);
 }
 
 // # Detecting collisions against all objects
@@ -278,7 +300,7 @@ function intersectScene(ray, scene) {
     // and then is it closer than other objects that have been hit?
     for (var i = 0; i < scene.objects.length; i++) {
         var object = scene.objects[i],
-            dist = sphereIntersection(object, ray);
+            dist = objectIntersection(object, ray);
         if (dist !== undefined && dist < closest[0]) {
             closest = [dist, object];
         }
@@ -293,30 +315,37 @@ function intersectScene(ray, scene) {
 // Spheres are one of the simplest objects for rays to interact with, since
 // the geometrical math for finding intersections and reflections with them
 // is pretty straightforward.
-function sphereIntersection(sphere, ray) {
-    var eye_to_center = Vector.subtract(sphere.point, ray.point),
-    // picture a triangle with one side going straight from the camera point
-    // to the center of the sphere, another side being the vector.
-    // the final side is a right angle.
-    //
-    // This equation first figures out the length of the vector side
-        v = Vector.dotProduct(eye_to_center, ray.vector),
-    // then the length of the straight from the camera to the center
-    // of the sphere
-        eoDot = Vector.dotProduct(eye_to_center, eye_to_center),
-    // and compute a segment from the right angle of the triangle to a point
-    // on the `v` line that also intersects the circle
-        discriminant = (sphere.radius * sphere.radius) - eoDot + (v * v);
-    // If the discriminant is negative, that means that the sphere hasn't
-    // been hit by the ray
-    if (discriminant < 0) {
-        return;
-    } else {
-        // otherwise, we return the distance from the camera point to the sphere
-        // `Math.sqrt(dotProduct(a, a))` is the length of a vector, so
-        // `v - Math.sqrt(discriminant)` means the length of the the vector
-        // just from the camera to the intersection point.
-        return v - Math.sqrt(discriminant);
+function objectIntersection(object, ray) {
+    if (object.type == 'sphere') {
+        var eye_to_center = Vector.subtract(object.point, ray.point),
+        // picture a triangle with one side going straight from the camera point
+        // to the center of the sphere, another side being the vector.
+        // the final side is a right angle.
+        //
+        // This equation first figures out the length of the vector side
+            v = Vector.dotProduct(eye_to_center, ray.vector),
+        // then the length of the straight from the camera to the center
+        // of the sphere
+            eoDot = Vector.dotProduct(eye_to_center, eye_to_center),
+        // and compute a segment from the right angle of the triangle to a point
+        // on the `v` line that also intersects the circle
+            discriminant = (sphere.radius * sphere.radius) - eoDot + (v * v);
+        // If the discriminant is negative, that means that the sphere hasn't
+        // been hit by the ray
+        if (discriminant < 0) {
+            return;
+        } else {
+            // otherwise, we return the distance from the camera point to the sphere
+            // `Math.sqrt(dotProduct(a, a))` is the length of a vector, so
+            // `v - Math.sqrt(discriminant)` means the length of the the vector
+            // just from the camera to the intersection point.
+            return v - Math.sqrt(discriminant);
+        }
+    }
+    else if (object.type == 'superellipsoid') {
+        var dStart = 0;
+        var dEnd = Vector.length(ray.point);
+        return binaryCalDistance(object.param.q, object.param.t, ray.point, ray.vector,dStart, dEnd);
     }
 }
 
@@ -324,9 +353,25 @@ function sphereIntersection(sphere, ray) {
 // a vector that's perpendicular to the surface and radiates outward. We need
 // to know this so that we can calculate the way that a ray reflects off of
 // a sphere.
-function sphereNormal(sphere, pos) {
-    return Vector.unitVector(
-        Vector.subtract(pos, sphere.point));
+function surfaceNormal(object, pos) {
+    if (object.type == 'sphere') {
+        return Vector.unitVector(
+            Vector.subtract(pos, sphere.point));
+    }
+    else if (object.type == 'superellipsoid') {
+        // approximation
+        var delta = 0.01;
+        var normal = {x:0, y:0, z:0};
+        var q = object.param.q;
+        var t = object.param.t;
+        var pX = {x: pos.x + delta, y:pos.y, z:pos.z};
+        var pY = {x: pos.x, y:pos.y + delta, z:pos.z};
+        var pZ = {x: pos.x, y:pos.y, z:pos.z  + delta};
+        normal.x = (FSuperellipsoid(pX, t, q) - FSuperellipsoid(pos, t, q))/delta;
+        normal.y = (FSuperellipsoid(pY, t, q) - FSuperellipsoid(pos, t, q))/delta;
+        normal.z = (FSuperellipsoid(pZ, t, q) - FSuperellipsoid(pos, t, q))/delta;
+        return Vector.unitVector(normal);
+    }
 }
 
 // # Surface
@@ -375,6 +420,35 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
     return Vector.add3(c,
         Vector.scale(b, lambertAmount * object.lambert),
         Vector.scale(b, object.ambient));
+}
+
+function FSuperellipsoid(p, t_value, q_value) {
+    var xPower = Math.pow(Math.abs(p.x), q_value);
+    var yPower = Math.pow(Math.abs(p.y), q_value);
+    var zPower = Math.pow(Math.abs(p.z), t_value);
+    var t_q = t_value / q_value;
+    return Math.pow(xPower + yPower, t_q) + zPower - 1;
+}
+
+function binaryCalDistance(q, t, p0, v, dStart, dEnd) {
+    var pStart = Vector.add(Vector.scale(v, dStart), p0);
+    var pEnd = Vector.add(Vector.scale(v, dEnd), p0);
+    //bin
+    // dEnd.z = 0
+    var dMid = (dStart + dEnd) / 2;
+    var pMid = Vector.add(Vector.scale(v, dMid), p0);
+    var fValue = FSuperellipsoid(pMid, t, q);
+
+    if (Math.abs(dMid - dStart) <= 0.0001 || Math.abs(dMid - dEnd) <= 0.0001) {
+        return;
+    }
+    if (Math.abs(fValue) <= 0.01) {
+        return dMid;
+    } else if (fValue > 0) {
+        return binaryCalDistance(q, t, p0, v, dMid, dEnd);
+    } else {
+        return binaryCalDistance(q, t, p0, v, dStart, dMid);
+    }
 }
 
 function isLightVisible(pt, scene, light) {
