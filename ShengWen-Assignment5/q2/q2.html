@@ -5,26 +5,27 @@
     </script>
 </head>
 <body>
-<h1> <b>Q1</b> 578 Other, ID: ws362</h1>
-<p>Horizontal Color Weight <b>a1 * square(x/width)</b> %255, Vertical Color Weight = <b>a2 * square(x/height)</b>  %255</p>
-<canvas id="myCanvas" width="500" height="500"></canvas>
-<p> Enter value a1, a2  for calculation:</p>
-<p>
-    a1:<input id = "a1" value="10" step="1" onchange="checkArg(this)"/>
-    a2:<input id = "a2" value="5" step="1" onchange="checkArg(this)"/>
-</p>
-<p>
-    r <input id="verticalr" type="number" value="255" onchange="checkColor(this)">
-    g <input id="verticalg" type="number" value="30" onchange="checkColor(this)">
-    b <input id="verticalb" type="number" value="30" onchange="checkColor(this)">
-</p>
+<h1> <b>Q2</b></h1>
+<canvas id="myCanvas" width="512px" height="512px"></canvas>
 
 <p>
-    r <input id="horizontalr" type="number" value="100" onchange="checkColor(this)">
-    g <input id="horizontalg" type="number" value="150" onchange="checkColor(this)">
-    b <input id="horizontalb" type="number" value="200" onchange="checkColor(this)">
+    X1(0 - 512):<input id = "x1" value="200"/>
+    Y1(0 - 512):<input id="y1" value="245" />
+    R1(0 - 512):<input id="R1" value="55"/>
 </p>
-<p> Make the image <input id="someInput" type="button" onClick="doStuff()"></p>
+<p>
+    X2(0 - 512):<input id = "x2" value="200"/>
+    Y2(0 - 512):<input id="y2" value="225" />
+    R2(0 - 512):<input id="R2" value="80"/>
+</p>
+<p>
+    X3(0 - 512):<input id = "x3" value="200"/>
+    Y3(0 - 512):<input id="y3" value="200" />
+    R3(0 - 512):<input id="R3" value="80"/>
+</p>
+
+
+<p> Make the image <input id="someInput" type="button" value="draw" onClick="doStuff()"></p>
 
 <p id="info" style="color: red;"></p>
 

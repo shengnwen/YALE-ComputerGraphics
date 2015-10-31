@@ -33,66 +33,63 @@ function checkColor(e) {
     e.value = n;
 
 }
+function cal_ri2(x, y, xi, yi) {
+    return (x - xi)*(x - xi) + (y - yi)*(y - yi);
+}
+function Fi(x, y, Ri, ri2){
+    var t2 = ri2/(Ri*Ri);
+    if (t2 <= 1) {
+        return -4/9*t2*t2*t2 + 17/9*t2*t2 - 22/9*t2 + 1;
+    } else {
+        return 0;
+    }
+}
+function C(x, y, xi, yi, Ri) {
+    var sumF = 0;
+    for (var i = 0; i < 3; i++) {
+        var ri2 = cal_ri2(x, y, xi[i], yi[i]);
+        sumF += Fi(x, y, Ri[i], ri2);
+    }
+    return Math.max(sumF - 0.1, 0);
+}
 function doStuff() {
 
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    var imgWidth = 500;
-    var imgHeight = 500;
-    var a1 = parseInt(document.getElementById("a1").value);
-    //var b1 = parseInt(document.getElementById("b1").value);
-    var a2 = parseInt(document.getElementById("a2").value);
-    //var b2 = parseInt(document.getElementById("b2").value);
-    var vco = [255, 255, 255];
-    vco[0] = document.getElementById("verticalr").value;
-    vco[1] = document.getElementById("verticalg").value;
-    vco[2] = document.getElementById("verticalb").value;
-    var hco = [255, 255, 255];
-    hco[0] = document.getElementById("horizontalr").value;
-    hco[1] = document.getElementById("horizontalg").value;
-    hco[2] = document.getElementById("horizontalb").value;
+    var imgWidth = Number(c.width);
+    var imgHeight = Number(c.height);
+    var xi = [];
+    var yi = [];
+    var Ri = [];
+    for (var i = 0; i < 3; i++) {
+        xi.push(Number(document.getElementById("x" + (i + 1).toString()).value)/imgWidth);
+        yi.push(Number(document.getElementById("y" + (i + 1).toString()).value)/imgHeight);
+        Ri.push(Number(document.getElementById("R" + (i + 1).toString()).value)/imgWidth/Math.sqrt(2));
+
+    }
     var imgData = ctx.createImageData(imgWidth, imgHeight);
-
-    // modify this section to make colors varying with sine functions
-    // imgWidth repeat hcy times
-    //imgHeight repeart vcy times
-
     // start to draw
+    var skyColor = [50, 150, 255];
+    var cloudColor = [255, 255, 255];
+    var maxC = 0;
+
+    //computer Max C
+    for (var i = 0; i < imgHeight; i++) {
+        for (var j = 0; j < imgWidth; j++) {
+            var cValue = C(i/imgHeight, j/imgWidth, xi, yi, Ri);
+            maxC = Math.max(maxC, cValue);
+        }
+    }
+
     for (var i = 0; i < imgHeight; i++) {
         for (var j = 0; j < imgWidth; j++) {
             var index = (i * imgWidth + j) * 4;
-            var hweight = a1 * j * j / (imgWidth * imgWidth) ;
-            var vweight = a2 * i * i / (imgHeight * imgHeight);
-            imgData.data[index] = ((vco[0] * vweight + hco[0] * hweight) / 2) % 255;
-            imgData.data[index + 1] = ((vco[1] * vweight + hco[1] * hweight) / 2) % 255;
-            imgData.data[index + 2] = ((vco[2] * vweight + hco[2] * hweight) / 2) % 255;
+            var cValue = C(i/imgHeight, j/imgWidth, xi, yi, Ri);
+            for (var k = 0; k < 3; k++) {
+                imgData.data[index + k] = cValue/maxC * (cloudColor[k] - skyColor[k]) + skyColor[k];
+            }
             imgData.data[index + 3] = 255;
         }
     }
-    //for (jj = 0; jj < imgWidth; jj++)
-    //{ var qq = jj*4;
-    //    for(ii = 0; ii < imgHeight; ii += 1)
-    //{
-    //    var pp = (ii*imgWidth*4)+qq;
-    //    var hsin = Math.sin(jj*hcy/imgWidth*2*Math.PI);
-    //    var vsin = Math.sin(ii*vcy/imgHeight*2*Math.PI);
-    //    imgData.data[pp] = vco[0]*vsin + hco[0]*hsin;
-    //    imgData.data[pp+1] = vco[1]*vsin + hco[1]*hsin;
-    //    imgData.data[pp+2] = vco[2]*vsin + hco[2]*hsin;
-    //    if(imgData.data[pp] > 255) {
-    //        imgData.data[pp] = 255
-    //    }
-    //    if(imgData.data[pp + 1] > 255) {
-    //        imgData.data[pp + 1] = 255
-    //    }
-    //    if(imgData.data[pp + 2] > 255) {
-    //        imgData.data[pp + 2] = 255
-    //    }
-    //    imgData.data[pp+3]=255;
-    //
-    //}
-    //}
-
-
     ctx.putImageData(imgData, 20, 20);
 }
