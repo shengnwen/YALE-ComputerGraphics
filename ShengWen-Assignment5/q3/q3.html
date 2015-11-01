@@ -37,6 +37,49 @@ function Plotit(ccanvas, horizontal,vertical,lcolor){
 		ccanvas.stroke();
 		} 
 
+function calXYZ(spectrum, x, y, z) {
+	var xyz = [0, 0, 0];
+	for (var i = 0; i < spectrum.length; i++) {
+		xyz[0] += spectrum[i] * x[i];
+		xyz[1] += spectrum[i] * y[i];
+		xyz[2] += spectrum[i] * z[i];
+	}
+	/*var sum = xyz[0] + xyz[1] + xyz[2];
+	for (var i = 0; i < 3; i++) {
+		xyz[i] /= sum;
+	}*/
+	return xyz;
+}
+
+function calStandard(white,x,y,z) {
+    return xyzToRgb(calXYZ(white, x, y, z));
+}
+
+function toStandardRgb(standard, rgb) {
+    var standardRGB = [0, 0, 0];
+    for (var i = 0; i < 3; i++) {
+        standardRGB[i] = Math.floor(rgb[i] / standard[i] * 255);
+        if (standardRGB[i] > 255) {
+            standardRGB[i] = 255;
+        }
+    }
+    return standardRGB;
+}
+
+function xyzToRgb(xyz){
+	var rgb = [0, 0, 0];
+	var sRGB = [[3.2410,-1.5374,-0.4986],
+		[-0.9692,1.8760,0.0416],
+		[0.056,-0.2040,1.057]];
+	for (var i = 0; i < 3; i++) {
+		for (var j = 0; j < 3; j++) {
+			rgb[i] += sRGB[i][j] * xyz[j];
+		}
+		rgb[i] = Math.floor(rgb[i] * 255);
+	}
+	return rgb;
+}
+
 function DisplayPlots(ccolor) {
 
 	var canvas = document.getElementById("XYZCanvas");
@@ -149,12 +192,21 @@ function DisplayPlots(ccolor) {
 
       context2.beginPath();
       context2.rect(0, 0, 50, 50);
-      context2.fillStyle = 'rgb(0,0,0)';
+
+		var xyz = calXYZ(spectrum, X, Y, Z);
+		var rgb = xyzToRgb(xyz);
+        var whiteRGB = calStandard(white, X, Y, Z);
+        rgb = toStandardRgb(whiteRGB, rgb);
+		var rgbStr = 'rgb('+rgb[0].toString() + "," + rgb[1].toString() + ","+rgb[2].toString() +")";
+		context2.fillStyle = rgbStr;
+//      context2.fillStyle = 'rgb(0,0,0)';
+
       context2.fill();
       context2.stroke();
       context2.font = '8pt Calibri';
       context2.textAlign = 'left';
       context2.fillStyle = 'black';
+	//context2.fillStyle = rgbStr;
       context2.fillText('This box should be colored with the RGB values computed from this spectrum', 55,50);
       context2.fillText(ccolor, 5,60);
      
