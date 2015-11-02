@@ -58,13 +58,13 @@ var scene = {};
 scene.camera = {
     point: {
         x: 0,
-        y: 0,
+        y: -5,
         z: 5
     },
     fieldOfView: 45,
     vector: {
         x: 0,
-        y: 0,
+        y: 1,
         z: 1
     }
 };
@@ -360,7 +360,7 @@ function surfaceNormal(object, pos) {
     }
     else if (object.type == 'superellipsoid') {
         // approximation
-        var delta = 0.01;
+        var delta = 0.1;
         var normal = {x:0, y:0, z:0};
         var q = object.param.q;
         var t = object.param.t;

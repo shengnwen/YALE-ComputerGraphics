@@ -72,9 +72,7 @@ function xyzToRgb(xyz){
 		[-0.9692,1.8760,0.0416],
 		[0.056,-0.2040,1.057]];
 	for (var i = 0; i < 3; i++) {
-		for (var j = 0; j < 3; j++) {
-			rgb[i] += sRGB[i][j] * xyz[j];
-		}
+		rgb[i] = sRGB[i][0]*xyz[0] + sRGB[i][1] * xyz[1] + sRGB[i][2] * xyz[2];
 		rgb[i] = Math.floor(rgb[i] * 255);
 	}
 	return rgb;

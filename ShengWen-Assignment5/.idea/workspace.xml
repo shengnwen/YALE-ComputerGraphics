@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9518f7fa-802a-433d-baf3-298835762600" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/js/q1.js" afterPath="$PROJECT_DIR$/q1/js/q1.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/q3.html" afterPath="$PROJECT_DIR$/q3/q3.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShengWen-Assignment5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +25,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="q1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/q1/q1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5">
+              <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="q1.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/q1/js/q1.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-23.333334">
+              <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+              <folding>
+                <element signature="e#1798#2390#0" expanded="false" />
+                <element signature="e#2232#2296#0" expanded="false" />
+                <element signature="n#!!block;n#draw#0" expanded="false" />
+                <element signature="e#5283#5357#0" expanded="false" />
+                <element signature="e#5823#5897#0" expanded="false" />
+                <element signature="e#7751#7761#0" expanded="false" />
+                <element signature="e#9160#9205#0" expanded="false" />
+                <element signature="e#9955#9998#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="q3.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/q3/q3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.34759358">
-              <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.39910978">
+              <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -44,9 +75,9 @@
         <option value="$PROJECT_DIR$/q1/q2.html" />
         <option value="$PROJECT_DIR$/q1/js/q2.js" />
         <option value="$PROJECT_DIR$/q1/q1.html" />
-        <option value="$PROJECT_DIR$/q1/js/q1.js" />
         <option value="$PROJECT_DIR$/q2/js/q2.js" />
         <option value="$PROJECT_DIR$/q2/q2.html" />
+        <option value="$PROJECT_DIR$/q1/js/q1.js" />
         <option value="$PROJECT_DIR$/q3/q3.html" />
       </list>
     </option>
@@ -59,10 +90,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="288" />
-    <option name="y" value="208" />
-    <option name="width" value="1035" />
-    <option name="height" value="709" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -121,6 +150,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="q1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="q1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -129,7 +190,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -182,10 +243,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="288" y="208" width="1035" height="709" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1884058" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15234375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -227,13 +288,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="427" column="39" selection-start-line="427" selection-start-column="39" selection-end-line="427" selection-end-column="39" />
           <folding>
-            <element signature="e#2231#2295#0" expanded="false" />
+            <element signature="e#2232#2296#0" expanded="false" />
             <element signature="n#!!block;n#draw#0" expanded="false" />
-            <element signature="e#5282#5356#0" expanded="false" />
-            <element signature="e#5822#5896#0" expanded="false" />
-            <element signature="e#7750#7760#0" expanded="false" />
-            <element signature="e#9159#9204#0" expanded="false" />
-            <element signature="e#9954#9997#0" expanded="false" />
+            <element signature="e#5283#5357#0" expanded="false" />
+            <element signature="e#5823#5897#0" expanded="false" />
+            <element signature="e#7751#7761#0" expanded="false" />
+            <element signature="e#9160#9205#0" expanded="false" />
+            <element signature="e#9955#9998#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -269,13 +330,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2231#2295#0" expanded="false" />
+            <element signature="e#2232#2296#0" expanded="false" />
             <element signature="n#!!block;n#draw#0" expanded="false" />
-            <element signature="e#5282#5356#0" expanded="false" />
-            <element signature="e#5822#5896#0" expanded="false" />
-            <element signature="e#7750#7760#0" expanded="false" />
-            <element signature="e#9159#9204#0" expanded="false" />
-            <element signature="e#9954#9997#0" expanded="false" />
+            <element signature="e#5283#5357#0" expanded="false" />
+            <element signature="e#5823#5897#0" expanded="false" />
+            <element signature="e#7751#7761#0" expanded="false" />
+            <element signature="e#9160#9205#0" expanded="false" />
+            <element signature="e#9955#9998#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -297,30 +358,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/q1/js/q1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="427" column="39" selection-start-line="427" selection-start-column="39" selection-end-line="427" selection-end-column="39" />
-          <folding>
-            <element signature="e#2231#2295#0" expanded="false" />
-            <element signature="n#!!block;n#draw#0" expanded="false" />
-            <element signature="e#5282#5356#0" expanded="false" />
-            <element signature="e#5822#5896#0" expanded="false" />
-            <element signature="e#7750#7760#0" expanded="false" />
-            <element signature="e#9159#9204#0" expanded="false" />
-            <element signature="e#9954#9997#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/q1/q1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25677603">
-          <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -340,10 +377,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/q1/q1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q1/js/q1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.333334">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding>
+            <element signature="e#1798#2390#0" expanded="false" />
+            <element signature="e#2232#2296#0" expanded="false" />
+            <element signature="n#!!block;n#draw#0" expanded="false" />
+            <element signature="e#5283#5357#0" expanded="false" />
+            <element signature="e#5823#5897#0" expanded="false" />
+            <element signature="e#7751#7761#0" expanded="false" />
+            <element signature="e#9160#9205#0" expanded="false" />
+            <element signature="e#9955#9998#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/q3/q3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.34759358">
-          <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.39910978">
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
           <folding />
         </state>
       </provider>
