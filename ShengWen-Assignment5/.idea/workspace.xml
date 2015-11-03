@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9518f7fa-802a-433d-baf3-298835762600" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/readme.doc" afterPath="$PROJECT_DIR$/q1/readme.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/q1.html" afterPath="$PROJECT_DIR$/q1/q1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/js/q1.js" afterPath="$PROJECT_DIR$/q1/js/q1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/q2.html" afterPath="$PROJECT_DIR$/q2/q2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/js/q2.js" afterPath="$PROJECT_DIR$/q2/js/q2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ShengWen-Assignment5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,20 +33,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="q2.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="q2.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/q2/js/q2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.8137931">
+              <caret line="92" column="13" selection-start-line="89" selection-start-column="12" selection-end-line="92" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="q2.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="q2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/q2/q2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08559201">
+            <state vertical-scroll-proportion="-2.5">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
@@ -88,8 +83,8 @@
         <option value="$PROJECT_DIR$/q3/q3.html" />
         <option value="$PROJECT_DIR$/q1/js/q1.js" />
         <option value="$PROJECT_DIR$/q1/q1.html" />
-        <option value="$PROJECT_DIR$/q2/js/q2.js" />
         <option value="$PROJECT_DIR$/q2/q2.html" />
+        <option value="$PROJECT_DIR$/q2/js/q2.js" />
       </list>
     </option>
   </component>
@@ -475,18 +470,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q2/js/q2.js">
+    <entry file="file://$PROJECT_DIR$/q2/q2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+        <state vertical-scroll-proportion="-2.5">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q2/q2.html">
+    <entry file="file://$PROJECT_DIR$/q2/js/q2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08559201">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.8137931">
+          <caret line="92" column="13" selection-start-line="89" selection-start-column="12" selection-end-line="92" selection-end-column="13" />
           <folding />
         </state>
       </provider>

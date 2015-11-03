@@ -88,6 +88,7 @@ function doStuff() {
             var index = (i * imgWidth + j) * 4;
             var cValue = C(i/imgHeight, j/imgWidth, xi, yi, Ri);
             for (var k = 0; k < 3; k++) {
+                // scale color of cloud/sky
                 imgData.data[index + k] = cValue/maxC * (cloudColor[k] - skyColor[k]) + skyColor[k];
             }
             imgData.data[index + 3] = 255;
