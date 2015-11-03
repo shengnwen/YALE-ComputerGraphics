@@ -58,13 +58,13 @@ var scene = {};
 scene.camera = {
     point: {
         x: 0,
-        y: -5,
+        y: 0,
         z: 5
     },
     fieldOfView: 45,
     vector: {
         x: 0,
-        y: 1,
+        y: 0,
         z: 1
     }
 };
@@ -108,9 +108,9 @@ scene.objects = [
             q:2
         },
         color: {
-            x: 0,
-            y: 0,
-            z: 0
+            x: 3,
+            y: 3,
+            z: 3
         },
         specular: 0.2,
         lambert: 0.7,
@@ -121,9 +121,9 @@ scene.objects = [
 
 function modifyScene() {
 
-    r = parseInt(document.getElementById('rVal').value);
-    g = parseInt(document.getElementById('gVal').value);
-    b = parseInt(document.getElementById('bVal').value);
+    //r = parseInt(document.getElementById('rVal').value);
+    //g = parseInt(document.getElementById('gVal').value);
+    //b = parseInt(document.getElementById('bVal').value);
 
     lx = parseFloat(document.getElementById('lXVal').value);
     ly = parseFloat(document.getElementById('lYVal').value);
@@ -136,9 +136,9 @@ function modifyScene() {
 
     radius = 1;
     scene.objects[0].radius = radius;
-    scene.objects[0].color.x = r;
-    scene.objects[0].color.y = g;
-    scene.objects[0].color.z = b;
+    //scene.objects[0].color.x = r;
+    //scene.objects[0].color.y = g;
+    //scene.objects[0].color.z = b;
     scene.objects[0].param.q = q_value;
     scene.objects[0].param.t = t_value;
     //t,q
@@ -442,7 +442,7 @@ function binaryCalDistance(q, t, p0, v, dStart, dEnd) {
     if (Math.abs(dMid - dStart) <= 0.0001 || Math.abs(dMid - dEnd) <= 0.0001) {
         return;
     }
-    if (Math.abs(fValue) <= 0.01) {
+    if (Math.abs(fValue) <= 0.1) {
         return dMid;
     } else if (fValue > 0) {
         return binaryCalDistance(q, t, p0, v, dMid, dEnd);

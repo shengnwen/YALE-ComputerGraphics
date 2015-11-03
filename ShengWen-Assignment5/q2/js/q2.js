@@ -62,8 +62,10 @@ function doStuff() {
     var yi = [];
     var Ri = [];
     for (var i = 0; i < 3; i++) {
-        xi.push(Number(document.getElementById("x" + (i + 1).toString()).value)/imgWidth);
-        yi.push(Number(document.getElementById("y" + (i + 1).toString()).value)/imgHeight);
+        //xi.push(Number(document.getElementById("x" + (i + 1).toString()).value)/imgWidth);
+        //yi.push(Number(document.getElementById("y" + (i + 1).toString()).value)/imgHeight);
+        yi.push(Number(document.getElementById("x" + (i + 1).toString()).value)/imgWidth);
+        xi.push(Number(document.getElementById("y" + (i + 1).toString()).value)/imgHeight);
         Ri.push(Number(document.getElementById("R" + (i + 1).toString()).value)/imgWidth/Math.sqrt(2));
 
     }
