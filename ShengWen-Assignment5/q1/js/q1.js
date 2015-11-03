@@ -108,9 +108,9 @@ scene.objects = [
             q:2
         },
         color: {
-            x: 3,
-            y: 3,
-            z: 3
+            x: 100,
+            y: 100,
+            z: 100
         },
         specular: 0.2,
         lambert: 0.7,
