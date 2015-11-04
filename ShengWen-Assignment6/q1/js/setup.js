@@ -5,7 +5,7 @@
 // # Setup modified to get rid of chunky pixels that were scaled
 var c = document.getElementById('c'),
     width = 640, // * 0.5,
-    height = 480 ; // * 0.5;
+    height = 480; // * 0.5;
 
 // Get a context in order to generate a proper data array. We aren't going to
 // use traditional Canvas drawing functions like `fillRect` - instead this

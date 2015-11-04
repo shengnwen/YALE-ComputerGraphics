@@ -1,5 +1,3 @@
-
-
 // # Throwing Rays
 //
 // This is one part where we can't follow nature exactly: technically photons
@@ -19,10 +17,9 @@ function render(scene) {
     var camera = scene.camera,
         objects = scene.objects,
         lights = scene.lights;
-    var img = [ ];
-    var img2 = [ ];
+    var img = [];
+    var img2 = [];
 
-   
 
     // This process
     // is a bit odd, because there's a disconnect between pixels and vectors:
@@ -40,18 +37,18 @@ function render(scene) {
 
 
     var eyeVector = Vector.unitVector(Vector.subtract(camera.toPoint, camera.point)),
-        // and then we'll rotate this by combining it with a version that's turned
-        // 90° right and one that's turned 90° up. Since the [cross product](http://en.wikipedia.org/wiki/Cross_product)
-        // takes two vectors and creates a third that's perpendicular to both,
-        // we use a pure 'UP' vector to turn the camera right, and that 'right'
-        // vector to turn the camera up.
+    // and then we'll rotate this by combining it with a version that's turned
+    // 90° right and one that's turned 90° up. Since the [cross product](http://en.wikipedia.org/wiki/Cross_product)
+    // takes two vectors and creates a third that's perpendicular to both,
+    // we use a pure 'UP' vector to turn the camera right, and that 'right'
+    // vector to turn the camera up.
         vpRight = Vector.unitVector(Vector.crossProduct(eyeVector, camera.up)),
         vpUp = Vector.unitVector(Vector.crossProduct(vpRight, eyeVector)),
-     
-        // The actual ending pixel dimensions of the image aren't important here -
-        // note that `width` and `height` are in pixels, but the numbers we compute
-        // here are just based on the ratio between them, `height/width`, and the
-        // `fieldOfView` of the camera.
+
+    // The actual ending pixel dimensions of the image aren't important here -
+    // note that `width` and `height` are in pixels, but the numbers we compute
+    // here are just based on the ratio between them, `height/width`, and the
+    // `fieldOfView` of the camera.
         fovRadians = Math.PI * (camera.fieldOfView / 2) / 180,
         heightWidthRatio = height / width,
         halfWidth = Math.tan(fovRadians),
@@ -61,7 +58,6 @@ function render(scene) {
         pixelWidth = camerawidth / (width - 1),
         pixelHeight = cameraheight / (height - 1);
 
-   
 
     var index, color;
     var ray = {
@@ -75,44 +71,46 @@ function render(scene) {
             // vectors so that we generate versions of the `eyeVector` that are
             // skewed in each necessary direction.
 
-	    // For Assign 6, brute-force antialiasing with 25 samples/pixel
-	    color = Vector.ZERO;
+            // For Assign 6, brute-force antialiasing with 25 samples/pixel
+            color = Vector.ZERO;
 
-	    for (var s = -.4; s < .6; s+=.2) {
-		for (var r = -.4; r < .6; r +=.2) {
-		
-           	 var xcomp = Vector.scale(vpRight, ((x+s) * pixelWidth) - halfWidth),
-                     ycomp = Vector.scale(vpUp, ((y+r) * pixelHeight) - halfHeight);
+            for (var s = -.4; s < .6; s += .2) {
+                for (var r = -.4; r < .6; r += .2) {
 
-                     ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+                    var xcomp = Vector.scale(vpRight, ((x + s) * pixelWidth) - halfWidth),
+                        ycomp = Vector.scale(vpUp, ((y + r) * pixelHeight) - halfHeight);
 
-  	            // use the vector generated to raytrace the scene, returning a color
+                    ray.vector = Vector.unitVector(Vector.add3(eyeVector, xcomp, ycomp));
+
+                    // use the vector generated to raytrace the scene, returning a color
                     // as a `{x, y, z}` vector of RGB values
                     color = Vector.add(color, trace(ray, scene, 0));
-		
-	    } }
-	    color = Vector.scale(color, 0.04); 
-            index = (x  * 3) + (y * width*  3);
-	    img[index + 0] = color.x;
+
+                }
+            }
+            color = Vector.scale(color, 0.04);
+            index = (x * 3) + (y * width * 3);
+            img[index + 0] = color.x;
             img[index + 1] = color.y;
             img[index + 2] = color.z;
 
         }
     }
-      // adjust so fits into 0 to 255
-      img2 = tone_map(img);
+    // adjust so fits into 0 to 255
+    img2 = tone_map(img);
 
-      // we computed from the bottom of the image up
-      // image on the canvas has top row written first
-      for(x=0;x<width;x++){
-	for(y=0;y <height;y++){
-	    index = (x * 3) + (y* width  * 3);
-            d_index = (x * 4) + ((height-1 -y)* width * 4);
-	    data.data[d_index + 0] = img2[index+ 0];
-            data.data[d_index + 1] = img2[index +1];
-            data.data[d_index + 2] = img2[index+2];
+    // we computed from the bottom of the image up
+    // image on the canvas has top row written first
+    for (x = 0; x < width; x++) {
+        for (y = 0; y < height; y++) {
+            index = (x * 3) + (y * width * 3);
+            d_index = (x * 4) + ((height - 1 - y) * width * 4);
+            data.data[d_index + 0] = img2[index + 0];
+            data.data[d_index + 1] = img2[index + 1];
+            data.data[d_index + 2] = img2[index + 2];
             data.data[d_index + 3] = 255;
-       }} 
+        }
+    }
 
 
     // Now that each ray has returned and populated the `data` array with

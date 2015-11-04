@@ -4,11 +4,11 @@
 
 function isLightVisible(pt, scene, light) {
 
-    var distObject =  intersectScene({ 
-		point: pt, 
-		vector: Vector.unitVector(Vector.subtract( light, pt)) //  was pt light, direction reverse
-		}, scene);
+    var distObject = intersectScene({
+        point: pt,
+        vector: Vector.unitVector(Vector.subtract(light, pt)) //  was pt light, direction reverse
+    }, scene);
 // correction visible if intersection is further than distance to light
-   return (distObject[0] > Vector.length(Vector.subtract(light, pt)) -.005);   // was  > -0.005
+    return (distObject[0] > Vector.length(Vector.subtract(light, pt)) - .005);   // was  > -0.005
 
 }

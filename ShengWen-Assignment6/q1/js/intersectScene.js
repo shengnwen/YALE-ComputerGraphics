@@ -1,5 +1,3 @@
-
-
 // # Detecting collisions against all objects
 //
 // Given a ray, let's figure out whether it hits anything, and if so,
@@ -12,21 +10,21 @@ function intersectScene(ray, scene) {
     // and then is it closer than other objects that have been hit?
     for (var i = 0; i < scene.objects.length; i++) {
         var object = scene.objects[i];
-	
-	if (object.type == 'sphere')  {
+
+        if (object.type == 'sphere') {
             dist = sphereIntersection(object, ray);
-           
-            
-	}
-	if (object.type == 'spheretex') {
-	    dist = sphereIntersection(object, ray);
-	}
-	if (object.type == 'triangle') {
-           // alert("intersect tri");
-	    dist = triIntersection (object, ray);
+
+
         }
-       
-	
+        if (object.type == 'spheretex') {
+            dist = sphereIntersection(object, ray);
+        }
+        if (object.type == 'triangle') {
+            // alert("intersect tri");
+            dist = triIntersection(object, ray);
+        }
+
+
         if (dist !== undefined && dist > 0 && dist < closest[0]) {
             closest = [dist, object];
         }

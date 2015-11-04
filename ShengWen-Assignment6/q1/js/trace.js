@@ -1,5 +1,3 @@
-
-
 function trace(ray, scene, depth) {
     // This is a recursive method: if we hit something that's reflective,
     // then the call to `surface()` at the bottom will return here and try
@@ -14,7 +12,7 @@ function trace(ray, scene, depth) {
     // in this case, white.
     if (distObject[0] === Infinity) {
         return Vector.ZERO;
-    } 
+    }
 
     var dist = distObject[0],
         object = distObject[1];

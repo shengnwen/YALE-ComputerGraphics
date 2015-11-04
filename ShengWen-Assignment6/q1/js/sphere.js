@@ -1,4 +1,3 @@
-
 // ## Detecting collisions against a sphere
 
 //
@@ -7,21 +6,21 @@
 // is pretty straightforward.
 function sphereIntersection(sphere, ray) {
     var eye_to_center = Vector.subtract(sphere.point, ray.point),
-        // picture a triangle with one side going straight from the camera point
-        // to the center of the sphere, another side being the vector.
-        // the final side is a right angle.
-        //
-        // This equation first figures out the length of the vector side
+    // picture a triangle with one side going straight from the camera point
+    // to the center of the sphere, another side being the vector.
+    // the final side is a right angle.
+    //
+    // This equation first figures out the length of the vector side
         v = Vector.dotProduct(eye_to_center, ray.vector),
-        // then the length of the straight from the camera to the center
-        // of the sphere
+    // then the length of the straight from the camera to the center
+    // of the sphere
         eoDot = Vector.dotProduct(eye_to_center, eye_to_center),
-        // and compute a segment from the right angle of the triangle to a point
-        // on the `v` line that also intersects the circle
+    // and compute a segment from the right angle of the triangle to a point
+    // on the `v` line that also intersects the circle
         discriminant = (sphere.radius * sphere.radius) - eoDot + (v * v);
     //  update for Assn 6: for higher order rays make sure we are not on the sphere we
-        if (Math.abs(  (Vector.length(eye_to_center)-sphere.radius) /sphere.radius) < .001) return;
-	
+    if (Math.abs((Vector.length(eye_to_center) - sphere.radius) / sphere.radius) < .001) return;
+
     // If the discriminant is negative, that means that the sphere hasn't
     // been hit by the ray
     if (discriminant < 0) {
