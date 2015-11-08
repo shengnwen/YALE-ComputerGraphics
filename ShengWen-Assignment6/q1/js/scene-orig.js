@@ -57,7 +57,7 @@ scene.lights = [
             x: 155,
             y: 155,
             z: 155
-        },
+        }
 
     },
 // front and in the upper left
@@ -73,7 +73,7 @@ scene.lights = [
             x: 255,
             y: 220,
             z: 200
-        },
+        }
 
     },
 // front and lower right
@@ -89,9 +89,24 @@ scene.lights = [
             x: 50,
             y: 50,
             z: 100
-        },
+        }
 
     },
+    // front and in the upper left // bright, reddish
+    //{
+    //    type: 'spot', point: {
+    //    x: 5, y: 95, z: 100
+    //    },
+    //    topoint: {
+    //        x: 70,
+    //        y: 25,
+    //        z: 50 },
+    //    angle: 30,
+    //    color: {
+    //        x: 255,
+    //        y: 220,
+    //        z: 200 }
+    //}
 ];
 
 // ## Objects
@@ -336,6 +351,6 @@ scene.mats = [
         lambert: 0.1,
         ambient: 0.0
     }
-]
+];
 
 

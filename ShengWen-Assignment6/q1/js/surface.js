@@ -24,16 +24,37 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
 
             // First: can we see the light? If not, this is a shadowy area
             // and it gets no light from the lambert shading process.
+            switch (scene.lights[i].type) {
+                case 'omni':
+                {
+                    if (isLightVisible(pointAtTime, scene, lightPoint)) {
+                        // Otherwise, calculate the lambertian reflectance, which
+                        // essentially is a 'diffuse' lighting system - direct light
+                        // is bright, and from there, less direct light is gradually,
+                        // beautifully, less light.
 
-            if (isLightVisible(pointAtTime, scene, lightPoint)) {
-                // Otherwise, calculate the lambertian reflectance, which
-                // essentially is a 'diffuse' lighting system - direct light
-                // is bright, and from there, less direct light is gradually,
-                // beautifully, less light.
+                        var contribution = Vector.dotProduct(Vector.unitVector(
+                            Vector.subtract(lightPoint, pointAtTime)), normal);
+                        if (contribution > 0) lambertAmount = Vector.add(lambertAmount, Vector.scale(scene.lights[i].color, contribution));
+                    }
+                }
+                    break;
+                case 'spot':
+                {
+                    var toPoint = scene.lights[i].topoint;
+                    var angle = scene.lights[i].angle;
+                    if (isSpotLightVisible(pointAtTime, scene, lightPoint, toPoint, angle)) {
+                        // Otherwise, calculate the lambertian reflectance, which
+                        // essentially is a 'diffuse' lighting system - direct light
+                        // is bright, and from there, less direct light is gradually,
+                        // beautifully, less light.
 
-                var contribution = Vector.dotProduct(Vector.unitVector(
-                    Vector.subtract(lightPoint, pointAtTime)), normal);
-                if (contribution > 0) lambertAmount = Vector.add(lambertAmount, Vector.scale(scene.lights[i].color, contribution));
+                        var contribution = Vector.dotProduct(Vector.unitVector(
+                            Vector.subtract(lightPoint, pointAtTime)), normal);
+                        if (contribution > 0) lambertAmount = Vector.add(lambertAmount, Vector.scale(scene.lights[i].color, contribution));
+                    }
+                }
+                    break;
             }
 
 

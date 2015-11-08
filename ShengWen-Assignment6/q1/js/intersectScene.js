@@ -13,8 +13,6 @@ function intersectScene(ray, scene) {
 
         if (object.type == 'sphere') {
             dist = sphereIntersection(object, ray);
-
-
         }
         if (object.type == 'spheretex') {
             dist = sphereIntersection(object, ray);
