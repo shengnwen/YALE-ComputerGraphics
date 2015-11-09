@@ -19,6 +19,8 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
 
     scene.mats[5].n = Number(document.getElementById('exponentN').value);
     scene.mats[5].metal = (document.getElementById('isMetal').value == "True")?1:0;
+    scene.mats[5].specular = parseFloat(document.getElementById('specular5').value);
+    scene.mats[5].lambert = parseFloat(document.getElementById('lambert5').value);
 
 
     if (scene.mats[object.mat].lambert) {
@@ -117,7 +119,23 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
         if (reflectedColor) {
             //     specReflect = Vector.add(specReflect, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
             //  alert(specReflect.x);
-            c = Vector.add(c, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
+            if (scene.mats[object.mat].type == 'orig') {
+                c = Vector.add(c, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
+            } else if (scene.mats[object.mat].type == 'phong'){
+                // phone
+                //c = Vector.add(c, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
+                var phongN = scene.mats[object.mat].n;
+                var phongLVector = Vector.unitVector(Vector.subtract(lightPoint, pointAtTime));
+                var phongVVector = Vector.unitVector(Vector.subtract(scene.camera.point,pointAtTime));
+                var phoneHVector = Vector.unitVector(Vector.add(phongLVector, phongVVector));
+                var powN = Math.pow(Vector.dotProduct(phoneHVector, normal), phongN);
+                var reflectedScale = powN * scene.mats[object.mat].specular;
+                var phongReflectedColor = Vector.scale(reflectedColor, reflectedScale);
+                if (scene.mats[object.mat].metal) {
+                    phongReflectedColor = Vector.compScale(phongReflectedColor, objColor);
+                }
+                c = Vector.add(c, phongReflectedColor);
+            }
         }
     }
 

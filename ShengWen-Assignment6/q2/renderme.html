@@ -5,7 +5,10 @@
 </head>
 Ray tracing -- changing lights, reflectances and tone mapping. <br>
 Rendering will take a while.<br>
-N:<input type="number" id = "exponentN" value="2">, Metal:<select id = "isMetal"><option selected>False</option><option>True</option></select>
+N:<input type="number" id = "exponentN" value="2"><br>
+Metal:<select id = "isMetal"><option selected>False</option><option>True</option></select><br>
+Specular:<input type="number" id = "specular5" value="0.9"><br>
+Lambert:<input type="number" id = "lambert5" value="0.1"><br>
 <button onclick="render(scene)">Make the picture</button><br>
 <canvas id="c" width="800" height="600"></canvas>
 <script src="js/setup.js"></script>

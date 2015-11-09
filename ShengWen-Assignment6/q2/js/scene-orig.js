@@ -135,7 +135,8 @@ scene.objects = [
             y: 25,
             z: 50
         },
-        mat: 0,
+        //mat: 0,
+        mat: 5,
         radius: 25
     },
 
@@ -146,7 +147,8 @@ scene.objects = [
             y: 10,
             z: 50
         },
-        mat: 0,
+        //mat: 0,
+        mat: 5,
         radius: 10
     },
 // back wall, ceiling and floor are white

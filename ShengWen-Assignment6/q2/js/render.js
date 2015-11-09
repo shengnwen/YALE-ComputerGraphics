@@ -76,8 +76,10 @@ function render(scene) {
             // For Assign 6, brute-force antialiasing with 25 samples/pixel
             color = Vector.ZERO;
 
-            for (var s = -.4; s < .6; s += .2) {
-                for (var r = -.4; r < .6; r += .2) {
+            //for (var s = -.4; s < .6; s += .2) {
+            //    for (var r = -.4; r < .6; r += .2) {
+            for (var s = -.4; s < .6; s += 1) {
+                for (var r = -.4; r < .6; r += 1) {
 
                     var xcomp = Vector.scale(vpRight, ((x + s) * pixelWidth) - halfWidth),
                         ycomp = Vector.scale(vpUp, ((y + r) * pixelHeight) - halfHeight);
