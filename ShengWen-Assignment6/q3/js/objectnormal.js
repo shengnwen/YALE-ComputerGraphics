@@ -14,9 +14,16 @@ function objectNormal(object, point) {
         newnorm = Vector.unitVector(newnorm);
         return (newnorm);
     }
-    ;
     if (object.type == 'spherelong') {
-
+        var newnorm = Vector.subtract(point, object.point);
+// angle to vertical is theta
+        newnorm = Vector.unitVector(newnorm);
+        diffX = Math.cos(20 * 3.14159 * Math.abs(point.x - object.point.x) / object.radius);
+        diffY = Math.sin(20 * 3.14159 * Math.abs(point.y - object.point.y) / object.radius);
+        newnorm.x += .2 * diffX;
+        newnorm.y += .2 * diffY;
+        newnorm = Vector.unitVector(newnorm);
+        return (newnorm);
     }
 
     if (object.type == 'triangle') return (triNormal(object));
