@@ -17,6 +17,9 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
     // is our pretty shading, which shows gradations from the most lit point on
     // the object to the least.
 
+    scene.mats[5].n = Number(document.getElementById('exponentN').value);
+    scene.mats[5].metal = (document.getElementById('isMetal').value == "True")?1:0;
+
 
     if (scene.mats[object.mat].lambert) {
         for (var i = 0; i < scene.lights.length; i++) {

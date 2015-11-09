@@ -4,8 +4,9 @@
     Lighting
 </head>
 Ray tracing -- changing lights, reflectances and tone mapping. <br>
-Rendering will take a while.
-<button onclick="render(scene)">Make the picture</button>
+Rendering will take a while.<br>
+N:<input type="number" id = "exponentN" value="2">, Metal:<select id = "isMetal"><option selected>False</option><option>True</option></select>
+<button onclick="render(scene)">Make the picture</button><br>
 <canvas id="c" width="800" height="600"></canvas>
 <script src="js/setup.js"></script>
 <! no scaling of chunky pixels>

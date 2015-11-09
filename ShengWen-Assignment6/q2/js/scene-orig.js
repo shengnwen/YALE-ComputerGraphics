@@ -359,7 +359,22 @@ scene.mats = [
         specular: 0.9,
         lambert: 0.1,
         ambient: 0.0
+    },
+    // material 5
+    {
+        type: 'phong',
+        n: 2,
+        metal: 0,
+        color: {
+            x: 200, y: 170, z: 60
+        },
+        specular: 0.9,
+        lambert: 0.1,
+        ambient: 0.0
     }
 ];
+
+//scene.mats[5].n = Number(document.getElementById('exponentN').value);
+//scene.mats[5].metal = document.getElementById('isMetal').value;
 
 

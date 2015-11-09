@@ -19,6 +19,8 @@ function render(scene) {
         lights = scene.lights;
     var img = [];
     var img2 = [];
+    //scene.mats[5].n = Number(document.getElementById('exponentN').value);
+    //scene.mats[5].metal = Number(document.getElementById('isMetal').value);
 
 
     // This process
