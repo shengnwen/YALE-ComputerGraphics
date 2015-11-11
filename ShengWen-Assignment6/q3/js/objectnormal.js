@@ -20,13 +20,13 @@ function objectNormal(object, point) {
         newnorm = Vector.unitVector(newnorm);
         diffX = point.x - object.point.x;
         diffZ = point.z - object.point.z;
-        if(Math.abs(diffZ)/object.radius <= 0.01|| Math.abs(diffX) / object.radius <= 0.01 || Math.abs(Math.abs(diffZ/diffX) - 1) <= 0.05) {
+        if(Math.abs(diffZ)/object.radius <= 0.05|| Math.abs(diffX) / object.radius <= 0.05 || Math.abs(Math.abs(diffZ/diffX) - 1) <= 0.2) {
             newnorm.x *= 1.5;
             newnorm.z *= 1.5;
         } else {
             var tanVal = Math.abs(diffX / diffZ);
-            if (Math.abs(tanVal - Math.tan(Math.PI / 12 * 2)) / Math.tan(Math.PI / 12 * 2) <= 0.05 || Math.abs(tanVal - Math.tan(Math.PI / 12 * 4)) / Math.tan(Math.PI / 12 * 4) <= 0.05 ||
-                Math.abs(tanVal - Math.tan(Math.PI / 12)) / Math.tan(Math.PI / 12)<= 0.05 || Math.abs(tanVal - Math.tan(Math.PI / 12 * 5)) * Math.tan(Math.PI / 12 * 5) <= 0.05) {
+            if (Math.abs(tanVal - Math.tan(Math.PI / 12 * 2)) / Math.tan(Math.PI / 12 * 2) <= 0.2 || Math.abs(tanVal - Math.tan(Math.PI / 12 * 4)) / Math.tan(Math.PI / 12 * 4) <= 0.2 ||
+                Math.abs(tanVal - Math.tan(Math.PI / 12)) / Math.tan(Math.PI / 12)<= 0.2 || Math.abs(tanVal - Math.tan(Math.PI / 12 * 5)) * Math.tan(Math.PI / 12 * 5) <= 0.2) {
                 newnorm.x *= 1.5;
                 newnorm.z *= 1.5;
             }
