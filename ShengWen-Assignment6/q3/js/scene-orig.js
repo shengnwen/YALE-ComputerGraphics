@@ -109,7 +109,7 @@ scene.objects = [
     {
         type: 'spherelong',
         point: {
-            x: 70,
+            x: 60,
             y: 25,
             z: 50
         },
@@ -338,6 +338,6 @@ scene.mats = [
 	lambert: 0.1,
 	ambient: 0.0
 }
-]
+];
 
 

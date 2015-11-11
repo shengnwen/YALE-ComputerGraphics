@@ -20,11 +20,28 @@ function objectNormal(object, point) {
         newnorm = Vector.unitVector(newnorm);
         diffX = point.x - object.point.x;
         diffZ = point.z - object.point.z;
-        var delta = 0.2
-        if (diffZ != 0) {
-            delta *= diffX / diffZ;
+        if(Math.abs(diffZ)/object.radius <= 0.01|| Math.abs(diffX) / object.radius <= 0.01 || Math.abs(Math.abs(diffZ/diffX) - 1) <= 0.05) {
+            newnorm.x *= 1.5;
+            newnorm.z *= 1.5;
+        } else {
+            var tanVal = Math.abs(diffX / diffZ);
+            if (Math.abs(tanVal - Math.tan(Math.PI / 12 * 2)) / Math.tan(Math.PI / 12 * 2) <= 0.05 || Math.abs(tanVal - Math.tan(Math.PI / 12 * 4)) / Math.tan(Math.PI / 12 * 4) <= 0.05 ||
+                Math.abs(tanVal - Math.tan(Math.PI / 12)) / Math.tan(Math.PI / 12)<= 0.05 || Math.abs(tanVal - Math.tan(Math.PI / 12 * 5)) * Math.tan(Math.PI / 12 * 5) <= 0.05) {
+                newnorm.x *= 1.5;
+                newnorm.z *= 1.5;
+            }
         }
-        newnorm.x += delta;
+        //if (diffZ == 0 || diffX == 0 ||
+        //    Math.abs(Math.abs(diffX/diffZ) - Math.sqrt(3)) <= 0.03
+        //    || Math.abs(Math.abs(diffX / diffZ) - 0.5) <= 0.03
+        //    || Math.abs() <= 0.03) {
+        //    newnorm.x *= 1.5;
+        //    newnorm.z *= 1.5;
+        //}
+        //if (diffZ != 0) {
+        //    delta *= diffX / diffZ;
+        //}
+        //newnorm.x += delta;
         newnorm = Vector.unitVector(newnorm);
         return (newnorm);
     }
