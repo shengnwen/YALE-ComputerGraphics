@@ -118,7 +118,7 @@ scene.objects = [
     },
 
     {
-        type: 'spheretex',
+        type: 'sphere3',
         point: {
             x: 20,
             y: 10,

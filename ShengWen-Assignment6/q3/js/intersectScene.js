@@ -18,7 +18,7 @@ function intersectScene(ray, scene) {
            
             
 	}
-	if (object.type == 'spheretex' || object.type == "spherelong") {
+	if (object.type == 'spheretex' || object.type == "spherelong" || object.type == 'sphere3') {
 	    dist = sphereIntersection(object, ray);
 	}
 	if (object.type == 'triangle') {
