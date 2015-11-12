@@ -43,23 +43,23 @@ scene.camera = {
 
 scene.lights = [
 
-//    {
+    {
 //// a light in center of the ceiling
 //// omni is visible in all directions, no fall-off
-//        type: 'omni',
-//        point: {
-//            x: 50,
-//            y: 95,
-//            z: 50
-//        },
-//// gray, not very bright
-//        color: {
-//            x: 155,
-//            y: 155,
-//            z: 155
-//        }
-//
-//    },
+        type: 'omni',
+        point: {
+            x: 50,
+            y: 95,
+            z: 50
+        },
+// gray, not very bright
+        color: {
+            x: 155,
+            y: 155,
+            z: 155
+        }
+
+    },
 // front and in the upper left
 // bright, reddish
     {
@@ -107,14 +107,15 @@ scene.lights = [
             x: 255,
             y: 220,
             z: 200 }
-    },
-    {
-        type: 'spherical',
-        point: { x: 50, y: 95, z: 50 },
-        radius: 5,
-// gray, not very bright
-        color: { x: 155, y: 155, z: 155 }
     }
+//    ,
+//    {
+//        type: 'spherical',
+//        point: { x: 50, y: 95, z: 50 },
+//        radius: 5,
+//// gray, not very bright
+//        color: { x: 155, y: 155, z: 155 }
+//    }
 
 ];
 

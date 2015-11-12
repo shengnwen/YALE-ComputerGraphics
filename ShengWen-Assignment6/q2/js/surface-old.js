@@ -5,12 +5,14 @@
 // decides what color it acquires from the interaction.
 
 //updated for Assn 6 to have types for lights and colors for lambertAmount to account for light colors
+
 function calPhongContribution(pointAtTime, lightPoint, ray, normal, n) {
     var eyeVector = Vector.unitVector(Vector.subtract(ray.point, pointAtTime));
     var lightVector = Vector.unitVector(Vector.subtract(lightPoint, pointAtTime));
     var hVector = Vector.unitVector(Vector.add(lightVector, eyeVector));
     return Math.pow(Vector.dotProduct(normal, hVector), n);
 }
+
 function surface(ray, scene, object, pointAtTime, normal, depth) {
 
     var objColor = scene.mats[object.mat].color,
@@ -48,7 +50,8 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
                         if (scene.mats[object.mat].type == 'phong') {
                             contribution += calPhongContribution(pointAtTime, lightPoint, ray, normal, scene.mats[object.mat].n);
                         }
-                        if (contribution > 0) lambertAmount = Vector.add(lambertAmount, Vector.scale(scene.lights[i].color, contribution));
+                        if (contribution > 0)
+                            lambertAmount = Vector.add(lambertAmount, Vector.scale(scene.lights[i].color, contribution));
                     }
                 }
                     break;
@@ -93,6 +96,9 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
                 //
                 //                var contribution = Vector.dotProduct(Vector.unitVector(
                 //                    Vector.subtract(newLight, pointAtTime)), normal);
+                //                if (scene.mats[object.mat].type == 'phong') {
+                //                    contribution += calPhongContribution(pointAtTime, lightPoint, ray, normal, scene.mats[object.mat].n);
+                //                }
                 //                if (contribution > 0) lambertAmount = Vector.add(lambertAmount, Vector.scale(scene.lights[i].color, contribution));
                 //            }
                 //        }
@@ -100,7 +106,13 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
                 //
                 //}break;
             }
-
+            if (scene.mats[object.mat].type == 'phong' && scene.mats[object.mat].metal) {
+                if (contribution > 0) {
+                    lambertAmount = Vector.ZERO;
+                    lambertAmount = Vector.add(lambertAmount, Vector.scale(Vector.compScale(scene.mats[object.mat].color, scene.lights[i].color), contribution));
+                    //lambertAmount = Vector.scale(lambertAmount, 1. / 255.)
+                }
+            }
 
         }
     }
@@ -111,16 +123,7 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
     lambertAmount = Vector.scale(lambertAmount, scene.mats[object.mat].lambert);
     lambertAmount = Vector.scale(lambertAmount, 1. / 255.);
 
-    // **[Specular](https://en.wikipedia.org/wiki/Specular_reflection)** is a fancy word for 'reflective': rays that hit objects
-    // with specular surfaces bounce off and acquire the colors of other objects
-    // they bounce into.
-    //   if (object.specular) {
     if (scene.mats[object.mat].specular) {
-
-        // This is basically the same thing as what we did in `render()`, just
-        // instead of looking from the viewpoint of the camera, we're looking
-        // from a point on the surface of a shiny object, seeing what it sees
-        // and making that part of a reflection.
         var reflectedRay = {
             point: pointAtTime,
             vector: Vector.reflectThrough(Vector.scale(ray.vector, -1), normal)
@@ -130,25 +133,24 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
         if (reflectedColor) {
             //     specReflect = Vector.add(specReflect, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
             //  alert(specReflect.x);
-            if (scene.mats[object.mat].type == 'orig') {
+            //if (scene.mats[object.mat].type == 'orig') {
                 c = Vector.add(c, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
-            } else if (scene.mats[object.mat].type == 'phong'){
-                // phone
-                //c = Vector.add(c, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
-                var phongN = scene.mats[object.mat].n;
-                var phongLVector = Vector.unitVector(Vector.subtract(lightPoint, pointAtTime));
-                var phongVVector = Vector.unitVector(Vector.subtract(scene.camera.point,pointAtTime));
-                var phoneHVector = Vector.unitVector(Vector.add(phongLVector, phongVVector));
-                var powN = Math.pow(Vector.dotProduct(phoneHVector, normal), phongN);
-                var reflectedScale = powN * scene.mats[object.mat].specular;
-                var phongReflectedColor = Vector.scale(reflectedColor, reflectedScale);
-                if (scene.mats[object.mat].metal) {
-                    phongReflectedColor = Vector.compScale(phongReflectedColor, objColor);
-                    phongReflectedColor = Vector.scale(phongReflectedColor, 1.0 / 255);
-                }
-                phongReflectedColor = Vector.scale(phongReflectedColor, 1.8);
-                c = Vector.add(c, phongReflectedColor);
-            }
+            //} else if (scene.mats[object.mat].type == 'phong'){
+            //    // phone
+            //    //c = Vector.add(c, Vector.scale(reflectedColor, scene.mats[object.mat].specular));
+            //    var phongN = scene.mats[object.mat].n;
+            //    var phongLVector = Vector.unitVector(Vector.subtract(lightPoint, pointAtTime));
+            //    var phongVVector = Vector.unitVector(Vector.subtract(scene.camera.point,pointAtTime));
+            //    var phoneHVector = Vector.unitVector(Vector.add(phongLVector, phongVVector));
+            //    var powN = Math.pow(Vector.dotProduct(phoneHVector, normal), phongN);
+            //    var reflectedScale = powN * scene.mats[object.mat].specular;
+            //    var phongReflectedColor = Vector.scale(reflectedColor, reflectedScale);
+            //    if (scene.mats[object.mat].metal) {
+            //        phongReflectedColor = Vector.compScale(phongReflectedColor, objColor);
+            //        phongReflectedColor = Vector.scale(phongReflectedColor, 1/255);
+            //    }
+            //    c = Vector.add(c, phongReflectedColor);
+            //}
         }
     }
 

@@ -81,6 +81,7 @@ function surface(ray, scene, object, pointAtTime, normal, depth) {
                             }
                         }
                     }
+                    lambertAmount = Vector.scale(lambertAmount, 1/25);
 
                 }break;
             }
