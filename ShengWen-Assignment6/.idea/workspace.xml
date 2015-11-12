@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56e54aa5-f0dc-4cdf-979a-678012108b73" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/q2/js/surface-old.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/readme.doc" afterPath="$PROJECT_DIR$/q1/readme.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/readme.doc" afterPath="$PROJECT_DIR$/q2/readme.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q3/readme.doc" afterPath="$PROJECT_DIR$/q3/readme.doc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/js/render.js" afterPath="$PROJECT_DIR$/q2/js/render.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/js/scene-orig.js" afterPath="$PROJECT_DIR$/q2/js/scene-orig.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/js/surface.js" afterPath="$PROJECT_DIR$/q1/js/surface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q2/js/surface.js" afterPath="$PROJECT_DIR$/q2/js/surface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/q1/js/render.js" afterPath="$PROJECT_DIR$/q1/js/render.js" />
     </list>
     <ignored path="ShengWen-Assignment6.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,21 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="surface.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/q2/js/surface.js">
+      <file leaf-file-name="renderme.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/q1/renderme.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="146" column="85" selection-start-line="146" selection-start-column="85" selection-end-line="146" selection-end-column="85" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="surface-old.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/q2/js/surface-old.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="25" selection-start-line="49" selection-start-column="24" selection-end-line="51" selection-end-column="25" />
+            <state vertical-scroll-proportion="-16.875">
+              <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -61,26 +43,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="render.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/q2/js/render.js">
+      <file leaf-file-name="renderme.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/q3/renderme.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08275862">
-              <caret line="80" column="48" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-14.375">
+              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scene-orig.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/q2/js/scene-orig.js">
+      <file leaf-file-name="renderme.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/q4/renderme.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.2258065">
-              <caret line="121" column="12" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="12" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,6 +88,7 @@
         <option value="$PROJECT_DIR$/q2/js/scene-orig.js" />
         <option value="$PROJECT_DIR$/q2/js/surface.js" />
         <option value="$PROJECT_DIR$/q2/js/render.js" />
+        <option value="$PROJECT_DIR$/q1/js/render.js" />
       </list>
     </option>
   </component>
@@ -163,6 +142,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ShengWen-Assignment6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="q4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShengWen-Assignment6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="q3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -518,14 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q4/renderme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q4/js/render.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56485355">
@@ -582,14 +581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q3/renderme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.916667">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q3/js/objectnormal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.074074">
@@ -636,14 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q1/renderme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5777461">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q1/js/trace.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16551724">
@@ -652,17 +635,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q1/js/render.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027586207">
-          <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/q2/js/scene-orig.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2258065">
+        <state vertical-scroll-proportion="-0.09942363">
           <caret line="121" column="12" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="12" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -686,6 +661,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/q2/js/render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="48" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q1/js/render.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4827586">
+          <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q1/renderme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.875">
+          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/q2/renderme.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.25">
@@ -694,13 +695,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/q2/js/render.js">
+    <entry file="file://$PROJECT_DIR$/q3/renderme.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08275862">
-          <caret line="80" column="48" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-14.375">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/q4/renderme.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
