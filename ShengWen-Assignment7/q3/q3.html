@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/q3.js"></script>
+</head>
+<body>
+    Choose Image: <input type="file" id="bumpMapImg" accept="image/gif, image/jpeg, image/png" onchange="loadBumpImage()"/> <br>
+    Directional Light: X: <input type="number" id="lX" value="1"/> Y: <input type="number" id="lY" value="1"/> Z:<input type="number" id="lZ" value="1"/> <br>
+    <button onclick="copyImg()" >draw Bump Map </button> <br>
+    <img  id = "previewImg" width="300" height = "500"/>
+    <canvas id="shadedImgCanvas" width="300" height="500"/>
+
+</body>
+</html>
