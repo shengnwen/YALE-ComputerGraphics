@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script type="text/javascript" src="js/q3.js"></script>
+    <script type="text/javascript" src="js/vector.js" ></script>
+    <script type="text/javascript" src="js/q3.js" ></script>
 </head>
 <body>
-    Choose Image: <input type="file" id="bumpMapImg" accept="image/gif, image/jpeg, image/png" onchange="loadBumpImage()"/> <br>
+    Choose Image: (for browser security issues, here need to choose img inside the assignment directory)<br>
+    <input type="file" id="bumpMapImg" accept="image/gif, image/jpeg, image/png" /> <br>
     Directional Light: X: <input type="number" id="lX" value="1"/> Y: <input type="number" id="lY" value="1"/> Z:<input type="number" id="lZ" value="1"/> <br>
-    <button onclick="copyImg()" >draw Bump Map </button> <br>
-    <img  id = "previewImg" width="300" height = "500"/>
-    <canvas id="shadedImgCanvas" width="300" height="500"/>
+    <button onclick="drawBumpImg()" >draw Bump Map </button> <br>
+    <canvas id="bumpImgCanvas" />
+
 
 </body>
 </html>
