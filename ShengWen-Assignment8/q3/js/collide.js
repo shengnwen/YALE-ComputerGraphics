@@ -95,6 +95,12 @@ function update() {
 	checkbounce(ball1,W);
 	checkbounce(ball2,W);
 	checkCollision(ball1, ball2);
+    if (Math.abs(ball1.vx) <= 0.001) {
+        ball1.vx = 0;
+    }
+    if (Math.abs(ball2.vx) <= 0.001) {
+        ball2.vx = 0;
+    }
 }
 
 // Now, the animation time!
