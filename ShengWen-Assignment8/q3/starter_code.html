@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+
+<!--Colliding balls on a canvas using simple physics -->
+<!--Adapted from http://cssdeck.com/labs/lets-make-a-bouncing-ball-in-html5-canvas  -->
+
+<canvas id="canvas"></canvas>
+
+<!-- Get user input for the size and velocity of the balls -->
+
+<p> Ball1 radius (0.1 to 1) <input id="ball1radius" type="number" value="0.5">
+    x velocity (1 to 20) <input id="ball1v" type="number" value="5"></p>
+
+<p> Ball2 radius (0.1 to 1) <input id="ball2radius" type="number" value="0.5">
+    x velocity (1 to 20) <input id="ball2v" type="number" value="5"></p>
+
+<p>
+    <select id="isElastic">
+        <option>Elastic</option>
+        <option>InElastic</option>
+    </select>
+    If inelastic, energy lost (0.01 to 1):<input id="energyLost" type="number" value="0.1"/>
+</p>
+<button onclick="startAnimation()">Start Animation</button>
+
+<script src="js/collide.js"></script>
