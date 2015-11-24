@@ -68,8 +68,9 @@ function checkCollision(ball1, ball2) {
             var a = ball1.vx + ball2.vx;
             var b = ball1.vx * ball2.vx;
             var Q = a * a - (a * a - 2 * b)*(1 - energyLost);
-            var x1 = (a + Math.sqrt(a * a - 2 * Q))/2;
-            var x2 = (a - Math.sqrt(a * a - 2 * Q))/2;
+            //if(a*a - 2*Q)
+            var x1 = (a + Math.sqrt(a * a + 2 * Q))/2;
+            var x2 = (a - Math.sqrt(a * a + 2 * Q))/2;
             if (x1 * ball1.vx > 0) {
                 ball1.vx = x2;
                 ball2.vx = x1;
@@ -95,12 +96,12 @@ function update() {
 	checkbounce(ball1,W);
 	checkbounce(ball2,W);
 	checkCollision(ball1, ball2);
-    if (Math.abs(ball1.vx) <= 0.001) {
-        ball1.vx = 0;
-    }
-    if (Math.abs(ball2.vx) <= 0.001) {
-        ball2.vx = 0;
-    }
+    //if (Math.abs(ball1.vx) <= 0.001) {
+    //    ball1.vx = 0;
+    //}
+    //if (Math.abs(ball2.vx) <= 0.001) {
+    //    ball2.vx = 0;
+    //}
 }
 
 // Now, the animation time!
