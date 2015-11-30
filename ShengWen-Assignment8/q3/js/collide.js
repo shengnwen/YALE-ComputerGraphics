@@ -2,13 +2,13 @@
 
 var canvas = document.getElementById("canvas"),
 		ctx = canvas.getContext("2d");
-var W = 1000, H = W*0.2;
+var W = 600, H = W*0.3;
 canvas.height = H; canvas.width = W;
 var rad1, rad2, v1, v2;
 var isElastic;
 var energyLost;
-
-
+var bigest_k = 0;
+var together = false;
 var ball1, ball2;
 
 // Defining the balls that will collide. This will be one dimensional, so the ball only has an x position and x velocity. Each ball has a radius and color, and a method to draw it on the canvas
@@ -58,26 +58,54 @@ function checkbounce(ball,end) {
 
 function checkCollision(ball1, ball2) {
 	if (Math.abs(ball1.x - ball2.x) < ball1.rad + ball2.rad + Math.abs(ball1.vx) + Math.abs(ball2.vx)) {
+    //if (Math.abs(ball1.x - ball2.x) < ball1.rad + ball2.rad) {
         //alert("ball1x:" + ball1.x + ", ball2x:" + ball2.x + ",rad1:" + ball1.rad + ", rad2:" + ball2.rad);
         //alert("pre:" + ball1.vx + "," + ball2.vx);
+        var v1 = ball1.vx;
+        var v2 = ball2.vx;
+        var m1 = Math.pow(ball1.rad, 2);
+        var m2 = Math.pow(ball2.rad, 2);
         if (isElastic) {
-            var tmpVelocity = ball1.vx;
-            ball1.vx = ball2.vx;
-            ball2.vx = tmpVelocity;
+            ball1.vx = (v1 * (m1 - m2) + 2 * m2 * v2)/(m1 + m2);
+            ball2.vx = (v2 * (m2 - m1) + 2 * m1 * v1)/(m1 + m2);
         } else {
-            var a = ball1.vx + ball2.vx;
-            var b = ball1.vx * ball2.vx;
-            var Q = a * a - (a * a - 2 * b)*(1 - energyLost);
-            //if(a*a - 2*Q)
-            var x1 = (a + Math.sqrt(a * a + 2 * Q))/2;
-            var x2 = (a - Math.sqrt(a * a + 2 * Q))/2;
-            if (x1 * ball1.vx > 0) {
-                ball1.vx = x2;
-                ball2.vx = x1;
-            } else {
-                ball1.vx = x1;
-                ball2.vx = x2;
+            if (together) {
+                return;
             }
+            var old_2E = m1 * Math.pow(v1, 2) + m2 * Math.pow(v2, 2);
+            var to_v = (m1 * v1 + m2 * v2) / (m1 + m2);
+            var to_2E = (m1 + m2) * Math.pow(to_v, 2);
+            var bigest_k = 1.0 - to_2E / old_2E;
+            if (energyLost >= bigest_k) {
+                alert("bigest enery lost:(2_ball_together)" + bigest_k);
+                ball1.vx = to_v;
+                ball2.vx = to_v;
+                together = true;
+            }
+            var to_2E = (1.0 - energyLost) * (m1 * Math.pow(v1, 2) + m2 * Math.pow(v2, 2));
+            var Q = m1 * v1 + m2 * v2;
+            // x = m1 * v1
+            var a = m1 + m2;
+            var b = - 2*m1 * Q;
+            var c = m1 * Math.pow(Q, 2) - m1 * m2 * to_2E;
+            var m1_v1 = (-b + Math.sqrt(b * b - 4 * a * c))/(2 * a);
+            var v1_new = m1_v1 / m1;
+            var v2_new = (Q - v1_new) / m2;
+            ball1.vx = v1_new;
+            ball2.vx = v2_new;
+            //var a = ball1.vx + ball2.vx;
+            //var b = ball1.vx * ball2.vx;
+            //var Q = a * a - (a * a - 2 * b)*(1 - energyLost);
+            ////if(a*a - 2*Q)
+            //var x1 = (a + Math.sqrt(a * a + 2 * Q))/2;
+            //var x2 = (a - Math.sqrt(a * a + 2 * Q))/2;
+            //if (x1 * ball1.vx > 0) {
+            //    ball1.vx = x2;
+            //    ball2.vx = x1;
+            //} else {
+            //    ball1.vx = x1;
+            //    ball2.vx = x2;
+            //}
         }
         //alert("after:" + ball1.vx + "," + ball2.vx);
 	}
@@ -112,6 +140,7 @@ function startAnimation() {
 		clearInterval(intervalID);
         //alert("close intervel");
 	}
+    together = false;
     rad1 = parseFloat(document.getElementById("ball1radius").value);
     rad2 = parseFloat(document.getElementById("ball2radius").value);
     v1 = parseFloat(document.getElementById("ball1v").value);
