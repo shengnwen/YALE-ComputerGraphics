@@ -57,8 +57,8 @@ function checkbounce(ball,end) {
 }
 
 function checkCollision(ball1, ball2) {
-	if (Math.abs(ball1.x - ball2.x) < ball1.rad + ball2.rad + Math.abs(ball1.vx) + Math.abs(ball2.vx)) {
-    //if (Math.abs(ball1.x - ball2.x) < ball1.rad + ball2.rad) {
+	//if (Math.abs(ball1.x - ball2.x) < ball1.rad + ball2.rad + Math.abs(ball1.vx) + Math.abs(ball2.vx)) {
+    if (Math.abs(ball1.x - ball2.x) <= ball1.rad + ball2.rad) {
         //alert("ball1x:" + ball1.x + ", ball2x:" + ball2.x + ",rad1:" + ball1.rad + ", rad2:" + ball2.rad);
         //alert("pre:" + ball1.vx + "," + ball2.vx);
         var v1 = ball1.vx;
@@ -69,30 +69,32 @@ function checkCollision(ball1, ball2) {
             ball1.vx = (v1 * (m1 - m2) + 2 * m2 * v2)/(m1 + m2);
             ball2.vx = (v2 * (m2 - m1) + 2 * m1 * v1)/(m1 + m2);
         } else {
-            if (together) {
-                return;
-            }
-            var old_2E = m1 * Math.pow(v1, 2) + m2 * Math.pow(v2, 2);
-            var to_v = (m1 * v1 + m2 * v2) / (m1 + m2);
-            var to_2E = (m1 + m2) * Math.pow(to_v, 2);
-            var bigest_k = 1.0 - to_2E / old_2E;
-            if (energyLost >= bigest_k) {
-                alert("bigest enery lost:(2_ball_together)" + bigest_k);
-                ball1.vx = to_v;
-                ball2.vx = to_v;
-                together = true;
-            }
-            var to_2E = (1.0 - energyLost) * (m1 * Math.pow(v1, 2) + m2 * Math.pow(v2, 2));
-            var Q = m1 * v1 + m2 * v2;
-            // x = m1 * v1
-            var a = m1 + m2;
-            var b = - 2*m1 * Q;
-            var c = m1 * Math.pow(Q, 2) - m1 * m2 * to_2E;
-            var m1_v1 = (-b + Math.sqrt(b * b - 4 * a * c))/(2 * a);
-            var v1_new = m1_v1 / m1;
-            var v2_new = (Q - v1_new) / m2;
-            ball1.vx = v1_new;
-            ball2.vx = v2_new;
+            ball1.vx = (v1 * (m1 - m2) + 2 * m2 * v2)/(m1 + m2) * Math.sqrt(1 - energyLost);
+            ball2.vx = (v2 * (m2 - m1) + 2 * m1 * v1)/(m1 + m2)* Math.sqrt(1 - energyLost);
+            //if (together) {
+            //    return;
+            //}
+            //var old_2E = m1 * Math.pow(v1, 2) + m2 * Math.pow(v2, 2);
+            //var to_v = (m1 * v1 + m2 * v2) / (m1 + m2);
+            //var to_2E = (m1 + m2) * Math.pow(to_v, 2);
+            //var bigest_k = 1.0 - to_2E / old_2E;
+            //if (energyLost >= bigest_k) {
+            //    alert("bigest enery lost:(2_ball_together)" + bigest_k);
+            //    ball1.vx = to_v;
+            //    ball2.vx = to_v;
+            //    together = true;
+            //}
+            //var to_2E = (1.0 - energyLost) * (m1 * Math.pow(v1, 2) + m2 * Math.pow(v2, 2));
+            //var Q = m1 * v1 + m2 * v2;
+            //// x = m1 * v1
+            //var a = m1 + m2;
+            //var b = - 2*m1 * Q;
+            //var c = m1 * Math.pow(Q, 2) - m1 * m2 * to_2E;
+            //var m1_v1 = (-b + Math.sqrt(b * b - 4 * a * c))/(2 * a);
+            //var v1_new = m1_v1 / m1;
+            //var v2_new = (Q - v1_new) / m2;
+            //ball1.vx = v1_new;
+            //ball2.vx = v2_new;
             //var a = ball1.vx + ball2.vx;
             //var b = ball1.vx * ball2.vx;
             //var Q = a * a - (a * a - 2 * b)*(1 - energyLost);
