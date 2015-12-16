@@ -165,7 +165,7 @@ NVMCClient.createVelocityTechnique = function (gl){
 NVMCClient.drawScene = function (gl) {
     if(NVMCClient.n_resources_to_wait_for>0)return;
 	var width  = this.ui.width;
-	var height = this.ui.height
+	var height = this.ui.height;
 	var ratio  = width / height;
 	
 	 
@@ -186,7 +186,11 @@ NVMCClient.drawScene = function (gl) {
 	stack.loadIdentity();
 	var pos  = this.game.state.players.me.dynamicState.position;
 	var orientation  = this.game.state.players.me.dynamicState.orientation;
-this.cameras[this.currentCamera].setView(this.stack,this.myFrame());
+	if (!this.is_collide) {
+		this.cameras[this.currentCamera].setView(this.stack, this.myFrame());
+	} else{
+		this.cameras[this.currentCamera].setView(this.stack, this.pre_frame);
+	}
 	this.viewFrame = SglMat4.inverse(this.stack.matrix);
 	this.drawSkyBox(gl);
 	 
@@ -307,6 +311,11 @@ NVMCClient.onInitialize = function () {
 	this.cameras[2].width  = this.ui.width;
 	this.cameras[2].height = this.ui.height;
 
+	this.coins = [];
+	for (var i = 0; i < 80; i++) {
+		this.coins.push([Math.random() * 180 - 90, Math.random() * 4 + 0.6, Math.random() * 180 - 90]);
+	}
+
 
 	/*************************************************************/
 	NVMC.log("SpiderGL Version : " + SGL_VERSION_STRING + "\n");
@@ -390,45 +399,3 @@ NVMCClient.onInitialize = function () {
 	//music
 	//document.getElementById("game-audio").play();
 };
-
-NVMCClient.onKeyUp = function (keyCode, event) {
-	if( keyCode == "2"){ this.nextCamera(); return;}
-	if( keyCode == "1"){ this.prevCamera(); return;}		
-	if( keyCode == "3"){ this.motionblur_enabled = !this.motionblur_enabled;return;}		
-	if (keyCode == "J") {
-		return;
-	}
-	if(this.carMotionKey[keyCode])
-		this.carMotionKey[keyCode](false);
-	
-	this.cameras[this.currentCamera].keyUp(keyCode) ;
-
-};
-NVMCClient.onKeyDown = function (keyCode, event) {
-
-	if (this.currentCamera != 2)
-		(this.carMotionKey[keyCode]) && (this.carMotionKey[keyCode])(true);
-
-	this.cameras[this.currentCamera].keyDown(keyCode);
-
-	if (keyCode == "X")
-	{
-		if (!this.flagTrackWithNormalMap)
-			this.flagTrackWithNormalMap = true;
-		else
-			this.flagTrackWithNormalMap = false;
-	}
-}
-
-NVMCClient.onMouseButtonDown = function (button, x, y, event) {
-	this.cameras[this.currentCamera].mouseButtonDown(x,y);
-};
-
-NVMCClient.onMouseButtonUp = function (button, x, y, event) {
-	this.cameras[this.currentCamera].mouseButtonUp();
-};
-
-NVMCClient.onMouseMove = function (x, y, event) {
-	this.cameras[this.currentCamera].mouseMove(x,y);
-};
-

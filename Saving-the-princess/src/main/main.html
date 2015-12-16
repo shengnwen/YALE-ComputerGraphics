@@ -11,21 +11,21 @@
 		<script type="text/javascript" src="../../lib/load_ply/parsePLY.js"></script>
 		<script type="text/javascript" src="../../lib/load_ply/importPLY.js"></script>
 		<script type="text/javascript" src="../../lib/obj_importer.js"></script>
-		<script type="text/javascript" src="../js/cube.js"></script>
-		<script type="text/javascript" src="../js/cone.js"></script>
-		<script type="text/javascript" src="../js/cylinder.js"></script>
-		<script type="text/javascript" src="../js/track.js"></script>
-		<script type="text/javascript" src="../js/race.js"></script>
-		<script type="text/javascript" src="../js/building.js"></script>
-		<script type="text/javascript" src="../js/quadrilateral.js"></script>
+		<script type="text/javascript" src="../js/primitives/cube.js"></script>
+		<script type="text/javascript" src="../js/primitives/cone.js"></script>
+		<script type="text/javascript" src="../js/primitives/cylinder.js"></script>
+		<script type="text/javascript" src="../js/primitives/track.js"></script>
+		<script type="text/javascript" src="../js/primitives/race.js"></script>
+		<script type="text/javascript" src="../js/primitives/building.js"></script>
+		<script type="text/javascript" src="../js/primitives/quadrilateral.js"></script>
 		<script type="text/javascript" src="../js/cabin_no_mirror.js"></script>
-		<script type="text/javascript" src="../js/texturedtrack.js"></script>
-		<script type="text/javascript" src="../js/texturedbuilding.js"></script>
-		<script type="text/javascript" src="../js/texturedquadrilateral.js"></script>
-		<script type="text/javascript" src="../js/texturedCrystal.js"></script>
+		<script type="text/javascript" src="../js/primitives/texturedtrack.js"></script>
+		<script type="text/javascript" src="../js/primitives/texturedbuilding.js"></script>
+		<script type="text/javascript" src="../js/primitives/texturedquadrilateral.js"></script>
+		<script type="text/javascript" src="../js/primitives/texturedCrystal.js"></script>
 		<script type="text/javascript" src="../js/rearmirror.js"></script>
 		<!--<script type="text/javascript" src="../../chapter4/0/shaders.js"></script>-->
-		<script type="text/javascript" src="shaders.js"></script>
+		<script type="text/javascript" src="../js/shaders/shaders.js"></script>
 		<!--<script type="text/javascript" src="../../chapter5/0/shaders.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter6/0/shaders.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter7/0/shaders.js"></script>-->
@@ -36,12 +36,12 @@
 		<!--<script type="text/javascript" src="../../chapter9/2/shaders.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter9/3/shaders.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter10/0/shaders.js"></script>-->
-		<script type="text/javascript" src="../js/4-0.js"></script>
+		<script type="text/javascript" src="../js/nvmc-monitor.js"></script>
 		<!--<script type="text/javascript" src="../../chapter4/1/1.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter4/2/2.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter5/0/0.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter6/0/0.js"></script>-->
-		<script type="text/javascript" src="../js/phong_shaders.js"></script>
+		<script type="text/javascript" src="../js/shaders/phong_shaders.js"></script>
 		<script type="text/javascript" src="../js/compute_normals.js"></script>
 		<!--<script type="text/javascript" src="../../chapter7/0/0.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter7/1/1.js"></script>-->
@@ -51,15 +51,16 @@
 		<!--<script type="text/javascript" src="../../chapter8/0/0.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter9/2/2.js"></script>-->
 		<!--<script type="text/javascript" src="../../chapter9/3/3.js"></script>-->
-		<script type="text/javascript" src="../js/Crystal.js"></script>
+		<script type="text/javascript" src="../js/primitives/Crystal.js"></script>
+        <script type="text/javascript" src="../js/collision-detection.js"></script>
 		<script type="text/javascript" src="../js/nvmc-helper.js"></script>
-		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="../js/main.js"></script>
 		<script type="text/javascript" src="../../lib/nvmc-glue.js"></script>
 	</head>
 	<body>
     <ul class="combar">
         <li>Instructions</li>
-        <li>[J]: (**new) jump <br>
+        <li>[J]: (**new) jump <br><br>
 			[w]: move forward (mode 1 and 2)<br>
             [s]: move backward (mode 1 and 3)<br>
             [a]: steer left (mode 1) / pan left (mode 3)<br>
@@ -81,18 +82,18 @@
             [u]: unlock view to the car (in photographer mode)<br>
             <b>[3]: enable/disable Panning</b><br>
     </ul>
-    <ul class="navbar">
-        <li> Section 10.1.5 page 311 </li>
-        <li> Here use make a rendering pass to only output the velocity of each pixel on a buffer which will be the read to
-        blur the second rendering pass appropriately.</li>
-    </ul>
+    <!--<ul class="navbar">-->
+        <!--<li> Section 10.1.5 page 311 </li>-->
+        <!--<li> Here use make a rendering pass to only output the velocity of each pixel on a buffer which will be the read to-->
+        <!--blur the second rendering pass appropriately.</li>-->
+    <!--</ul>-->
 		<center>
 			<h2>A Better Photographer with Panning</h2>
 			<div>
 			  <hr/>
 			  <canvas id="nvmc-canvas" width="600" height="500" style="border:1px solid gray;"></canvas>
 			  <hr/>
-				<audio src="alice.mp3" preload="auto" controls id="game-audio">
+				<audio src="../../media/alice.mp3" preload="auto" controls id="game-audio">
 					<p>Your browser does not support the <code>audio</code> element.</p>
 				</audio>
 			</div><h3>Log</h3>

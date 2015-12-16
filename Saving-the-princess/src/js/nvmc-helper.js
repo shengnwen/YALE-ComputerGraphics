@@ -24,6 +24,12 @@ NVMCClient.billboardCloudTreeBody = null;
 NVMCClient.billboardRenderer = null;
 NVMCClient.billboardRendererBody = null;
 NVMCClient.billboardTechnique = null;
+NVMCClient.pre_pos = null;
+NVMCClient.pre_M_9 = null;
+NVMCClient.pre_frame = null;
+NVMCClient.is_collide = false;
+NVMCClient.coins = null;
+NVMCClient.coindSound = new Audio("../../media/coins-in-hand.mp3");
 
 //4.1
 function PhotographerCamera() {//line 7, Listing 4.6
@@ -83,7 +89,7 @@ function PhotographerCamera() {//line 7, Listing 4.6
 	}
 
 	this.setView = function (stack, carFrame) {
-		this.updatePosition (this.t_V )
+		this.updatePosition (this.t_V)
 		var car_position = SglMat4.col(carFrame,3);
 		if (this.lockToCar)
 			var invV = SglMat4.lookAt(this.position, car_position, [0, 1, 0]);
@@ -405,20 +411,10 @@ NVMCClient.loadCarModel = function (gl, data) {//line 158, Listing 6.5{
 		data = NVMC.resource_path+"hero/jibunnoibasyo.obj";
 	var that = this;
 	this.sgl_car_model = null;
-	//sglRequestObj(data, function (modelDescriptor) {
 	sglRequestObj(data, function (modelDescriptor) {
 		that.sgl_car_model = new SglModel(that.ui.gl, modelDescriptor);
-		//that.sgl_car_model.texture = that.createTexture(gl,NVMC.resource_path+'Clefairy/pippidoll.png'	);
-		//that.sgl_car_model.textureSgl = null;
 		that.ui.postDrawEvent();
 	});
-	//sglRequestObj(data, function (modelDescriptor) {
-	//	that.sgl_car_model = new SglModel(gl, modelDescriptor);
-	//	//me.billboardCloudTree.texture = me.createTexture(gl,NVMC.resource_path+'geometry/tree/leaves.png'	);
-	//	that.sgl_car_model.texture = me.createTexture(gl,NVMC.resource_path+'Clefairy/pippidoll.png'	);
-	//	that.sgl_car_model.textureSgl = null;
-	//
-	//});
 };//line 167}
 
 
@@ -609,11 +605,8 @@ NVMCClient.createObjects = function () {
 		this.buildings[i].roof = new TexturedRoof(gameBuildings[i], 5);
 	}
 	this.crystals = []
-	for (var i = 0; i < 50; i++) {
-		var xyz = [];
-		xyz.push(Math.random() * 200 - 100);
-		xyz.push(Math.random() * 5 + 0.6);
-		xyz.push(Math.random() * 200 - 100);
+	for (var i = 0; i < this.coins.length; i++) {
+		var xyz = this.coins[i];
 		this.crystals.push(new TexturedCrystal(xyz, text_coords));
 	}
 };
@@ -1349,11 +1342,30 @@ NVMCClient.drawEverything = function (gl, excludeCar, framebuffer) {
 		this.drawObject(gl, this.crystals[i], this.textureShader);
 	}
 
-	if (!excludeCar && this.currentCamera != 3) {
+	if (!excludeCar && this.currentCamera != 3 ) {
 		stack.push();
 		var M_9 = SglMat4.translation(pos);
+		if (buildingCollisionDetection(pos, this.game.race.buildings) || planeCollisionDetection(pos)) {
+			// colide with building
+			this.game.playerAccelerate = 0;
+			this.game.playerSteerLeft = 0;
+			this.game.playerSteerRight = 0;
+			M_9 = this.pre_M_9;
+			this.is_collide = true;
+		} else{
+			this.pre_M_9 = M_9;
+			this.pre_pos = pos;
+			this.is_collide = false;
+			this.pre_frame = this.myFrame();
+			if (this.coins && this.coins.length > 0 && coinDetection(pos, this.coins, this.crystals)) {
+				//alert("touch coin!");
+				this.coindSound.play();
+			}
+		}
+
+
 		if (this.playerJump && this.playerJumpCount > 0) {
-			var M_JMP = SglMat4.translation([0, 0.8 * Math.sin((20.0 - this.playerJumpCount) * Math.PI/20.0), 0]);
+			var M_JMP = SglMat4.translation([0, 1.0 * Math.sin((20.0 - this.playerJumpCount) * Math.PI/20.0), 0]);
 			this.playerJumpCount -= 1;
 			if (this.playerJumpCount == 0) {
 				this.playerJump = false;
@@ -1369,137 +1381,8 @@ NVMCClient.drawEverything = function (gl, excludeCar, framebuffer) {
 		stack.pop();
 	}
 	this.drawTrees(gl, framebuffer);
-}
-
-NVMCClient.drawScene = function (gl) {
-    if(NVMCClient.n_resources_to_wait_for>0)return;
-    var width = this.ui.width;
-	var height = this.ui.height
-	var ratio = width / height;
-
-	this.drawOnReflectionMap(gl, SglVec3.add(this.game.state.players.me.dynamicState.position, [0.0, 1.5, 0.0]));
-	gl.viewport(0, 0, width, height);
-
-	// Clear the framebuffer
-	var stack = this.stack;
-	gl.clearColor(0.4, 0.6, 0.8, 1.0);
-	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-	var near = 0.1;
-	var far = 1000.0;
-	this.projectionMatrix = SglMat4.perspective(3.14 / 4, ratio, near, far);
-	this.cameras[2].projectionMatrix = this.projectionMatrix;
-
-	stack.loadIdentity();
-	var pos = this.game.state.players.me.dynamicState.position;
-	var orientation = this.game.state.players.me.dynamicState.orientation;
-	this.cameras[this.currentCamera].setView(this.stack, this.myFrame());
-	this.viewFrame = SglMat4.inverse(this.stack.matrix);
-	this.drawSkyBox(gl);
-
-	gl.enable(gl.DEPTH_TEST);
-
-	if (this.currentCamera == 3) {
-		gl.useProgram(this.perVertexColorShader);
-		gl.enable(gl.STENCIL_TEST);
-		gl.clearStencil(0);
-		gl.stencilMask(~0);
-		gl.stencilFunc(gl.ALWAYS, 1, 0xFF);
-		gl.stencilOp(gl.REPLACE, gl.REPLACE, gl.REPLACE);
-
-		gl.uniformMatrix4fv(this.perVertexColorShader.uModelViewMatrixLocation, false, SglMat4.identity());
-		gl.uniformMatrix4fv(this.perVertexColorShader.uProjectionMatrixLocation, false, SglMat4.identity());
-		this.drawObject(gl, this.cabin, this.perVertexColorShader, [0.4, 0.8, 0.9, 1.0]);
-
-		gl.stencilFunc(gl.GREATER, 1, 0xFF);
-		gl.stencilOp(gl.KEEP, gl.KEEP, gl.KEEP);
-		gl.stencilMask(0);
-	} else
-		gl.disable(gl.STENCIL_TEST);
-
-	if (this.depth_of_field_enabled) {
-		gl.bindFramebuffer(gl.FRAMEBUFFER, this.shadowMapTextureTarget.framebuffer);
-	
-		this.shadowMatrix = SglMat4.mul(this.projectionMatrix, this.stack.matrix);
-		this.stack.push();
-		this.stack.load(this.shadowMatrix);
-
-		gl.clearColor(1.0, 1.0, 1.0, 1.0);
-		gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-		gl.viewport(0, 0, this.shadowMapTextureTarget.framebuffer.width, this.shadowMapTextureTarget.framebuffer.height);
-		gl.useProgram(this.shadowMapCreateShader);
-		gl.uniformMatrix4fv(this.shadowMapCreateShader.uShadowMatrixLocation, false, this.stack.matrix);
-		this.drawDepthOnly(gl); 
-		this.stack.pop();
-
-		gl.bindFramebuffer(gl.FRAMEBUFFER, this.firstPassTextureTarget.framebuffer);
-		gl.clearColor(1.0, 1.0, 1.0, 1.0);
-		gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-		gl.viewport(0, 0, this.firstPassTextureTarget.framebuffer.width, this.firstPassTextureTarget.framebuffer.height);
-		this.drawSkyBox(gl);
-		this.drawEverything(gl, false, this.firstPassTextureTarget.framebuffer);
-		gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-
-		gl.viewport(0, 0, width, height);
-		gl.disable(gl.DEPTH_TEST);
-		gl.activeTexture(gl.TEXTURE0);
-		gl.bindTexture(gl.TEXTURE_2D, this.firstPassTextureTarget.texture);
-		gl.activeTexture(gl.TEXTURE1);
-		gl.bindTexture(gl.TEXTURE_2D, this.shadowMapTextureTarget.texture);
-
-		gl.useProgram(this.depthOfFieldShader);
-		gl.uniform1i(this.depthOfFieldShader.uTextureLocation, 0);
-		gl.uniform1i(this.depthOfFieldShader.uDepthTextureLocation, 1);
-		var dof = [1.0, 16.0];
-		var A = (far + near) / (far - near);
-		var B = 2 * far * near / (far - near);
-		gl.uniform2fv(this.depthOfFieldShader.uDofLocation, dof);
-		gl.uniform1f(this.depthOfFieldShader.uALocation, A);
-		gl.uniform1f(this.depthOfFieldShader.uBLocation, B);
-
-		var pxs = [1.0 / this.firstPassTextureTarget.framebuffer.width, 1.0 / 		this.firstPassTextureTarget.framebuffer.width];
-		gl.uniform2fv(this.depthOfFieldShader.uPxsLocation, pxs);
-
-		this.drawObject(gl, this.quad, this.depthOfFieldShader);
-		gl.enable(gl.DEPTH_TEST);
-	}
-		else
-	this.drawEverything(gl, false);
-
-	if (this.currentCamera == 3) {
-
-		// draw the scene for the back mirror
-		this.stack.loadIdentity();
-		gl.useProgram(this.lambertianSingleColorShader);
-		var invPositionMatrix = SglMat4.translation(SglVec3.neg(SglVec3.add(this.game.state.players.me.dynamicState.position, [0, 1.8, 0])));
-		var xMatrix = SglMat4.rotationAngleAxis(-0.2, [1, 0, 0]);
-		var invOrientationMatrix = SglMat4.rotationAngleAxis(-this.game.state.players.me.dynamicState.orientation, [0, 1, 0]);
-		var invV = SglMat4.mul(SglMat4.mul(xMatrix, invOrientationMatrix), invPositionMatrix);
-		this.stack.multiply(invV);
-
-		gl.bindFramebuffer(gl.FRAMEBUFFER, this.rearMirrorTextureTarget.framebuffer);
-		gl.disable(gl.STENCIL_TEST);
-		gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-		this.drawEverything(gl);
-		gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-
-		gl.useProgram(this.textureShader);
-		gl.bindTexture(gl.TEXTURE_2D, this.rearMirrorTextureTarget.texture);
-		gl.uniformMatrix4fv(this.textureShader.uModelViewMatrixLocation, false, SglMat4.identity());
-		gl.uniformMatrix4fv(this.textureShader.uProjectionMatrixLocation, false, SglMat4.identity());
-		this.drawObject(gl, this.rearMirror, this.textureShader, [1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 1.0]);
-
-		gl.useProgram(this.perVertexColorShader);
-		gl.enable(gl.BLEND);
-		gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-		gl.useProgram(this.perVertexColorShader);
-		gl.uniformMatrix4fv(this.perVertexColorShader.uModelViewMatrixLocation, false, SglMat4.identity());
-		gl.uniformMatrix4fv(this.perVertexColorShader.uProjectionLocation, false, SglMat4.identity());
-		this.drawObject(gl, this.windshield, this.perVertexColorShader);
-		gl.disable(gl.BLEND);
-	}
-
 };
+
 NVMCClient.initMotionKeyHandlers = function () {
 	var game = this.game;
 
