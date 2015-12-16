@@ -199,7 +199,7 @@ NVMCClient.createObjects = function () {
   for (var i = 0; i < 50; i++) {
     var xyz = [];
     xyz.push(Math.random() * 200 - 100);
-    xyz.push(Math.random() * 2 + 0.3);
+    xyz.push(Math.random() * 5 + 0.6);
     xyz.push(Math.random() * 200 - 100);
     this.crystals.push(new TexturedCrystal(xyz, text_coords));
   }

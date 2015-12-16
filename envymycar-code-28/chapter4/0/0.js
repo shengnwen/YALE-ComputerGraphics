@@ -7,6 +7,11 @@ var NVMCClient = NVMCClient || {};
 NVMCClient.myPos = function () {
 	return this.game.state.players.me.dynamicState.position;
 }
+NVMCClient.setPos = function (xyz) {
+	for (var i = 0; i < 3; i++) {
+		this.game.state.players.me.dynamicState.position[i] = xyz[i];
+	}
+}
 NVMCClient.myOri = function () {
 	return this.game.state.players.me.dynamicState.orientation;
 }
@@ -297,6 +302,15 @@ NVMCClient.initMotionKeyHandlers = function () {
 	carMotionKey["D"] = function (on) {
 		game.playerSteerRight = on;
 	};
+	carMotionKey["J"] = function(on) {
+		//jump
+		alert("jump" + NVMCClient.myPos()[1]);
+		this.playerJump = true;
+		this.playerCount = 20;
+		//game.playerJump = on;
+		//var pos = NVMCClient.myPos();
+		//NVMCClient.setPos([pos[0], pos[1] + 5, pos[2]])
+	}
 	this.carMotionKey = carMotionKey;
 };
 

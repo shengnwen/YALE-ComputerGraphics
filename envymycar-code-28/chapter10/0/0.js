@@ -128,6 +128,7 @@ NVMCClient.drawEverything = function (gl, excludeCar, framebuffer) {
 	if (!excludeCar && this.currentCamera != 3) {
 		stack.push();
 		var M_9 = SglMat4.translation(pos);
+		//if (this.playerJump)
 		stack.multiply(M_9);
 
 		var M_9bis = SglMat4.rotationAngleAxis(this.game.state.players.me.dynamicState.orientation, [0, 1, 0]);

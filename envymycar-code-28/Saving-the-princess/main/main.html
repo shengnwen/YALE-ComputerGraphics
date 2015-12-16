@@ -52,14 +52,15 @@
 		<script type="text/javascript" src="../../chapter9/2/2.js"></script>
 		<script type="text/javascript" src="../../chapter9/3/3.js"></script>
 		<script type="text/javascript" src="../js/Crystal.js"></script>
-		<script type="text/javascript" src="../../chapter10/0/0.js"></script>
+		<script type="text/javascript" src="../js/0.js"></script>
 		<script type="text/javascript" src="2.js"></script>
 		<script type="text/javascript" src="../../lib/nvmc-glue.js"></script>
 	</head>
 	<body>
     <ul class="combar">
         <li>Instructions</li>
-        <li>[w]: move forward (mode 1 and 2)<br>
+        <li>[J]: (**new) jump <br>
+			[w]: move forward (mode 1 and 2)<br>
             [s]: move backward (mode 1 and 3)<br>
             [a]: steer left (mode 1) / pan left (mode 3)<br>
             [d]: steer right (mode 1) / pan right (mode 3)<br>
@@ -89,8 +90,11 @@
 			<h2>A Better Photographer with Panning</h2>
 			<div>
 			  <hr/>
-			  <canvas id="nvmc-canvas" width="600" height="400" style="border:1px solid gray;"></canvas>
+			  <canvas id="nvmc-canvas" width="600" height="500" style="border:1px solid gray;"></canvas>
 			  <hr/>
+				<audio src="alice.mp3" preload="auto" controls id="game-audio">
+					<p>Your browser does not support the <code>audio</code> element.</p>
+				</audio>
 			</div><h3>Log</h3>
 
 			  <textarea id="nvmc-log" rows="4" cols="80"></textarea>
@@ -102,5 +106,6 @@
 			</div>
 			<hr/>
 		</center>
+
 	</body>
 </html>

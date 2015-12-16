@@ -7,7 +7,9 @@ var NVMCClient = NVMCClient || {};
 function PanCamera() {
 	this.position 				= [0.0,0.0,0.0];
 	this.keyDown 					= function (keyCode) {}
-	this.keyUp						= function (keyCode) {}
+	this.keyUp						= function (keyCode) {
+		//alert("jump!");
+	};
 	this.mouseMove				= function (event) {};
 	this.mouseButtonDown	= function (event) {};
 	this.mouseButtonUp 		= function () {}
@@ -329,6 +331,7 @@ NVMCClient.onInitialize = function () {
 	this.initializeObjects(gl);
 	this.initializeCameras();
 
+
 	this.uniformShader 			= new uniformShader(gl);
 	this.perVertexColorShader 		= new perVertexColorShader(gl);
 	this.lambertianSingleColorShader 	= new lambertianSingleColorShader(gl);
@@ -340,6 +343,7 @@ NVMCClient.onInitialize = function () {
 	this.showCubeMapShader	= new showCubeMapShader(gl);
 	this.billboardShader 			= new billboardShader(gl);
 	this.shadowMapCreateShader		= new shadowMapCreateShader(gl);
+	this.textureShadowShader		= new textureShadowShader(gl);
 	this.depthOfFieldShader		= new depthOfFieldShader(gl, 7);
 	this.velocityVectorShader			= new velocityVectorShader(gl);
 	this.motionBlurShader			= new motionBlurShader(gl);
@@ -382,17 +386,23 @@ NVMCClient.onInitialize = function () {
 	this.velocityBufferTextureTarget = this.prepareRenderToTextureFrameBuffer(gl,false,1024,1024);
 
 	this.createFullScreenQuad(gl);
+
+	//music
+	document.getElementById("game-audio").play();
 };
 
 NVMCClient.onKeyUp = function (keyCode, event) {
 	if( keyCode == "2"){ this.nextCamera(); return;}
 	if( keyCode == "1"){ this.prevCamera(); return;}		
 	if( keyCode == "3"){ this.motionblur_enabled = !this.motionblur_enabled;return;}		
-	
+	if (keyCode == "J") {
+		return;
+	}
 	if(this.carMotionKey[keyCode])
 		this.carMotionKey[keyCode](false);
 	
 	this.cameras[this.currentCamera].keyUp(keyCode) ;
+
 };
 	
 
