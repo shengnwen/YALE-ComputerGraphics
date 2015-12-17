@@ -382,6 +382,8 @@ NVMCClient.onInitialize = function () {
 
 	this.createReflectionMap(gl);
  	this.loadCarModel(gl);
+	this.princess_pos = [Math.random() * 160 - 80, 0, Math.random() * 160 - 80];
+	this.loadPrincess(gl);
 	this.createTechniqueReflection(gl);	
 	this.createDepthOnlyTechnique(gl);
 	this.createVelocityTechnique(gl);
@@ -397,5 +399,5 @@ NVMCClient.onInitialize = function () {
 	this.createFullScreenQuad(gl);
 
 	//music
-	//document.getElementById("game-audio").play();
+	document.getElementById("game-audio").play();
 };

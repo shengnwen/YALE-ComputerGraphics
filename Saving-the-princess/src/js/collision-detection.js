@@ -21,6 +21,14 @@ function isInsideRectHelper(x, z, recX, recZ){
 
     return true
 }
+function princeDetection(pos, princess_pos) {
+    if (Math.abs(pos[0] - princess_pos[0]) < 3.0) {
+        if (Math.abs(pos[2] - princess_pos[2]) < 3.0) {
+            return true;
+        }
+    }
+    return false;
+}
 function coinDetection(pos, allCoins, crystals) {
     var x = pos[0];
     var z= pos[2];

@@ -30,6 +30,7 @@ NVMCClient.pre_frame = null;
 NVMCClient.is_collide = false;
 NVMCClient.coins = null;
 NVMCClient.coindSound = new Audio("../../media/coins-in-hand.mp3");
+NVMCClient.successSound = new Audio("../../media/love-song.mp3");
 
 //4.1
 function PhotographerCamera() {//line 7, Listing 4.6
@@ -403,12 +404,26 @@ NVMCClient.n_cameras = 4;
 
 //6.0
 NVMCClient.sgl_car_model = null;
+NVMCClient.sgl_princess_model = null;
+NVMCClient.princess_pos = null;
 NVMCClient.sgl_renderer = null;
 NVMCClient.sunLightDirection = SglVec4.normalize([1, -0.5, 0, 0,0.0]);
+NVMCClient.loadPrincess = function(gl, data) {
+	if (!data)
+	//data = NVMC.resource_path+"geometry/cars/eclipse/eclipse.obj";
+	//	data = NVMC.resource_path+"hero/jibunnoibasyo.obj";
+		data = NVMC.resource_path+"Princess/Princess-peach.obj";
+	var that = this;
+	this.sgl_princess_model = null;
+	sglRequestObj(data, function (modelDescriptor) {
+		that.sgl_princess_model = new SglModel(that.ui.gl, modelDescriptor);
+		that.ui.postDrawEvent();
+	});
+};
 NVMCClient.loadCarModel = function (gl, data) {//line 158, Listing 6.5{
 	if (!data)
 	//data = NVMC.resource_path+"geometry/cars/eclipse/eclipse.obj";
-		data = NVMC.resource_path+"hero/jibunnoibasyo.obj";
+	data = NVMC.resource_path+"hero/jibunnoibasyo.obj";
 	var that = this;
 	this.sgl_car_model = null;
 	sglRequestObj(data, function (modelDescriptor) {
@@ -1254,8 +1269,8 @@ NVMCClient.drawDepthOnly = function (gl) {
 	this.drawCarDepthOnly(gl);
 };
 
-NVMCClient.drawCar = function (gl, framebuffer){
-	if (!this.sgl_car_model) return;
+NVMCClient.drawCar = function (gl, framebuffer, model){
+	if (!model) return;
 	var fb;
 	if (framebuffer) fb = new SglFramebuffer(gl, {handle: framebuffer,autoViewport: false});
  	this.sgl_renderer.begin();
@@ -1276,7 +1291,7 @@ NVMCClient.drawCar = function (gl, framebuffer){
    
    	this.sgl_renderer.setPrimitiveMode("FILL");
    	
-  	this.sgl_renderer.setModel(this.sgl_car_model);
+  	this.sgl_renderer.setModel(model);
  	this.sgl_renderer.setTexture(2,new SglTextureCubeMap(gl,this.reflectionMap));
 	this.sgl_renderer.renderModel();
 	this.sgl_renderer.end();
@@ -1345,7 +1360,7 @@ NVMCClient.drawEverything = function (gl, excludeCar, framebuffer) {
 	if (!excludeCar && this.currentCamera != 3 ) {
 		stack.push();
 		var M_9 = SglMat4.translation(pos);
-		if (buildingCollisionDetection(pos, this.game.race.buildings) || planeCollisionDetection(pos)) {
+		if (buildingCollisionDetection(pos, this.game.race.buildings) ||  planeCollisionDetection(pos) || princeDetection(pos, this.princess_pos)) {
 			// colide with building
 			this.game.playerAccelerate = 0;
 			this.game.playerSteerLeft = 0;
@@ -1377,8 +1392,29 @@ NVMCClient.drawEverything = function (gl, excludeCar, framebuffer) {
 		var M_9bis = SglMat4.rotationAngleAxis(this.game.state.players.me.dynamicState.orientation, [0, 1, 0]);
 		stack.multiply(M_9bis);
 
-		this.drawCar(gl, framebuffer);
+
+		this.drawCar(gl, framebuffer, this.sgl_car_model);
 		stack.pop();
+
+		stack.push();
+		var M_9 = SglMat4.translation(this.princess_pos);
+		stack.multiply(M_9);
+		var M_Scale_Princess = SglMat4.scaling([0.05, 0.05, 0.05]);
+		stack.multiply(M_Scale_Princess);
+		this.drawCar(gl, framebuffer, this.sgl_princess_model);
+		stack.pop();
+
+		if (princeDetection(pos, this.princess_pos)) {
+			if (this.successSound.paused) {
+				if (!document.getElementById("game-audio").paused){
+					document.getElementById("game-audio").pause();
+					document.getElementsByTagName("h2")[0].htmlText = "Saving the princess. Successful!";
+				}
+				this.successSound.play();
+				//alert("Game finished");
+			}
+		}
+
 	}
 	this.drawTrees(gl, framebuffer);
 };
